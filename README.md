@@ -8,7 +8,7 @@ Tamamen tarayıcıda çalışır. Sunucu yok, yükleme yok, harici bağımlılı
 dosyası, çevrimdışı da açılır. Veri cihazdan çıkmaz.
 
 [English summary below](#english)
-
+siteyi kullanmak için: https://tlhksy.github.io/Convert/dist/ 
 ---
 
 ## Neden
