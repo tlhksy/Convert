@@ -1,0 +1,19 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.002,
+     39.002
+    ]
+   },
+   "properties": {
+    "description": "This description exceeds the two hundred and fifty four character limit imposed by the dBASE III field format used inside shapefiles, and is included so that a converter must either truncate the value, reject it, or promote the field to an alternative storage strategy. Total length is stated in the manifest.",
+    "char_count": 309
+   }
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+ <Document>
+  <name>F18 nested folders</name>
+  <Folder><name>Level 1 - Region</name>
+   <Folder><name>Level 2 - District</name>
+    <Folder><name>Level 3 - Block</name>
+     <Placemark><name>deep point</name>
+      <Point><coordinates>33.0,39.14,0</coordinates></Point></Placemark>
+    </Folder>
+    <Placemark><name>district point</name>
+     <Point><coordinates>33.005,39.14,0</coordinates></Point></Placemark>
+   </Folder>
+   <Placemark><name>region point</name>
+    <Point><coordinates>33.01,39.14,0</coordinates></Point></Placemark>
+  </Folder>
+ </Document>
+</kml>

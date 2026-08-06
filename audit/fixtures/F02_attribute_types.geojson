@@ -1,0 +1,59 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     39.001
+    ]
+   },
+   "properties": {
+    "big_int": 12345678901234,
+    "ratio": 0.333333333,
+    "is_valid": true,
+    "optional": null,
+    "observed_at": "2026-03-14T09:27:41Z",
+    "label": "A"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.001,
+     39.001
+    ]
+   },
+   "properties": {
+    "big_int": -9876543210987,
+    "ratio": -1.5,
+    "is_valid": false,
+    "optional": "",
+    "observed_at": "2026-03-14T18:02:00Z",
+    "label": "B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.002,
+     39.001
+    ]
+   },
+   "properties": {
+    "big_int": 0,
+    "ratio": 0.0,
+    "is_valid": null,
+    "optional": "present",
+    "observed_at": "2026-12-31T23:59:59Z",
+    "label": "C"
+   }
+  }
+ ]
+}

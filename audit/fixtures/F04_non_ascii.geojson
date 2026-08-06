@@ -1,0 +1,75 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     39.003
+    ]
+   },
+   "properties": {
+    "place_name": "Çağlayan Sokağı No:12/İ",
+    "language": "Turkish"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.001,
+     39.003
+    ]
+   },
+   "properties": {
+    "place_name": "Ærøskøbing",
+    "language": "Danish"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.002,
+     39.003
+    ]
+   },
+   "properties": {
+    "place_name": "Kraków Śródmieście",
+    "language": "Polish"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.003,
+     39.003
+    ]
+   },
+   "properties": {
+    "place_name": "Ñuñoa",
+    "language": "Spanish"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.004,
+     39.003
+    ]
+   },
+   "properties": {
+    "place_name": "Nový Jičín",
+    "language": "Czech"
+   }
+  }
+ ]
+}

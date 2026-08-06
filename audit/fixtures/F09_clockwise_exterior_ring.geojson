@@ -1,0 +1,38 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       33.0,
+       39.06
+      ],
+      [
+       33.0,
+       39.066
+      ],
+      [
+       33.006,
+       39.066
+      ],
+      [
+       33.006,
+       39.06
+      ],
+      [
+       33.0,
+       39.06
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "winding": "clockwise_exterior"
+   }
+  }
+ ]
+}

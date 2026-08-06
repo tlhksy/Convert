@@ -1,0 +1,125 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     39.0
+    ]
+   },
+   "properties": {
+    "administrative_unit_name": "Central",
+    "administrative_unit_code": "TR-33-001",
+    "survey_reference_number": 41207,
+    "vegetation_cover_class": "broadleaf",
+    "canopy_height_metres": 12.4,
+    "measurement_operator": "field team A",
+    "instrument_serial_id": "LDM-2291",
+    "acquisition_platform": "terrestrial",
+    "quality_flag_primary": 1,
+    "quality_flag_secondary": 0,
+    "notes_field_general": "reference stem",
+    "last_revision_author": "TK"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.001,
+     39.0
+    ]
+   },
+   "properties": {
+    "administrative_unit_name": "Central",
+    "administrative_unit_code": "TR-33-001",
+    "survey_reference_number": 41207,
+    "vegetation_cover_class": "broadleaf",
+    "canopy_height_metres": 12.4,
+    "measurement_operator": "field team A",
+    "instrument_serial_id": "LDM-2291",
+    "acquisition_platform": "terrestrial",
+    "quality_flag_primary": 1,
+    "quality_flag_secondary": 0,
+    "notes_field_general": "reference stem",
+    "last_revision_author": "TK"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.002,
+     39.0
+    ]
+   },
+   "properties": {
+    "administrative_unit_name": "Central",
+    "administrative_unit_code": "TR-33-001",
+    "survey_reference_number": 41207,
+    "vegetation_cover_class": "broadleaf",
+    "canopy_height_metres": 12.4,
+    "measurement_operator": "field team A",
+    "instrument_serial_id": "LDM-2291",
+    "acquisition_platform": "terrestrial",
+    "quality_flag_primary": 1,
+    "quality_flag_secondary": 0,
+    "notes_field_general": "reference stem",
+    "last_revision_author": "TK"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.003,
+     39.0
+    ]
+   },
+   "properties": {
+    "administrative_unit_name": "Central",
+    "administrative_unit_code": "TR-33-001",
+    "survey_reference_number": 41207,
+    "vegetation_cover_class": "broadleaf",
+    "canopy_height_metres": 12.4,
+    "measurement_operator": "field team A",
+    "instrument_serial_id": "LDM-2291",
+    "acquisition_platform": "terrestrial",
+    "quality_flag_primary": 1,
+    "quality_flag_secondary": 0,
+    "notes_field_general": "reference stem",
+    "last_revision_author": "TK"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.004,
+     39.0
+    ]
+   },
+   "properties": {
+    "administrative_unit_name": "Central",
+    "administrative_unit_code": "TR-33-001",
+    "survey_reference_number": 41207,
+    "vegetation_cover_class": "broadleaf",
+    "canopy_height_metres": 12.4,
+    "measurement_operator": "field team A",
+    "instrument_serial_id": "LDM-2291",
+    "acquisition_platform": "terrestrial",
+    "quality_flag_primary": 1,
+    "quality_flag_secondary": 0,
+    "notes_field_general": "reference stem",
+    "last_revision_author": "TK"
+   }
+  }
+ ]
+}

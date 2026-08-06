@@ -1,0 +1,38 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       33.0,
+       39.09
+      ],
+      [
+       33.01,
+       39.09
+      ],
+      [
+       33.01,
+       39.1
+      ],
+      [
+       33.0,
+       39.1
+      ],
+      [
+       33.0,
+       39.09
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "note": "extent is 0.01 degrees across"
+   }
+  }
+ ]
+}

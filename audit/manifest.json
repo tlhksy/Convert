@@ -1,0 +1,611 @@
+{
+  "manifest_version": "1.0",
+  "taxonomy": "taxonomy.json",
+  "coordinate_anchor": {
+    "lon": 33.0,
+    "lat": 39.0,
+    "note": "TUREF / TM33 and UTM zone 36N both apply at this location."
+  },
+  "targets": [
+    "shapefile",
+    "dxf",
+    "geojson",
+    "kml",
+    "csv"
+  ],
+  "scoring": {
+    "audit_denominator": "codes listed in 'expected' for fixtures with role == 'audit' or 'control'",
+    "conditional_handling": "codes listed in 'conditional' are scored in a separate stratum; their occurrence is a writer choice the target format permits but does not require",
+    "excluded": "fixtures with role == 'accuracy' contribute no codes to the reporting audit"
+  },
+  "fixtures": [
+    {
+      "id": "F01",
+      "file": "F01_long_field_names.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Twelve field names of 14-22 characters; 'administrative_unit_name' and 'administrative_unit_code' share their first ten characters.",
+      "expected": {
+        "shapefile": [
+          "A1",
+          "A2"
+        ],
+        "dxf": [
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": []
+      }
+    },
+    {
+      "id": "F02",
+      "file": "F02_attribute_types.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Integers beyond 32-bit range, floats, booleans, nulls and ISO 8601 date-times in one table.",
+      "expected": {
+        "shapefile": [
+          "A3",
+          "A5",
+          "A6"
+        ],
+        "dxf": [
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [
+          "A3"
+        ],
+        "csv": [
+          "A3",
+          "A6"
+        ]
+      }
+    },
+    {
+      "id": "F03",
+      "file": "F03_wide_text.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Single text value longer than the 254-character dBASE III limit.",
+      "expected": {
+        "shapefile": [
+          "A4"
+        ],
+        "dxf": [
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": []
+      },
+      "measured": {
+        "char_count": 309
+      }
+    },
+    {
+      "id": "F04",
+      "file": "F04_non_ascii.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Latin-script non-ASCII characters from five languages, including the dotted capital I.",
+      "expected": {
+        "shapefile": [
+          "A7"
+        ],
+        "dxf": [
+          "A7",
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": [
+          "A7"
+        ]
+      },
+      "conditional": {
+        "shapefile": [
+          "A7"
+        ],
+        "csv": [
+          "A7"
+        ]
+      }
+    },
+    {
+      "id": "F05",
+      "file": "F05_polygon_with_holes.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "One exterior ring enclosing two interior rings.",
+      "expected": {
+        "shapefile": [
+          "B6"
+        ],
+        "dxf": [
+          "B3",
+          "A8",
+          "D1"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": [
+          "B10"
+        ]
+      }
+    },
+    {
+      "id": "F06",
+      "file": "F06_multipart_single_feature.geojson",
+      "source": "geojson",
+      "role": "control",
+      "rationale": "Negative control. Shapefile and KML both represent multipart geometry natively; a converter that splits this feature has introduced loss the format did not require.",
+      "expected": {
+        "shapefile": [
+          "B6"
+        ],
+        "dxf": [
+          "B4",
+          "A8",
+          "D1"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": [
+          "B4",
+          "B10"
+        ]
+      }
+    },
+    {
+      "id": "F07",
+      "file": "F07_mixed_geometry_types.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Point, line and polygon in a single collection; shapefile permits only one geometry type per file.",
+      "expected": {
+        "shapefile": [
+          "B5"
+        ],
+        "dxf": [
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": [
+          "B5",
+          "B10"
+        ]
+      }
+    },
+    {
+      "id": "F08",
+      "file": "F08_polyline_zm.zip",
+      "source": "shapefile",
+      "role": "audit",
+      "rationale": "PolyLineZ with populated Z and M arrays; M has no representation in GeoJSON, KML or DXF R12.",
+      "expected": {
+        "shapefile": [],
+        "dxf": [
+          "B2",
+          "A8"
+        ],
+        "geojson": [
+          "B1",
+          "B2"
+        ],
+        "kml": [
+          "B2"
+        ],
+        "csv": [
+          "B1",
+          "B2",
+          "B10"
+        ]
+      },
+      "conditional": {
+        "geojson": [
+          "B1"
+        ]
+      }
+    },
+    {
+      "id": "F09",
+      "file": "F09_clockwise_exterior_ring.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Exterior ring wound clockwise, contrary to RFC 7946. Shapefile requires exactly this orientation, so the direction of any correction is diagnostic.",
+      "expected": {
+        "shapefile": [],
+        "dxf": [
+          "A8"
+        ],
+        "geojson": [
+          "B6"
+        ],
+        "kml": [],
+        "csv": [
+          "B10"
+        ]
+      }
+    },
+    {
+      "id": "F10",
+      "file": "F10_null_geometry.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Two of five features carry null geometry. Shapefile can encode these as null shapes, so dropping them is a writer choice rather than a format limit.",
+      "expected": {
+        "shapefile": [
+          "B7"
+        ],
+        "dxf": [
+          "B7",
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [
+          "B7"
+        ],
+        "csv": [
+          "B10"
+        ]
+      },
+      "conditional": {
+        "shapefile": [
+          "B7"
+        ]
+      }
+    },
+    {
+      "id": "F11",
+      "file": "F11_self_intersecting_ring.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Bow-tie exterior ring. Both silent pass-through and silent repair count as unreported alteration.",
+      "expected": {
+        "shapefile": [
+          "B8"
+        ],
+        "dxf": [
+          "B8",
+          "A8"
+        ],
+        "geojson": [
+          "B8"
+        ],
+        "kml": [
+          "B8"
+        ],
+        "csv": [
+          "B10"
+        ]
+      }
+    },
+    {
+      "id": "F12",
+      "file": "F12_coordinate_precision.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Nine decimal places, roughly 0.1 mm at this latitude. Binary shapefile storage is lossless; every ASCII target depends on writer formatting.",
+      "expected": {
+        "shapefile": [],
+        "dxf": [
+          "B9",
+          "A8"
+        ],
+        "geojson": [
+          "B9"
+        ],
+        "kml": [
+          "B9"
+        ],
+        "csv": [
+          "B9"
+        ]
+      },
+      "conditional": {
+        "dxf": [
+          "B9"
+        ],
+        "geojson": [
+          "B9"
+        ],
+        "kml": [
+          "B9"
+        ],
+        "csv": [
+          "B9"
+        ]
+      }
+    },
+    {
+      "id": "F13",
+      "file": "F13_no_prj.zip",
+      "source": "shapefile",
+      "role": "audit",
+      "rationale": "Projected coordinates with neither .prj nor .cpg. Any output CRS is an assumption the converter must declare.",
+      "expected": {
+        "shapefile": [
+          "C1"
+        ],
+        "dxf": [
+          "C1",
+          "A8"
+        ],
+        "geojson": [
+          "C1"
+        ],
+        "kml": [
+          "C1"
+        ],
+        "csv": [
+          "C1"
+        ]
+      }
+    },
+    {
+      "id": "F14",
+      "file": "F14_datum_control_points.geojson",
+      "source": "geojson",
+      "role": "accuracy",
+      "rationale": "Fifty control locations on a regular grid spanning the national extent. Used for the datum-shift accuracy measurement, not the reporting audit. Reference coordinates must be supplied externally.",
+      "expected": {
+        "shapefile": [],
+        "dxf": [],
+        "geojson": [],
+        "kml": [],
+        "csv": []
+      },
+      "accuracy_codes": [
+        "C2"
+      ],
+      "note": "Excluded from reporting-audit totals. Exercises C2 as a metric measurement rather than a disclosure observation. See EXTERNAL_DATA.md.",
+      "measured": {
+        "point_count": 50
+      }
+    },
+    {
+      "id": "F15",
+      "file": "F15_geographic_units.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Geographic coordinates written to a CAD target whose consumers assume linear units; the drawing extent would be 0.01 units across.",
+      "expected": {
+        "shapefile": [],
+        "dxf": [
+          "C3",
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": [
+          "B10"
+        ]
+      }
+    },
+    {
+      "id": "F16",
+      "file": "F16_layer_names.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Layer-defining values containing spaces, a solidus, dots, non-ASCII characters and a name exceeding 31 characters.",
+      "expected": {
+        "shapefile": [
+          "D1"
+        ],
+        "dxf": [
+          "D1",
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [],
+        "csv": []
+      }
+    },
+    {
+      "id": "F17",
+      "file": "F17_styled.kml",
+      "source": "kml",
+      "role": "audit",
+      "rationale": "Explicit line, polygon and icon styles. DXF can carry colour on layers, so partial retention is possible.",
+      "expected": {
+        "shapefile": [
+          "D2"
+        ],
+        "dxf": [
+          "D2",
+          "A8"
+        ],
+        "geojson": [
+          "D2"
+        ],
+        "kml": [],
+        "csv": [
+          "D2",
+          "B10"
+        ]
+      },
+      "conditional": {
+        "dxf": [
+          "D2"
+        ]
+      }
+    },
+    {
+      "id": "F18",
+      "file": "F18_nested_folders.kml",
+      "source": "kml",
+      "role": "audit",
+      "rationale": "Three levels of folder nesting with placemarks at each level.",
+      "expected": {
+        "shapefile": [
+          "D3"
+        ],
+        "dxf": [
+          "D3",
+          "A8"
+        ],
+        "geojson": [
+          "D3"
+        ],
+        "kml": [],
+        "csv": [
+          "D3"
+        ]
+      },
+      "conditional": {
+        "dxf": [
+          "D3"
+        ]
+      }
+    },
+    {
+      "id": "F19",
+      "file": "F19_feature_identifiers.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Identifiers live in the GeoJSON 'id' member, not in properties, so a converter that copies only properties will drop them.",
+      "expected": {
+        "shapefile": [
+          "D4"
+        ],
+        "dxf": [
+          "D4",
+          "A8"
+        ],
+        "geojson": [],
+        "kml": [
+          "D4"
+        ],
+        "csv": [
+          "D4"
+        ]
+      },
+      "conditional": {
+        "shapefile": [
+          "D4"
+        ],
+        "kml": [
+          "D4"
+        ],
+        "csv": [
+          "D4"
+        ]
+      }
+    },
+    {
+      "id": "F20",
+      "file": "F20_labels.kml",
+      "source": "kml",
+      "role": "audit",
+      "rationale": "Placemark names carry label text. Retention depends on whether the writer maps them to an attribute or a text entity.",
+      "expected": {
+        "shapefile": [
+          "D5"
+        ],
+        "dxf": [
+          "D5",
+          "A8"
+        ],
+        "geojson": [
+          "D5"
+        ],
+        "kml": [],
+        "csv": [
+          "D5",
+          "B10"
+        ]
+      },
+      "conditional": {
+        "shapefile": [
+          "D5"
+        ],
+        "dxf": [
+          "D5"
+        ],
+        "geojson": [
+          "D5"
+        ],
+        "csv": [
+          "D5"
+        ]
+      }
+    },
+    {
+      "id": "F24",
+      "file": "F24_axis_order.csv",
+      "source": "csv",
+      "role": "audit",
+      "rationale": "Coordinate columns ordered latitude-first, matching the EPSG:4326 authority order but contradicting the longitude-first convention of GeoJSON and KML. Values lie in a band where a swap remains geographically plausible, so it cannot be caught by a range test alone.",
+      "expected": {
+        "shapefile": [
+          "C4",
+          "C1"
+        ],
+        "dxf": [
+          "C4",
+          "C1",
+          "C3",
+          "A8"
+        ],
+        "geojson": [
+          "C4",
+          "C1"
+        ],
+        "kml": [
+          "C4",
+          "C1"
+        ],
+        "csv": [
+          "C4"
+        ]
+      },
+      "conditional": {
+        "shapefile": [
+          "C4"
+        ],
+        "dxf": [
+          "C4"
+        ],
+        "geojson": [
+          "C4"
+        ],
+        "kml": [
+          "C4"
+        ],
+        "csv": [
+          "C4"
+        ]
+      }
+    },
+    {
+      "id": "F21",
+      "file": "F21_cadastral_parcels.zip",
+      "source": "shapefile",
+      "role": "audit",
+      "rationale": "Real cadastral parcel extract. Compound case: holes, long Turkish field names, projected national CRS.",
+      "expected": null,
+      "external": true
+    },
+    {
+      "id": "F22",
+      "file": "F22_tree_inventory.zip",
+      "source": "shapefile",
+      "role": "audit",
+      "rationale": "Real campus tree inventory. Compound case: Z values, non-ASCII species and location names, wide text notes.",
+      "expected": null,
+      "external": true
+    },
+    {
+      "id": "F23",
+      "file": "F23_linear_network.geojson",
+      "source": "geojson",
+      "role": "audit",
+      "rationale": "Real linear network extract. Compound case: multipart lines, dense vertices, mixed attribute types.",
+      "expected": null,
+      "external": true
+    }
+  ]
+}

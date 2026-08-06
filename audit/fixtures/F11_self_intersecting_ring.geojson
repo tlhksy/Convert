@@ -1,0 +1,38 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       33.0,
+       39.08
+      ],
+      [
+       33.008,
+       39.088
+      ],
+      [
+       33.008,
+       39.08
+      ],
+      [
+       33.0,
+       39.088
+      ],
+      [
+       33.0,
+       39.08
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "validity": "self_intersecting"
+   }
+  }
+ ]
+}

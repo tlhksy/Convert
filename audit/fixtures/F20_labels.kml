@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+ <Document>
+  <name>F20 labels</name>
+  <Placemark><name>Kayalı Reservoir</name>
+   <Point><coordinates>33.0,39.16,0</coordinates></Point></Placemark>
+  <Placemark><name>Longoz Forest edge</name>
+   <Point><coordinates>33.006,39.16,0</coordinates></Point></Placemark>
+  <Placemark><name>Survey benchmark 12</name>
+   <Point><coordinates>33.012,39.16,0</coordinates></Point></Placemark>
+ </Document>
+</kml>

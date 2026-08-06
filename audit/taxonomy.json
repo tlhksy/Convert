@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "description": "Taxonomy of information-loss mechanisms in vector geospatial format conversion. Each code names a single, independently observable mechanism by which information present in the source is absent, altered, or unrecoverable in the target.",
+  "families": {
+    "A": "Attribute and schema loss",
+    "B": "Geometry loss",
+    "C": "Coordinate reference system loss",
+    "D": "Structure and metadata loss"
+  },
+  "codes": {
+    "A1": {"family": "A", "name": "Field name truncation", "definition": "A field name is shortened to fit a target-format length limit (e.g. 10 characters in DBF)."},
+    "A2": {"family": "A", "name": "Field name collision after truncation", "definition": "Two or more distinct source field names become identical after truncation and must be disambiguated or merged."},
+    "A3": {"family": "A", "name": "Type coercion", "definition": "A field is written in a different data type than the source (e.g. 64-bit integer stored as double or text; boolean stored as integer or character)."},
+    "A4": {"family": "A", "name": "Width or precision overflow", "definition": "A value exceeds the target field width or decimal precision and is truncated, rounded, or rejected."},
+    "A5": {"family": "A", "name": "Temporal component loss", "definition": "Time-of-day, timezone, or sub-day resolution is dropped from a date-time value."},
+    "A6": {"family": "A", "name": "Null indistinguishable from empty", "definition": "A null value and an empty string or zero become indistinguishable in the target."},
+    "A7": {"family": "A", "name": "Character encoding loss", "definition": "Non-ASCII characters are transliterated, replaced, or mangled because the target encoding is narrower or undeclared."},
+    "A8": {"family": "A", "name": "Complete attribute loss", "definition": "All non-geometric attributes are dropped because the target format carries no attribute table."},
+    "B1": {"family": "B", "name": "Z coordinate loss", "definition": "Elevation values present in the source are absent from the target."},
+    "B2": {"family": "B", "name": "M coordinate loss", "definition": "Measure values present in the source are absent from the target."},
+    "B3": {"family": "B", "name": "Ring containment loss", "definition": "The parent-child relationship between an outer ring and its holes is not representable in the target; holes become independent geometries."},
+    "B4": {"family": "B", "name": "Multipart feature split", "definition": "A single multipart feature becomes multiple features, so feature identity and one-to-one attribute association are lost."},
+    "B5": {"family": "B", "name": "Mixed geometry type coercion", "definition": "A source containing several geometry types is forced into a single-type target, dropping or converting non-conforming geometries."},
+    "B6": {"family": "B", "name": "Ring winding convention change", "definition": "Ring orientation is reversed or normalised to satisfy the target specification."},
+    "B7": {"family": "B", "name": "Empty or null geometry dropped", "definition": "Features carrying no geometry are removed from the output."},
+    "B8": {"family": "B", "name": "Invalid geometry passed or silently repaired", "definition": "A self-intersecting or otherwise invalid ring is either written unchanged into a format that assumes validity, or geometrically altered by repair."},
+    "B9": {"family": "B", "name": "Coordinate precision truncation", "definition": "Coordinate decimal places are reduced by the writer, shifting vertex positions."},
+    "B10": {"family": "B", "name": "Geometry degraded to a representative position", "definition": "A line or area geometry is reduced to a single point, a centroid, or a bounding extent because the target carries no geometry structure. Does not apply where the writer emits a complete geometry serialisation such as WKT."},
+    "C1": {"family": "C", "name": "Undeclared source CRS", "definition": "The source carries no CRS declaration and the converter must assume one."},
+    "C2": {"family": "C", "name": "Datum transformation approximation", "definition": "A datum shift is applied using a lower-fidelity model than the authoritative one for the region (e.g. a continental three-parameter shift in place of national parameters or a grid)."},
+    "C3": {"family": "C", "name": "Angular units in a linear-unit target", "definition": "Geographic coordinates are written into a format whose consumers assume linear units, producing an unusable scale."},
+    "C4": {"family": "C", "name": "Axis order change", "definition": "The order of the coordinate axes differs between source and target interpretation."},
+    "D1": {"family": "D", "name": "Layer name normalisation", "definition": "A layer or table name is altered to satisfy target character-set or length restrictions."},
+    "D2": {"family": "D", "name": "Style loss", "definition": "Symbology carried by the source (colour, line weight, icon, fill) is absent from the target."},
+    "D3": {"family": "D", "name": "Hierarchy flattening", "definition": "Nested containers (folders, groups) are collapsed into a flat list."},
+    "D4": {"family": "D", "name": "Feature identifier loss", "definition": "A stable per-feature identifier present in the source is not carried into the target."},
+    "D5": {"family": "D", "name": "Label or annotation loss", "definition": "Display names, labels, or annotation text are absent from the target."}
+  }
+}

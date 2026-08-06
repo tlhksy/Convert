@@ -1,0 +1,61 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     39.11
+    ]
+   },
+   "properties": {
+    "layer_name": "Protected Area / Zone A",
+    "seq": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.002,
+     39.11
+    ]
+   },
+   "properties": {
+    "layer_name": "Sürdürülebilir Peyzaj Birimi",
+    "seq": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.004,
+     39.11
+    ]
+   },
+   "properties": {
+    "layer_name": "very long layer name used to exceed target limits 01",
+    "seq": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.006,
+     39.11
+    ]
+   },
+   "properties": {
+    "layer_name": "layer.with.dots",
+    "seq": 4
+   }
+  }
+ ]
+}

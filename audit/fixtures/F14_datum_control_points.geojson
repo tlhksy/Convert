@@ -1,0 +1,805 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     26.0,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-001",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     26.0,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-002",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     26.0,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-003",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     26.0,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-004",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     26.0,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-005",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     27.4,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-006",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     27.4,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-007",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     27.4,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-008",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     27.4,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-009",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     27.4,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-010",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     28.8,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-011",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     28.8,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-012",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     28.8,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-013",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     28.8,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-014",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     28.8,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-015",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.2,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-016",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.2,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-017",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.2,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-018",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.2,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-019",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.2,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-020",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     31.6,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-021",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     31.6,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-022",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     31.6,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-023",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     31.6,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-024",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     31.6,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-025",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-026",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-027",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-028",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-029",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     33.0,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-030",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     34.4,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-031",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     34.4,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-032",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     34.4,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-033",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     34.4,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-034",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     34.4,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-035",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     35.8,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-036",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     35.8,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-037",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     35.8,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-038",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     35.8,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-039",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     35.8,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-040",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     37.2,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-041",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     37.2,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-042",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     37.2,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-043",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     37.2,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-044",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     37.2,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-045",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     38.6,
+     36.5
+    ]
+   },
+   "properties": {
+    "control_id": "C-046",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     38.6,
+     37.8
+    ]
+   },
+   "properties": {
+    "control_id": "C-047",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     38.6,
+     39.1
+    ]
+   },
+   "properties": {
+    "control_id": "C-048",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     38.6,
+     40.4
+    ]
+   },
+   "properties": {
+    "control_id": "C-049",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     38.6,
+     41.7
+    ]
+   },
+   "properties": {
+    "control_id": "C-050",
+    "reference_easting": null,
+    "reference_northing": null,
+    "reference_source": null
+   }
+  }
+ ]
+}
