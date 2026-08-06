@@ -9,6 +9,23 @@
     "test": "node --test test/*.test.js",
     "check": "npm test && npm run build"
   },
-  "keywords": ["shapefile", "dxf", "geojson", "kml", "gis", "cad", "converter", "coordinate-transformation", "utm", "turef", "offline"],
-  "engines": { "node": ">=18" }
+  "keywords": [
+    "shapefile",
+    "dxf",
+    "geojson",
+    "kml",
+    "gis",
+    "cad",
+    "converter",
+    "coordinate-transformation",
+    "utm",
+    "turef",
+    "offline"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "jsdom": "^30.0.1"
+  }
 }

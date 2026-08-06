@@ -345,7 +345,7 @@ function trTmFor(lon){
 }
 
 /* ---------------- state ---------------- */
-var S={fc:null,src:'EPSG:4326',dst:'EPSG:4326',fmt:'dxf',proj:null,name:'cikti',keys:[],log:[]};
+var S={fc:null,src:'EPSG:4326',dst:'EPSG:4326',fmt:'dxf',proj:null,name:'output',keys:[],log:[]};
 var $=function(id){return document.getElementById(id);};
 
 /* ---------------- log ---------------- */
@@ -493,7 +493,7 @@ async function ingest(fileList){
       single={ext:ex,text:raw,name:b};
     }
   }
-  var fc=null,name='cikti';
+  var fc=null,name='output';
   var keys=Object.keys(bag).filter(function(k){return bag[k].shp;});
   if(keys.length){
     if(keys.length>1) L('warn','multiple','log.shp.multiple',[keys[0],keys.slice(1).join(', ')]);
@@ -774,7 +774,7 @@ function warnFn(tag,key,args){L('warn',tag,key,args);}
 
 function convert(){
   if(!S.fc)return;
-  var fc=S.proj||S.fc, base=S.name.replace(/[^\w.-]+/g,'_')||'cikti';
+  var fc=S.proj||S.fc, base=S.name.replace(/[^\w.-]+/g,'_')||'output';
   /* Losses the chosen target cannot represent are stated before writing, so
      they appear even when the writer itself has nothing to say about them. */
   if(G.hasZ(fc)&&(S.fmt==='shp'||S.fmt==='csv')) L('warn','geometry','log.geom.zDropped',[S.fmt.toUpperCase()]);
@@ -817,7 +817,7 @@ function convert(){
       var wkt=wktFor(S.dst), entries=[], made=[];
       ['point','line','polygon'].forEach(function(c){
         var fs=groups[c];if(!fs.length)return;
-        var suffix=Object.keys(groups).filter(function(k){return groups[k].length;}).length>1?'_'+({point:'nokta',line:'cizgi',polygon:'alan'}[c]):'';
+        var suffix=Object.keys(groups).filter(function(k){return groups[k].length;}).length>1?'_'+c:'';
         var nm=base+suffix;
         var fields=G.inferFields(fs,warnFn);
         var sx=G.writeShpShx(fs,c);
