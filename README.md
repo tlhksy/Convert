@@ -1,138 +1,223 @@
 # Pafta
 
-**GIS ile CAD arasında vektör veri dönüştürücü.** Shapefile, GeoJSON, KML, GPX ve CSV
-dosyalarını birbirine ve DXF'e çevirir; koordinat sistemini dönüştürür; ne kaybedildiğini
-satır satır söyler.
+**A vector data converter between GIS and CAD that tells you what it lost.**
+Reads Shapefile, GeoJSON, KML, GPX and CSV; writes DXF, Shapefile, GeoJSON, KML
+and CSV; transforms coordinate reference systems; and reports, line by line,
+what each conversion changed.
 
-Tamamen tarayıcıda çalışır. Sunucu yok, yükleme yok, harici bağımlılık yok — tek bir HTML
-dosyası, çevrimdışı da açılır. Veri cihazdan çıkmaz.
+Everything runs in the browser. No server, no upload, no external dependencies,
+works offline from a single HTML file. Data never leaves the device.
 
-[English summary below](#english)
-siteyi kullanmak için: https://tlhksy.github.io/Convert/dist/ 
----
+Use it: <https://tlhksy.github.io/Convert/dist/>
 
-## Neden
+[Türkçe açıklama aşağıda](#türkçe)
 
-Shapefile → CAD geçişi saf bir format dönüşümü değildir. Koordinat sistemi, öznitelik–katman
-eşlemesi, etiketlerin nasıl yazılacağı, poligon deliklerinin ne olacağı, alan adı sınırları,
-karakter kodlaması — hepsi karar gerektirir. Mevcut çevrimiçi dönüştürücülerin çoğu bu
-kararları ya sormaz ya da sessizce, çoğu zaman yanlış verir. Sonuç, açıldığında bozuk olduğu
-belli olmayan dosyalardır.
+## Why
 
-Pafta'nın ayrım noktası dönüştürme değil, **ne kaybettiğini söylemesidir**. Her çalıştırmada
-bir dönüşüm günlüğü üretir: alan adın 10 karaktere indi, katman adın ASCII'ye çevrildi,
-`.cpg` yoktu Latin-1 varsayıldı, poligon deliğin ayrı polyline oldu.
+Shapefile to CAD is not a pure format conversion. Coordinate system, attribute
+to layer mapping, how labels are written, what happens to polygon holes, field
+name limits, character encoding: each one is a decision. Most online converters
+either do not ask or answer silently, often wrongly. The result is a file that
+does not look broken until someone opens it downstream.
 
-En sert kontrol şu: hedef koordinat sistemi derece cinsindeyken DXF istersen dönüştürmeyi
-**hata** olarak işaretler. DXF birimsizdir; coğrafi koordinatlarla üretilen bir çizim CAD
-içinde 0.04 birim genişliğinde olur ve bütün ölçü hesapları anlamsızlaşır. Uygulama bunu
-söyler ve tek tıkla en yakın metre tabanlı dilime geçirir.
+The distinguishing feature is not the conversion but the **conversion log**.
+Field name shortened to ten characters, layer name transliterated to ASCII, no
+`.cpg` so Latin-1 assumed, polygon hole written as a separate polyline,
+elevation values not representable in the target: each is reported, with the
+affected item named.
 
-## Ne yapar
+The strictest check refuses DXF export when the target coordinate system is in
+degrees. DXF is unitless, so a drawing built from geographic coordinates
+measures a fraction of a unit across and every scale and area calculation
+becomes meaningless. The tool says so and offers a one-click switch to the
+nearest metre-based zone.
 
-**Girdi:** Shapefile (`.zip` veya `.shp`+`.dbf`+…), GeoJSON, KML, GPX, CSV
-**Çıktı:** DXF (R12/AC1009), Shapefile (beşli, ZIP), GeoJSON, KML, CSV
+## What it does
 
-**Koordinat sistemleri:** WGS 84, Web Mercator, TUREF 3° dilimleri (TM27–TM45),
-WGS 84 UTM ve ED50 UTM dilimleri. Kaynak sistem `.prj` dosyasından otomatik okunur.
+**Input:** Shapefile (`.zip`, or `.shp` + `.dbf` + siblings), GeoJSON, KML,
+GPX, CSV
+**Output:** DXF (R12 / AC1009), Shapefile (five files in a ZIP), GeoJSON, KML,
+CSV
 
-**Önizleme:** Geometri hedef koordinat sisteminde çizilir; imleç gerçek dünya koordinatını
-gösterir, ölçek çubuğu ve genişlik/yükseklik okuması birimin ne olduğunu görünür kılar.
-Derece cinsinden bir DXF'in neden bozuk olacağı böylece uyarıyı okumadan önce anlaşılır.
+**Coordinate systems:** WGS 84 geographic, Web Mercator, the Turkish TUREF
+three-degree zones (TM27 to TM45, EPSG:5253 to EPSG:5259), all 60 WGS 84 UTM
+zones north and south, and the ED50 UTM zones. The source system is read
+automatically from a `.prj` sidecar when present.
 
-Her formatta tam olarak neyin kaybedildiği: **[docs/FORMATS.md](docs/FORMATS.md)**
+**Elevation:** Z values are read from the Z shape types (11, 13, 15, 18) and
+carried through to GeoJSON, KML and DXF. Shapefile and CSV output store plan
+coordinates only, and the loss is reported. Measure values have no
+representation in GeoJSON and their loss is reported at read time.
 
-## Kullanım
+**Preview:** geometry is drawn in the target coordinate system, the cursor
+reads out real-world coordinates, and a scale bar plus width and height
+readings make the unit visible. Why a degree-based DXF would be broken is
+apparent before the warning is read.
 
-`dist/index.html` dosyasını indirip çift tıkla. Hepsi bu — kurulum yok, internet bile gerekmez.
+**Interface:** English and Turkish, switchable from the header. Defaults to
+English unless the browser reports a Turkish locale.
 
-GitHub Pages üzerinden yayınlamak için: depo ayarlarında **Settings → Pages → Source: GitHub Actions**
-seç. `main` dalına her itmede `dist/` otomatik yayınlanır.
+Full per-format loss inventory: **[docs/FORMATS.md](docs/FORMATS.md)**
 
-## Geliştirme
+## Use
 
-```bash
-npm test          # 35 birim testi, bağımlılık yok (node:test)
-npm run build     # src/ dosyalarını dist/index.html içine gömer
-npm run check     # ikisi birden
+Download `dist/index.html` and open it. That is all: no installation, no
+network.
+
+To publish from a fork: **Settings → Pages → Source: GitHub Actions**. Every
+push to `main` publishes `dist/`.
+
+## Development
+
+```
+npm test          # 41 unit tests, no dependencies (node:test)
+npm run build     # inlines src/ into dist/index.html and index.html
+npm run check     # both
 ```
 
-Kaynak dört dosyadan ibaret ve hiçbirinin bağımlılığı yok:
+Five source files, none with dependencies:
 
-| Dosya | İş |
+| File | Role |
 |---|---|
-| `src/geoconv.js` | Shapefile/DBF ikili okuma-yazma, DXF R12 yazıcı, KML/CSV |
-| `src/proj.js` | Transverse Mercator ve Web Mercator, ileri/geri |
-| `src/zip.js` | ZIP yazıcı (stored) ve okuyucu (stored + deflate) |
-| `src/app.html` | Arayüz; derlemede diğer üçü buraya gömülür |
+| `src/i18n.js` | Message catalogue. Every diagnostic has a stable identifier |
+| `src/geoconv.js` | Shapefile and DBF binary reading and writing, DXF R12 writer, KML and CSV |
+| `src/proj.js` | Transverse Mercator and Web Mercator, forward and inverse |
+| `src/zip.js` | ZIP writer (stored) and reader (stored and deflate) |
+| `src/app.html` | Interface; the other four are inlined into it at build time |
 
-`dist/index.html` derleme çıktısıdır ama depoda tutulur; böylece indirip doğrudan
-çalıştırılabilir. CI, gömülü sürümün kaynakla aynı olduğunu her itmede doğrular.
+Diagnostics are stored as identifiers with arguments, not as rendered text, so
+the display language can change at any time and a given diagnostic can be
+referred to unambiguously in any language. This is also what makes the loss
+audit below possible.
 
-## Doğrulama
+`dist/index.html` is a build product but is kept in the repository so it can be
+downloaded and run directly. CI verifies on every push that the inlined build
+matches the sources.
 
-Kendi yazdığın okuyucunun kendi yazdığın yazıcıyı okuyabilmesi hiçbir şey kanıtlamaz.
-Asıl soru, üretilen dosyaların **başkalarının kütüphanelerinde** açılıp açılmadığıdır.
+## Validation
 
-```bash
+A reader written by the same author as the writer proves nothing by round trip.
+The question is whether the files open in **other people's libraries**, and
+whether the numbers hold under dense sampling rather than at a few convenient
+points.
+
+### Format conformance
+
+```
 pip install pyshp ezdxf pyproj
 node scripts/make_fixtures.js && python scripts/validate_external.py
 ```
 
-Bu betik CI'da her itmede koşar ve şunları doğrular:
+Runs in CI on every push. Written shapefiles open in **pyshp** with correct
+multi-ring geometry, holes as separate parts, correct bounding boxes and UTF-8
+attributes. Written DXF opens in **ezdxf** as AC1009 with a valid layer table,
+correct closure flags (areas closed, lines open) and transliterated labels.
+Written ZIP archives pass the system `unzip`.
 
-- Yazılan shapefile **pyshp** ile açılıyor: çoklu halka, delik ayrı parça olarak,
-  doğru bbox, UTF-8 öznitelikler.
-- Yazılan DXF **ezdxf** ile AC1009 olarak açılıyor: katman tablosu, kapalılık bayrakları
-  (poligonlar kapalı, çizgiler açık), ASCII'ye çevrilmiş etiketler.
-- Projeksiyon çıktısı **pyproj/PROJ** referansından **1 mm'den az** sapıyor
-  (ölçülen: UTM 35N için 0.00016 m, TUREF TM33 için 0.00036 m).
-- Yazılan ZIP arşivleri sistem `unzip` aracıyla hatasız geçiyor.
+### Coordinate accuracy
 
-## Sınırlar
+Compared against PROJ over **19,459 points in 11 zones**: latitude 35.5 to
+42.5 degrees in steps of 0.25, and minus 3 to plus 3 degrees from each central
+meridian in steps of 0.10. Results are stratified into the zone interior
+(within 2 degrees of the central meridian) and the zone edge (2 to 3 degrees),
+because a truncated series degrades fastest in the outer degree.
 
-Bunlar bilinçli tercihler, eksik değil:
+Maximum agreement with PROJ, in metres:
 
-- **DWG yazılmaz.** Kapalı format; Open Design Alliance lisansı gerekir. AutoCAD ve
-  NetCAD dahil bütün CAD yazılımları DXF'i açar.
-- **GPKG yok.** SQLite gerektirir.
-- **ED50 dönüşümü yaklaşıktır** (Avrupa ortalaması 3 parametreli kayma, birkaç metre hata).
-  Kadastral, imar veya aplikasyon işi için kullanılmaz. Türkiye'de dolaşan CAD verisinin
-  çoğu ED50 olduğu ve bunu sessizce WGS 84 sanmak çok daha büyük bir hata olduğu için var.
-- **Topoloji düzeltilmez.** Kendi kesen poligonlar için QGIS geometri denetleyicisi.
-- **Büyük veri için değil.** Her şey bellekte; 60.000 ögeden sonra uyarı verir.
-  Milyonluk veri için `ogr2ogr`.
+| | interior | edge |
+|---|---|---|
+| Forward | 3.05e-6 | 4.85e-5 |
+| Inverse | 1.88e-5 | 3.22e-4 |
+| Round trip | 2.12e-5 | 3.60e-4 |
 
-## Lisans
+The grid study found a defect that the earlier tests had missed. The forward
+residual sat at a flat 1.9e-4 m across the whole zone, growing only two per
+cent from the central meridian to the edge, which pointed away from the
+transverse series and toward the meridian arc. The classical Snyder arc
+truncated at the sixth power of eccentricity accounts for it exactly. The arc
+is now carried to the tenth power and the footpoint latitude is solved by
+Newton iteration on the same function, which removed the floor and reduced the
+zone-interior residual by more than two orders of magnitude.
 
-MIT — [LICENSE](LICENSE)
+The unit test tolerances had been 1 mm forward and 1 cm closure, roughly three
+hundred times looser than the measured performance, which is why the defect
+survived. They are now 0.01 mm and 0.5 mm, with an explicit zone-edge case.
+
+### Loss disclosure
+
+A taxonomy of 27 loss mechanisms in four families (attribute and schema,
+geometry, coordinate reference system, structure and metadata), and a corpus of
+fixtures each isolating one mechanism, are used to measure what the conversion
+log actually reports against what actually happened. The audit found three
+undisclosed losses: elevation and measure values discarded while reading
+shapefiles, feature identifiers dropped for every target except GeoJSON, and
+empty geometry reported under the wrong cause. Elevation is now read and
+carried; the other two are now reported.
+
+[Full results and the corpus: work in progress]
+
+## Limits
+
+These are deliberate, not gaps:
+
+- **No DWG.** Closed format requiring an Open Design Alliance licence. Every
+  CAD package, AutoCAD and NetCAD included, opens DXF.
+- **No GeoPackage.** Requires SQLite.
+- **ED50 transformation is approximate.** A Europe-mean three-parameter shift,
+  accurate to a few metres. Not for cadastral, zoning or setting-out work. It
+  exists because most CAD data circulating in Türkiye is ED50, and silently
+  treating it as WGS 84 is a much larger error.
+- **No topology repair.** For self-intersecting polygons, use the QGIS geometry
+  checker.
+- **Not for large datasets.** Everything is held in memory; a warning appears
+  above 60,000 features. For millions, use `ogr2ogr`.
+- **Zone-edge projection accuracy** is bounded as stated above. Ample for
+  planning and design work; not a substitute for a geodetic library where
+  sub-millimetre agreement at extreme longitudes matters.
+
+## Citing
+
+[Placeholder: Zenodo DOI, to be minted from a tagged release. A SoftwareX
+article describing the tool and its validation is in preparation.]
+
+## License
+
+MIT, see [LICENSE](LICENSE).
 
 ---
 
-<a name="english"></a>
+## Türkçe
 
-## English
+**Pafta**, GIS ile CAD arasında vektör veri dönüştürücüsüdür. Shapefile,
+GeoJSON, KML, GPX ve CSV okur; DXF, Shapefile, GeoJSON, KML ve CSV yazar;
+koordinat sistemini dönüştürür ve her dönüşümde neyi değiştirdiğini satır satır
+söyler.
 
-**Pafta** is a browser-based vector data converter between GIS and CAD formats.
-It reads Shapefile, GeoJSON, KML, GPX and CSV; writes DXF, Shapefile, GeoJSON, KML and CSV;
-transforms coordinate reference systems; and reports exactly what each conversion loses.
+Her şey tarayıcıda çalışır. Sunucu yok, yükleme yok, harici bağımlılık yok; tek
+bir HTML dosyası, çevrimdışı da açılır. Veri cihazdan çıkmaz.
 
-Everything runs client-side in a single self-contained HTML file. No server, no upload,
-no external dependencies, works offline. Data never leaves the device.
+Ayrım noktası dönüştürme değil, **dönüşüm günlüğüdür**. Alan adı 10 karaktere
+indi, katman adı ASCII'ye çevrildi, `.cpg` yoktu Latin-1 varsayıldı, poligon
+deliği ayrı polyline oldu, yükseklik değerleri hedef formatta taşınamıyor:
+hepsi, etkilenen öge adıyla birlikte bildirilir.
 
-The distinguishing feature is not the conversion but the **conversion log**. Field name
-truncated to 10 characters, layer name transliterated to ASCII, no `.cpg` so Latin-1
-assumed, polygon hole written as a separate polyline — each is reported. The strictest
-check refuses DXF export when the target CRS is in degrees, because DXF is unitless and a
-geographic-coordinate drawing measures 0.04 units across, making every scale and area
-calculation meaningless.
+En sert kontrol şudur: hedef koordinat sistemi derece cinsindeyken DXF istenirse
+dönüştürme hata olarak işaretlenir. DXF birimsizdir; coğrafi koordinatlarla
+üretilen bir çizim CAD içinde bir birimin küçük bir kesri kadar olur ve bütün
+ölçü hesapları anlamsızlaşır. Uygulama bunu söyler ve tek tıkla en yakın metre
+tabanlı dilime geçirir.
 
-Coordinate transformations use Snyder's sixth-order Transverse Mercator series and agree
-with PROJ to **better than 1 mm**. Written shapefiles and DXF files are verified in CI
-against **pyshp** and **ezdxf** — third-party readers, not our own.
+**Koordinat sistemleri:** WGS 84, Web Mercator, TUREF 3° dilimleri (TM27–TM45),
+WGS 84 UTM ve ED50 UTM dilimleri. Kaynak sistem `.prj` dosyasından otomatik
+okunur.
 
-The UI is in Turkish. Coordinate system presets favour Turkish TUREF 3° zones and ED50 UTM
-alongside the standard WGS 84 UTM grid, but the format handling is not region-specific.
+**Yükseklik:** Z değerleri Z tipli shapefile'lardan okunur ve GeoJSON, KML ve
+DXF çıktılarına taşınır. Shapefile ve CSV yalnızca düzlem koordinatı sakladığı
+için kayıp bildirilir.
 
-Run `npm test` for the unit suite, `npm run build` to produce `dist/index.html`.
-See [docs/FORMATS.md](docs/FORMATS.md) for the full loss inventory per format.
+**Arayüz:** İngilizce ve Türkçe, başlıktan değiştirilebilir.
+
+Format bazında tam kayıp dökümü: **[docs/FORMATS.md](docs/FORMATS.md)**
+
+Doğrulama, sınırlar ve geliştirme notları için yukarıdaki İngilizce bölüme
+bakınız. Lisans: MIT.
