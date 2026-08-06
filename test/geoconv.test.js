@@ -3,7 +3,17 @@ const assert = require('node:assert');
 const G = require('../src/geoconv.js').GeoConv;
 
 const noop = () => {};
-const collect = () => { const w = []; const fn = (k, m) => w.push(k + ': ' + m); fn.list = w; return fn; };
+/* The diagnostic callback receives (tag, messageKey, args). Assertions target
+   the message identifier rather than rendered text, so they hold regardless of
+   display language. */
+const collect = () => {
+  const w = [];
+  const fn = (tag, key, args) => w.push({ tag, key, args: args || [] });
+  fn.list = w;
+  fn.has = (key) => w.some(e => e.key === key);
+  fn.argsFor = (key) => (w.find(e => e.key === key) || {}).args || [];
+  return fn;
+};
 
 const POLY_WITH_HOLE = {
   type: 'Feature',
@@ -11,8 +21,8 @@ const POLY_WITH_HOLE = {
   geometry: {
     type: 'Polygon',
     coordinates: [
-      [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]],   // dış halka, GeoJSON kuralınca CCW
-      [[3, 3], [3, 6], [6, 6], [6, 3], [3, 3]],       // delik, CW
+      [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]],   // exterior ring, CCW per GeoJSON
+      [[3, 3], [3, 6], [6, 6], [6, 3], [3, 3]],       // hole, CW
     ],
   },
 };
@@ -23,55 +33,55 @@ const TRIANGLE = {
 };
 const FC = { type: 'FeatureCollection', features: [POLY_WITH_HOLE, TRIANGLE] };
 
-/* ------------------------------- geometri ------------------------------- */
-test('işaretli alan CCW için pozitif, CW için negatif', () => {
+/* ------------------------------- geometry ------------------------------- */
+test('signed area is positive for CCW and negative for CW', () => {
   const ccw = [[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]];
   assert.ok(G.signedArea(ccw) > 0);
   assert.ok(G.signedArea(ccw.slice().reverse()) < 0);
 });
 
-test('shapefile yazımında dış halka CW, delik CCW yönlendirilir', () => {
+test('shapefile writing orients the exterior ring CW and holes CCW', () => {
   const parts = G.partsOf(POLY_WITH_HOLE.geometry);
   assert.strictEqual(parts.length, 2);
-  assert.ok(G.signedArea(parts[0]) < 0, 'dış halka CW olmalı');
-  assert.ok(G.signedArea(parts[1]) > 0, 'delik CCW olmalı');
+  assert.ok(G.signedArea(parts[0]) < 0, 'exterior ring must be CW');
+  assert.ok(G.signedArea(parts[1]) > 0, 'hole must be CCW');
 });
 
 /* -------------------------------- .shp ---------------------------------- */
-test('SHP başlığı geçerli ve dosya uzunluğu tutarlı', () => {
+test('SHP header is valid and the file length is consistent', () => {
   const { shp, shx } = G.writeShpShx(FC.features, 'polygon');
   const dv = new DataView(shp.buffer, shp.byteOffset, shp.byteLength);
-  assert.strictEqual(dv.getInt32(0, false), 9994, 'dosya kodu');
-  assert.strictEqual(dv.getInt32(24, false) * 2, shp.length, 'başlıktaki uzunluk');
-  assert.strictEqual(dv.getInt32(32, true), 5, 'şekil tipi = Polygon');
+  assert.strictEqual(dv.getInt32(0, false), 9994, 'file code');
+  assert.strictEqual(dv.getInt32(24, false) * 2, shp.length, 'length stated in the header');
+  assert.strictEqual(dv.getInt32(32, true), 5, 'shape type is Polygon');
   const dx = new DataView(shx.buffer, shx.byteOffset, shx.byteLength);
   assert.strictEqual(dx.getInt32(24, false) * 2, shx.length);
   assert.strictEqual(shx.length, 100 + 8 * FC.features.length);
 });
 
-test('SHX ofsetleri gerçek kayıt başlıklarına işaret eder', () => {
+test('SHX offsets point at real record headers', () => {
   const { shp, shx } = G.writeShpShx(FC.features, 'polygon');
   const ds = new DataView(shp.buffer, shp.byteOffset, shp.byteLength);
   const dx = new DataView(shx.buffer, shx.byteOffset, shx.byteLength);
   for (let i = 0; i < FC.features.length; i++) {
     const offsetWords = dx.getInt32(100 + i * 8, false);
-    assert.strictEqual(ds.getInt32(offsetWords * 2, false), i + 1, `kayıt ${i + 1} ofseti`);
+    assert.strictEqual(ds.getInt32(offsetWords * 2, false), i + 1, `offset of record ${i + 1}`);
   }
 });
 
-test('poligon tur atışı deliği ayrı poligona kaçırmadan korur', () => {
+test('polygon round trip preserves the hole without splitting it off', () => {
   const { shp } = G.writeShpShx(FC.features, 'polygon');
   const back = G.readShp(shp);
   assert.strictEqual(back.length, 2);
   assert.strictEqual(back[0].type, 'Polygon');
-  assert.strictEqual(back[0].coordinates.length, 2, 'dış halka + delik');
-  assert.ok(G.signedArea(back[0].coordinates[0]) > 0, 'okunan dış halka GeoJSON kuralınca CCW');
-  assert.ok(G.signedArea(back[0].coordinates[1]) < 0, 'okunan delik CW');
+  assert.strictEqual(back[0].coordinates.length, 2, 'exterior ring plus hole');
+  assert.ok(G.signedArea(back[0].coordinates[0]) > 0, 'exterior ring read back is CCW per GeoJSON');
+  assert.ok(G.signedArea(back[0].coordinates[1]) < 0, 'hole read back is CW');
   assert.ok(Math.abs(Math.abs(G.signedArea(back[0].coordinates[0])) - 100) < 1e-9);
   assert.ok(Math.abs(Math.abs(G.signedArea(back[0].coordinates[1])) - 9) < 1e-9);
 });
 
-test('nokta ve çizgi tur atışı', () => {
+test('point and line round trip', () => {
   const pt = { properties: {}, geometry: { type: 'Point', coordinates: [27.2, 41.5] } };
   const ln = { properties: {}, geometry: { type: 'LineString', coordinates: [[0, 0], [1, 1], [2, 0]] } };
   assert.deepStrictEqual(G.readShp(G.writeShpShx([pt], 'point').shp)[0], pt.geometry);
@@ -80,26 +90,27 @@ test('nokta ve çizgi tur atışı', () => {
   assert.strictEqual(back.coordinates.length, 3);
 });
 
-test('bozuk .shp anlaşılır hata verir', () => {
-  assert.throws(() => G.readShp(new Uint8Array(200)), /Geçerli bir \.shp/);
+test('a corrupt .shp raises an identifiable error', () => {
+  assert.throws(() => G.readShp(new Uint8Array(200)), /err\.shp\.magic/);
 });
 
 /* -------------------------------- .dbf ---------------------------------- */
-test('alan tipleri değerlerden çıkarılır', () => {
+test('field types are inferred from the values', () => {
   const f = G.inferFields(FC.features, noop);
   assert.strictEqual(f.find(x => x.src === 'alan_m2').type, 'N');
   assert.strictEqual(f.find(x => x.src === 'ad').type, 'C');
 });
 
-test('alan adları 10 karaktere indirilir ve uyarı üretilir', () => {
+test('field names are reduced to 10 characters and the change is reported', () => {
   const w = collect();
   const f = G.inferFields(FC.features, w);
-  assert.ok(f.every(x => x.name.length <= 10), 'hepsi <= 10 karakter');
-  assert.ok(f.every(x => /^[A-Z0-9_]+$/.test(x.name)), 'hepsi ASCII büyük harf');
-  assert.ok(w.list.some(m => m.includes('cokUzunOznitelikAdi')), 'kısaltma bildirilmeli');
+  assert.ok(f.every(x => x.name.length <= 10), 'all at most 10 characters');
+  assert.ok(f.every(x => /^[A-Z0-9_]+$/.test(x.name)), 'all ASCII upper case');
+  assert.ok(w.has('log.dbf.fieldRenamed'), 'truncation must be reported');
+  assert.strictEqual(w.argsFor('log.dbf.fieldRenamed')[0], 'cokUzunOznitelikAdi');
 });
 
-test('DBF tur atışında Türkçe karakterler ve sayılar korunur', () => {
+test('DBF round trip preserves non-ASCII characters and numbers', () => {
   const fields = G.inferFields(FC.features, noop);
   const dbf = G.writeDbf(FC.features, fields);
   const read = G.readDbf(dbf, 'utf8');
@@ -109,7 +120,7 @@ test('DBF tur atışında Türkçe karakterler ve sayılar korunur', () => {
   assert.ok(Math.abs(read.rows[0].ALAN_M2 - 1234.56) < 1e-6);
 });
 
-test('DBF toplam boyutu başlık + kayıtlar + EOF eder', () => {
+test('DBF total size equals header plus records plus EOF', () => {
   const fields = G.inferFields(FC.features, noop);
   const dbf = G.writeDbf(FC.features, fields);
   const dv = new DataView(dbf.buffer, dbf.byteOffset, dbf.byteLength);
@@ -129,28 +140,28 @@ function countEntity(lines, name) {
   return n;
 }
 
-test('DXF grup kodu / değer çiftleri dengelidir', () => {
+test('DXF group code and value lines are balanced', () => {
   const d = G.writeDxf(FC, { layerField: 'tip', labelField: 'ad', textHeight: 1 }, noop);
   const l = pairs(d.text);
-  assert.strictEqual(l.length % 2, 0, 'tek sayıda satır = bozuk DXF');
+  assert.strictEqual(l.length % 2, 0, 'an odd line count means a malformed DXF');
   assert.strictEqual(l[0], '0'); assert.strictEqual(l[1], 'SECTION');
   assert.strictEqual(l[l.length - 1], 'EOF');
 });
 
-test('DXF bölümleri ve varlık blokları eşleşir', () => {
+test('DXF sections and entity blocks match', () => {
   const d = G.writeDxf(FC, { layerField: 'tip', labelField: 'ad', textHeight: 1 }, noop);
   const l = pairs(d.text);
   assert.strictEqual(countEntity(l, 'SECTION'), 3);
   assert.strictEqual(countEntity(l, 'ENDSEC'), 3);
-  assert.strictEqual(countEntity(l, 'POLYLINE'), 3, '2 halka + 1 üçgen');
-  assert.strictEqual(countEntity(l, 'SEQEND'), 3, 'her POLYLINE bir SEQEND ile kapanmalı');
+  assert.strictEqual(countEntity(l, 'POLYLINE'), 3, '2 rings plus 1 triangle');
+  assert.strictEqual(countEntity(l, 'SEQEND'), 3, 'every POLYLINE must close with a SEQEND');
   assert.strictEqual(countEntity(l, 'TEXT'), 2);
 });
 
-test('poligonlar kapalı bayrağıyla yazılır', () => {
+test('polygons are written with the closed flag', () => {
   const d = G.writeDxf(FC, {}, noop);
   const l = pairs(d.text);
-  // her POLYLINE bloğu içinde, bir sonraki '0' varlığından önceki 70 grup kodunu bul
+  // within each POLYLINE block, find group code 70 before the next '0' entity
   const flags = [];
   for (let i = 1; i < l.length; i += 2) {
     if (!(l[i] === 'POLYLINE' && l[i - 1] === '0')) continue;
@@ -159,65 +170,66 @@ test('poligonlar kapalı bayrağıyla yazılır', () => {
       if (l[j] === '70') { flags.push(l[j + 1]); break; }
     }
   }
-  assert.strictEqual(flags.length, 3, 'üç POLYLINE de 70 grup kodu taşımalı');
-  assert.ok(flags.every(f => f === '1'), `poligon polyline kapalı olmalı, bulunan: ${flags}`);
+  assert.strictEqual(flags.length, 3, 'all three POLYLINEs must carry group code 70');
+  assert.ok(flags.every(f => f === '1'), `polygon polylines must be closed, found: ${flags}`);
 });
 
-test('çizgiler kapalı bayrağı taşımaz', () => {
+test('lines do not carry the closed flag', () => {
   const fc = { features: [{ properties: {}, geometry: { type: 'LineString', coordinates: [[0, 0], [1, 1], [2, 0]] } }] };
   const l = pairs(G.writeDxf(fc, {}, noop).text);
   const i = l.findIndex((v, k) => v === 'POLYLINE' && l[k - 1] === '0');
   let flag = null;
   for (let j = i + 1; j < l.length; j += 2) { if (l[j] === '0') break; if (l[j] === '70') { flag = l[j + 1]; break; } }
-  assert.strictEqual(flag, '0', 'açık polyline 70=0 olmalı');
+  assert.strictEqual(flag, '0', 'an open polyline must have 70=0');
 });
 
-test('katman adları ASCII\'ye çevrilir ve uyarı verilir', () => {
+test('layer names are transliterated to ASCII and the change is reported', () => {
   const w = collect();
   const d = G.writeDxf(FC, { layerField: 'tip' }, w);
   assert.deepStrictEqual(d.layers, ['0', 'ORMAN', 'CAYIR']);
-  assert.ok(w.list.some(m => m.includes('CAYIR')));
+  assert.ok(w.has('log.dxf.layerRenamed'), 'layer rename must be reported');
+  assert.ok(w.list.some(e => e.key === 'log.dxf.layerRenamed' && e.args[1] === 'CAYIR'));
 });
 
-test('etiket metninde Türkçe karakter çevrimi bildirilir', () => {
+test('transliteration of label text is reported', () => {
   const w = collect();
   G.writeDxf(FC, { labelField: 'ad', asciiText: true }, w);
-  assert.ok(w.list.some(m => m.startsWith('text:')));
+  assert.ok(w.has('log.dxf.textAscii'), 'transliteration must be reported');
 });
 
 /* ---------------------------- KML / CSV --------------------------------- */
-test('KML deliği innerBoundaryIs olarak yazar', () => {
+test('KML writes holes as innerBoundaryIs', () => {
   const kml = G.writeKml(FC, { labelField: 'ad' });
   assert.ok(kml.includes('<innerBoundaryIs>'));
   assert.strictEqual((kml.match(/<Placemark>/g) || []).length, 2);
   assert.ok(kml.includes('<name>Meşe Parseli</name>'));
 });
 
-test('KML XML kaçışı uygular', () => {
+test('KML applies XML escaping', () => {
   const fc = { features: [{ properties: { ad: 'A & B <test>' }, geometry: { type: 'Point', coordinates: [1, 2] } }] };
   const kml = G.writeKml(fc, { labelField: 'ad' });
   assert.ok(kml.includes('A &amp; B &lt;test&gt;'));
   assert.ok(!kml.includes('<test>'));
 });
 
-test('CSV başlıklardan koordinat sütunlarını bulur', () => {
+test('CSV finds coordinate columns from the header names', () => {
   const fc = G.csvToFc('ad,enlem,boylam,deger\nA,41.5,27.2,3\nB,41.6,27.3,4\n');
   assert.strictEqual(fc.features.length, 2);
   assert.deepStrictEqual(fc.features[0].geometry.coordinates, [27.2, 41.5]);
   assert.strictEqual(fc.features[0].properties.deger, 3);
 });
 
-test('koordinat sütunu yoksa CSV anlaşılır hata verir', () => {
-  assert.throws(() => G.csvToFc('a,b\n1,2\n'), /koordinat sütunu bulunamadı/);
+test('CSV raises an identifiable error when no coordinate column exists', () => {
+  assert.throws(() => G.csvToFc('a,b\n1,2\n'), /err\.csv\.noCoords/);
 });
 
-test('CSV tırnaklı ve ayraç içeren alanları çözer', () => {
+test('CSV parses quoted fields containing the delimiter', () => {
   const rows = G.parseCsv('a,"b,c",d\n1,"iki ""tırnak""",3\n');
   assert.deepStrictEqual(rows[0], ['a', 'b,c', 'd']);
   assert.deepStrictEqual(rows[1], ['1', 'iki "tırnak"', '3']);
 });
 
-test('geometri sınıfları doğru ayrışır', () => {
+test('geometry classes are resolved correctly', () => {
   assert.strictEqual(G.shapeClass({ type: 'MultiPoint' }), 'point');
   assert.strictEqual(G.shapeClass({ type: 'MultiLineString' }), 'line');
   assert.strictEqual(G.shapeClass({ type: 'MultiPolygon' }), 'polygon');

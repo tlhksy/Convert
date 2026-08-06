@@ -2,6 +2,12 @@
 (function (root) {
 'use strict';
 
+/* Translation helper. The catalogue is loaded before this file, but the lookup
+   is done lazily so that geoconv remains usable without it: a missing
+   catalogue yields the identifier itself rather than an exception. */
+function T(){ var f=(typeof window!=='undefined'&&window.t); return f?f.apply(null,arguments):arguments[0]; }
+
+
 /* ============================ geometry utils ============================ */
 function signedArea(ring) { // >0 = CCW
   let a = 0;
@@ -161,9 +167,9 @@ function inferFields(features, warn) {
     let base = name, n = 1;
     while (used.has(name)) { const suf = String(n++); name = base.substring(0, 10 - suf.length) + suf; }
     used.add(name);
-    if (name !== k.toUpperCase()) warn('field', 'Öznitelik adı "' + k + '" → "' + name + '" (DBF alan adları 10 karakter ve ASCII ile sınırlı).');
+    if (name !== k.toUpperCase()) warn('field', 'log.dbf.fieldRenamed', [k, name]);
     const len = numeric ? Math.min(18, Math.max(1, maxLen)) : Math.min(254, Math.max(1, maxLen));
-    if (!numeric && maxLen > 254) warn('field', '"' + k + '" alanında 254 baytı aşan değerler kısaltıldı.');
+    if (!numeric && maxLen > 254) warn('field', 'log.dbf.valueTruncated', [k]);
     fields.push({ src: k, name: name, type: numeric ? 'N' : 'C', len: len, dec: numeric ? Math.min(maxDec, Math.max(0, len - 2)) : 0 });
   }
   if (!fields.length) fields.push({ src: null, name: 'ID', type: 'N', len: 10, dec: 0 });
@@ -293,7 +299,7 @@ function readShp(buf) {
   const ab = buf.buffer || buf;
   const off = buf.byteOffset || 0;
   const dv = new DataView(ab, off, buf.byteLength);
-  if (dv.getInt32(0, false) !== 9994) throw new Error('Geçerli bir .shp dosyası değil (dosya kodu 9994 bekleniyordu).');
+  if (dv.getInt32(0, false) !== 9994) throw new Error(T('err.shp.magic'));
   const geoms = [];
   let p = 100;
   const end = buf.byteLength;
@@ -359,7 +365,7 @@ function dxfLayerName(v, used, warn) {
   if (!s) s = 'LAYER';
   let base = s, n = 1;
   while (used.has(s) && used.get(s) !== v) { const suf = String(n++); s = base.substring(0, 31 - suf.length) + suf; }
-  if (String(v).toUpperCase() !== s) warn('layer', 'Katman adı "' + v + '" → "' + s + '" (DXF R12 katman adları ASCII ve 31 karakterle sınırlı).');
+  if (String(v).toUpperCase() !== s) warn('layer', 'log.dxf.layerRenamed', [v, s]);
   used.set(s, v);
   return s;
 }
@@ -449,7 +455,7 @@ function writeDxf(fc, opt, warn) {
     }
   }
   p(0, 'ENDSEC'); p(0, 'EOF');
-  if (asciiHit) warn('text', asciiHit + ' etiket metninde Türkçe karakterler ASCII karşılığına çevrildi (DXF R12 kod sayfasına bağlıdır).');
+  if (asciiHit) warn('text', 'log.dxf.textAscii', [asciiHit]);
   return { text: g.join('\r\n') + '\r\n', entities: nEnt, layers: layers };
 }
 function labelAnchor(g) {
@@ -544,12 +550,12 @@ const LAT_KEYS = ['lat', 'latitude', 'y', 'enlem', 'ykoord', 'y_koord', 'north',
 const LON_KEYS = ['lon', 'lng', 'long', 'longitude', 'x', 'boylam', 'xkoord', 'x_koord', 'east', 'easting'];
 function csvToFc(text) {
   const rows = parseCsv(text);
-  if (rows.length < 2) throw new Error('CSV en az bir başlık ve bir veri satırı içermeli.');
+  if (rows.length < 2) throw new Error(T('err.csv.tooFewRows'));
   const head = rows[0].map(h => h.trim());
   const low = head.map(h => h.toLowerCase().replace(/[^a-z_]/g, ''));
   let xi = -1, yi = -1;
   low.forEach((h, i) => { if (yi < 0 && LAT_KEYS.includes(h)) yi = i; if (xi < 0 && LON_KEYS.includes(h)) xi = i; });
-  if (xi < 0 || yi < 0) throw new Error('CSV içinde koordinat sütunu bulunamadı (lat/lon, x/y, enlem/boylam bekleniyor).');
+  if (xi < 0 || yi < 0) throw new Error(T('err.csv.noCoords'));
   const feats = [];
   for (let r = 1; r < rows.length; r++) {
     const rw = rows[r];

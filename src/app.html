@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pafta — vektör veri dönüştürücü</title>
+<title data-i18n="ui.title">Pafta — vector data converter</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -137,6 +137,10 @@ td.num{text-align:right}
 footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
   font:400 12px/1.7 "IBM Plex Mono",monospace;color:var(--muted)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.badge.lang{cursor:pointer;font:inherit;font-size:inherit;border-style:solid;
+  -webkit-appearance:none;appearance:none}
+.badge.lang:hover{filter:brightness(.95)}
+.badge.lang:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -144,25 +148,25 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
 <div class="wrap">
 
 <header>
-  <div class="eyebrow">Vektör veri dönüştürücü · v1</div>
-  <h1>Pafta <span>— GIS ile CAD arasında</span></h1>
-  <p class="sub">Shapefile, GeoJSON, KML, GPX ve CSV dosyalarını birbirine ve DXF'e çevirir. Koordinat sistemini
-  dönüştürür, ne kaybedildiğini satır satır söyler.</p>
+  <div class="eyebrow" data-i18n="ui.eyebrow"></div>
+  <h1>Pafta <span data-i18n="ui.h1sub"></span></h1>
+  <p class="sub" data-i18n="ui.sub"></p>
   <div class="badges">
-    <span class="badge on">Veri tarayıcıdan çıkmaz</span>
-    <span class="badge">Sunucu yok</span>
+    <span class="badge on" data-i18n="ui.badge.local"></span>
+    <span class="badge" data-i18n="ui.badge.noserver"></span>
     <span class="badge">DXF R12 · AC1009</span>
     <span class="badge" id="capzip">ZIP</span>
+    <button class="badge lang" id="lang" type="button" data-i18n="ui.lang"></button>
   </div>
 </header>
 
 <div class="cols">
   <!-- ================= control rail ================= -->
-  <div class="panel" role="region" aria-label="Dönüştürme ayarları">
+  <div class="panel" role="region" data-i18n-aria="ui.panel.settings">
     <div class="step">
-      <div class="step-h"><span class="step-n">01</span><span class="step-t">Dosya</span></div>
-      <div class="drop" id="drop" tabindex="0" role="button" aria-label="Dosya seç veya sürükle">
-        <b>Dosyaları buraya bırak</b>
+      <div class="step-h"><span class="step-n">01</span><span class="step-t" data-i18n="ui.step.file"></span></div>
+      <div class="drop" id="drop" tabindex="0" role="button" data-i18n-aria="ui.drop.aria">
+        <b data-i18n="ui.drop.main"></b>
         <small>.zip · .shp+.dbf+.shx · .geojson · .kml · .gpx · .csv</small>
       </div>
       <input type="file" id="file" multiple class="sr" accept=".zip,.shp,.dbf,.shx,.prj,.cpg,.geojson,.json,.kml,.gpx,.csv,.txt">
@@ -170,50 +174,50 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
     </div>
 
     <div class="step">
-      <div class="step-h"><span class="step-n">02</span><span class="step-t">Kaynak sistem</span></div>
+      <div class="step-h"><span class="step-n">02</span><span class="step-t" data-i18n="ui.step.srcCrs"></span></div>
       <select id="src"></select>
-      <p class="hint" id="srchint">Dosya yüklendiğinde .prj varsa otomatik okunur.</p>
+      <p class="hint" id="srchint" data-i18n="ui.hint.srcAuto"></p>
     </div>
 
     <div class="step">
-      <div class="step-h"><span class="step-n">03</span><span class="step-t">Hedef sistem</span></div>
+      <div class="step-h"><span class="step-n">03</span><span class="step-t" data-i18n="ui.step.dstCrs"></span></div>
       <select id="dst"></select>
       <p class="hint" id="dsthint"></p>
     </div>
 
     <div class="step">
-      <div class="step-h"><span class="step-n">04</span><span class="step-t">Çıktı</span></div>
+      <div class="step-h"><span class="step-n">04</span><span class="step-t" data-i18n="ui.step.output"></span></div>
       <div class="seg" id="fmt">
         <button data-f="dxf" aria-pressed="true">DXF</button>
         <button data-f="shp" aria-pressed="false">Shapefile</button>
         <button data-f="geojson" aria-pressed="false">GeoJSON</button>
         <button data-f="kml" aria-pressed="false">KML</button>
         <button data-f="csv" aria-pressed="false">CSV</button>
-        <button data-f="gpkgless" aria-pressed="false" disabled title="Henüz yok">GPKG</button>
+        <button data-f="gpkgless" aria-pressed="false" disabled data-i18n-title="ui.gpkg.soon">GPKG</button>
       </div>
       <div class="opts" id="opt-dxf">
-        <label class="fl" for="lf">Katmanı belirleyen öznitelik</label>
+        <label class="fl" for="lf" data-i18n="ui.opt.layerField"></label>
         <select id="lf"></select>
         <div class="row2">
           <div>
-            <label class="fl" for="tf">Etiket olarak yazılacak öznitelik</label>
+            <label class="fl" for="tf" data-i18n="ui.opt.labelField"></label>
             <select id="tf"></select>
           </div>
           <div>
-            <label class="fl" for="th">Yazı yük.</label>
+            <label class="fl" for="th" data-i18n="ui.opt.textHeight"></label>
             <input type="number" id="th" value="2" min="0.01" step="0.5">
           </div>
         </div>
       </div>
       <div class="opts" id="opt-lab" hidden>
-        <label class="fl" for="lab2">Ad olarak kullanılacak öznitelik</label>
+        <label class="fl" for="lab2" data-i18n="ui.opt.nameField"></label>
         <select id="lab2"></select>
       </div>
     </div>
 
     <div class="step">
-      <button class="go" id="go" disabled>Dönüştür ve indir</button>
-      <p class="hint" id="gohint">Önce bir dosya yükle.</p>
+      <button class="go" id="go" disabled data-i18n="ui.go"></button>
+      <p class="hint" id="gohint" data-i18n="ui.hint.needFile"></p>
     </div>
   </div>
 
@@ -221,11 +225,11 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
   <div class="stage">
     <div class="vp">
       <div class="vp-bar">
-        <span><span class="k">İmleç</span> <span class="v" id="rd-cur">—</span></span>
-        <span><span class="k">Öge</span> <span class="v" id="rd-n">0</span></span>
+        <span><span class="k" data-i18n="ui.rd.cursor"></span> <span class="v" id="rd-cur">—</span></span>
+        <span><span class="k" data-i18n="ui.rd.features"></span> <span class="v" id="rd-n">0</span></span>
         <span class="spacer"></span>
-        <span><span class="k">Genişlik</span> <span class="v" id="rd-w">—</span></span>
-        <span><span class="k">Yükseklik</span> <span class="v" id="rd-h">—</span></span>
+        <span><span class="k" data-i18n="ui.rd.width"></span> <span class="v" id="rd-w">—</span></span>
+        <span><span class="k" data-i18n="ui.rd.height"></span> <span class="v" id="rd-h">—</span></span>
       </div>
       <canvas id="cv"></canvas>
       <div class="vp-foot">
@@ -239,25 +243,26 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
 
     <div class="panel">
       <div class="tabs" role="tablist">
-        <button role="tab" aria-selected="true" data-t="log">Dönüşüm günlüğü</button>
-        <button role="tab" aria-selected="false" data-t="attr">Öznitelikler</button>
+        <button role="tab" aria-selected="true" data-t="log" data-i18n="ui.tab.log"></button>
+        <button role="tab" aria-selected="false" data-t="attr" data-i18n="ui.tab.attr"></button>
       </div>
       <div id="pane-log">
-        <div class="log-h"><h2 class="sr">Günlük</h2><span></span><span class="count" id="logcount"></span></div>
-        <ul class="log" id="log"><li><div class="empty" style="grid-column:1/-1">Henüz bir şey yapılmadı.</div></li></ul>
+        <div class="log-h"><h2 class="sr" data-i18n="ui.log.heading"></h2><span></span><span class="count" id="logcount"></span></div>
+        <ul class="log" id="log"></ul>
       </div>
-      <div id="pane-attr" hidden><div class="tblwrap" id="tbl"><div class="empty">Veri yok.</div></div></div>
+      <div id="pane-attr" hidden><div class="tblwrap" id="tbl"><div class="empty" data-i18n="ui.attr.empty"></div></div></div>
     </div>
   </div>
 </div>
 
 <footer>
-  Dönüşümler tamamen tarayıcıda çalışır; hiçbir dosya yüklenmez.
-  Projeksiyon hesapları Snyder serileriyle yapılır (dilim ortasından ±3° içinde milimetre altı, kenarda santimetre altı).
-  ED50 dönüşümü Avrupa ortalaması 3 parametreli kaymadır — kadastral iş için kullanılmaz.
+  <span data-i18n="ui.footer.local"></span>
+  <span data-i18n="ui.footer.proj"></span>
+  <span data-i18n="ui.footer.ed50"></span>
 </footer>
 </div>
 
+<script>/*__I18N__*/</script>
 <script>/*__GEOCONV__*/</script>
 <script>/*__PROJ__*/</script>
 <script>/*__ZIP__*/</script>
@@ -265,20 +270,55 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
 (function(){
 'use strict';
 var G=window.GeoConv, P=window.Proj, Z=window.Zip;
+var t=window.t, I18N=window.I18N;
+
+/* ---------------- i18n binding ----------------
+   Markup carries data-i18n / data-i18n-title / data-i18n-aria attributes.
+   Elements whose text depends on runtime values store the key on the element
+   through setHint, so a language change re-renders them without re-running
+   the logic that produced them. */
+function setHint(id,key,args){
+  var el=document.getElementById(id); if(!el) return;
+  el.setAttribute('data-i18n',key);
+  el.setAttribute('data-i18n-args',JSON.stringify(args||[]));
+  el.textContent=t.apply(null,[key].concat(args||[]));
+}
+function applyI18n(){
+  document.documentElement.setAttribute('lang',I18N.getLang());
+  document.title=t('ui.title');
+  var nodes=document.querySelectorAll('[data-i18n]');
+  Array.prototype.forEach.call(nodes,function(el){
+    if(el.tagName==='TITLE') return;
+    var a=[]; try{ a=JSON.parse(el.getAttribute('data-i18n-args')||'[]'); }catch(e){}
+    el.textContent=t.apply(null,[el.getAttribute('data-i18n')].concat(a));
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-title]'),function(el){
+    el.title=t(el.getAttribute('data-i18n-title'));
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria]'),function(el){
+    el.setAttribute('aria-label',t(el.getAttribute('data-i18n-aria')));
+  });
+}
+function switchLang(){
+  I18N.setLang(I18N.getLang()==='tr'?'en':'tr');
+  applyI18n();
+  fillCrs($('src'),S.src); fillCrs($('dst'),S.dst);
+  onDst(); renderLog(); if(S.fc) renderTable();
+}
 
 /* ---------------- CRS list ---------------- */
 var CRS_LIST=[
- ['EPSG:4326','WGS 84 — coğrafi (derece)'],
- ['EPSG:3857','Web Mercator (m)'],
- ['—1','── Türkiye · TUREF 3° dilim (m) ──'],
+ ['EPSG:4326','ui.crs.wgs84geo'],
+ ['EPSG:3857','ui.crs.webmerc'],
+ ['—1','ui.crs.group.turef'],
  ['EPSG:5253','TUREF / TM27 (m)'],['EPSG:5254','TUREF / TM30 (m)'],['EPSG:5255','TUREF / TM33 (m)'],
  ['EPSG:5256','TUREF / TM36 (m)'],['EPSG:5257','TUREF / TM39 (m)'],['EPSG:5258','TUREF / TM42 (m)'],
  ['EPSG:5259','TUREF / TM45 (m)'],
- ['—2','── Türkiye · WGS84 UTM (m) ──'],
+ ['—2','ui.crs.group.utm'],
  ['EPSG:32635','WGS84 / UTM 35N (m)'],['EPSG:32636','WGS84 / UTM 36N (m)'],['EPSG:32637','WGS84 / UTM 37N (m)'],
- ['—3','── Türkiye · ED50 UTM (m, yaklaşık) ──'],
+ ['—3','ui.crs.group.ed50'],
  ['EPSG:23035','ED50 / UTM 35N (m)'],['EPSG:23036','ED50 / UTM 36N (m)'],['EPSG:23037','ED50 / UTM 37N (m)'],
- ['—4','── Diğer UTM dilimleri ──']
+ ['—4','ui.crs.group.other']
 ];
 for(var z=28;z<=40;z++) if([35,36,37].indexOf(z)<0) CRS_LIST.push(['EPSG:'+(32600+z),'WGS84 / UTM '+z+'N (m)']);
 
@@ -286,8 +326,9 @@ function fillCrs(sel,val){
   sel.innerHTML='';
   CRS_LIST.forEach(function(c){
     var o=document.createElement('option');
-    if(c[0][0]==='—'){o.disabled=true;o.textContent=c[1];}
-    else{o.value=c[0];o.textContent=c[1]+'  ·  '+c[0];}
+    var lbl=c[1].indexOf('ui.crs.')===0?t(c[1]):c[1];
+    if(c[0][0]==='—'){o.disabled=true;o.textContent=lbl;}
+    else{o.value=c[0];o.textContent=lbl+'  ·  '+c[0];}
     sel.appendChild(o);
   });
   sel.value=val;
@@ -297,8 +338,8 @@ function unitOf(code){ return crsOf(code).units; }
 function utmZoneFor(lon){ return Math.max(1,Math.min(60,Math.floor((lon+180)/6)+1)); }
 function trTmFor(lon){
   var best=null,bd=1e9;
-  [[5253,27],[5254,30],[5255,33],[5256,36],[5257,39],[5258,42],[5259,45]].forEach(function(t){
-    var d=Math.abs(lon-t[1]); if(d<bd){bd=d;best=t[0];}
+  [[5253,27],[5254,30],[5255,33],[5256,36],[5257,39],[5258,42],[5259,45]].forEach(function(zn){
+    var d=Math.abs(lon-zn[1]); if(d<bd){bd=d;best=zn[0];}
   });
   return bd<=1.6?'EPSG:'+best:null;
 }
@@ -309,21 +350,28 @@ var $=function(id){return document.getElementById(id);};
 
 /* ---------------- log ---------------- */
 function clearLog(){S.log=[];}
-function L(level,tag,msg,fix){S.log.push({level:level,tag:tag,msg:msg,fix:fix});}
+/* Log entries store the message identifier and its arguments, not rendered
+   text, so the language can change at any time and so that a diagnostic can be
+   referred to by a stable identifier independent of display language. */
+function L(level,tag,key,args,fix){S.log.push({level:level,tag:tag,key:key,args:args||[],fix:fix});}
 function renderLog(){
   var ul=$('log');ul.innerHTML='';
-  if(!S.log.length){ul.innerHTML='<li><div class="empty" style="grid-column:1/-1">Henüz bir şey yapılmadı.</div></li>';$('logcount').textContent='';return;}
+  if(!S.log.length){
+    var li0=document.createElement('li');
+    var d0=document.createElement('div');d0.className='empty';d0.style.gridColumn='1/-1';
+    d0.textContent=t('ui.log.empty');li0.appendChild(d0);ul.appendChild(li0);
+    $('logcount').textContent='';return;}
   var nw=S.log.filter(function(l){return l.level==='warn'||l.level==='err';}).length;
-  $('logcount').textContent=S.log.length+' satır · '+nw+' uyarı';
+  $('logcount').textContent=t('ui.log.count',S.log.length,nw);
   S.log.forEach(function(l){
     var li=document.createElement('li');li.className='lv-'+l.level;
-    var t=document.createElement('div');t.className='tag';t.textContent=l.tag;
-    var m=document.createElement('div');m.textContent=l.msg;
+    var tg=document.createElement('div');tg.className='tag';tg.textContent=t('tag.'+l.tag);
+    var m=document.createElement('div');m.textContent=t.apply(null,[l.key].concat(l.args));
     if(l.fix){
-      var b=document.createElement('button');b.className='fix';b.textContent=l.fix.label;
+      var b=document.createElement('button');b.className='fix';b.textContent=t.apply(null,[l.fix.key].concat(l.fix.args||[]));
       b.onclick=l.fix.run;m.appendChild(document.createElement('br'));m.appendChild(b);
     }
-    li.appendChild(t);li.appendChild(m);ul.appendChild(li);
+    li.appendChild(tg);li.appendChild(m);ul.appendChild(li);
   });
 }
 
@@ -333,7 +381,7 @@ function baseOf(n){return n.replace(/\.[A-Za-z0-9]+$/,'').replace(/^.*\//,'');}
 
 function kmlToFc(text){
   var doc=new DOMParser().parseFromString(text,'text/xml');
-  if(doc.querySelector('parsererror')) throw new Error('KML/XML ayrıştırılamadı.');
+  if(doc.querySelector('parsererror')) throw new Error(t('err.kml.parse'));
   var pls=doc.getElementsByTagName('Placemark'),feats=[];
   for(var i=0;i<pls.length;i++){
     var pl=pls[i],props={},g=kmlGeomOf(pl);
@@ -369,8 +417,8 @@ function kmlGeomOf(pl){
   });
   if(!out.length) return null;
   if(out.length===1) return out[0];
-  var t=out[0].type,same=out.every(function(g){return g.type===t;});
-  if(same) return {type:'Multi'+t,coordinates:out.map(function(g){return g.coordinates;})};
+  var ty=out[0].type,same=out.every(function(g){return g.type===ty;});
+  if(same) return {type:'Multi'+ty,coordinates:out.map(function(g){return g.coordinates;})};
   return {type:'GeometryCollection',geometries:out};
 }
 function txt(el,tag){var e=el.getElementsByTagName(tag)[0];return e?e.textContent:'';}
@@ -406,14 +454,14 @@ function wktGuess(prj){
       var lon0=parseFloat(cm[1]),sf=parseFloat(k0[1]);
       var ed50=/European_1950|International_1924/i.test(p);
       if(Math.abs(sf-1)<1e-9){
-        var t=trTmFor(lon0); if(t) return {code:t,how:'PROJCS → TUREF TM'+lon0};
+        var tz=trTmFor(lon0); if(tz) return {code:tz,how:'PROJCS → TUREF TM'+lon0};
       }
       if(Math.abs(sf-0.9996)<1e-6){
         var zone=Math.round((lon0+183)/6);
         if(zone>=1&&zone<=60) return {code:'EPSG:'+((ed50?23000:32600)+zone)+'',how:'PROJCS → '+(ed50?'ED50':'WGS84')+' UTM '+zone+'N'};
       }
     }
-    return {code:null,how:'PROJCS tanındı ama listede eşleşmedi'};
+    return {code:null,how:t('err.prj.unmatched')};
   }
   if(/European_1950|ED_1950/i.test(p)) return {code:'EPSG:4230',how:'GEOGCS → ED50'};
   if(/GEOGCS/i.test(p)) return {code:'EPSG:4326',how:'GEOGCS → WGS 84'};
@@ -431,7 +479,7 @@ async function ingest(fileList){
     if(e==='zip'){
       var items=await Z.unzip(await f.arrayBuffer());
       items.forEach(function(it){ entries.push({name:it.name,data:it.data}); });
-      L('info','zip',f.name+' açıldı — '+items.length+' dosya.');
+      L('info','zip','log.zip.opened',[f.name,items.length]);
     } else entries.push({name:f.name,file:f});
   }
   for(var j=0;j<entries.length;j++){
@@ -441,32 +489,32 @@ async function ingest(fileList){
       bag[b]=bag[b]||{};
       bag[b][ex]=en.data?en.data:new Uint8Array(await en.file.arrayBuffer());
     } else if(['geojson','json','kml','gpx','csv','txt'].indexOf(ex)>=0){
-      var t=en.data?new TextDecoder().decode(en.data):await en.file.text();
-      single={ext:ex,text:t,name:b};
+      var raw=en.data?new TextDecoder().decode(en.data):await en.file.text();
+      single={ext:ex,text:raw,name:b};
     }
   }
   var fc=null,name='cikti';
   var keys=Object.keys(bag).filter(function(k){return bag[k].shp;});
   if(keys.length){
-    if(keys.length>1) L('warn','çoklu','Birden fazla shapefile bulundu; ilki kullanıldı: '+keys[0]+'. Diğerleri: '+keys.slice(1).join(', '));
+    if(keys.length>1) L('warn','multiple','log.shp.multiple',[keys[0],keys.slice(1).join(', ')]);
     var b0=bag[keys[0]]; name=keys[0];
     var geoms=G.readShp(b0.shp);
     var rows=[],fieldNames=[];
     if(b0.dbf){
       var enc=b0.cpg?new TextDecoder().decode(b0.cpg).trim().toLowerCase():'';
       var isUtf=/utf-?8|65001/.test(enc);
-      if(!b0.cpg) L('warn','kodlama','.cpg dosyası yok — öznitelikler Latin-1 varsayıldı. Türkçe karakterler bozuksa kaynağı UTF-8 olarak dışa aktarın.');
+      if(!b0.cpg) L('warn','encoding','log.shp.noCpg');
       var d=G.readDbf(b0.dbf,isUtf?'utf8':'latin1');
       rows=d.rows; fieldNames=d.fields.map(function(f){return f.name;});
-      if(rows.length!==geoms.length) L('warn','eşleşme','.shp ('+geoms.length+') ile .dbf ('+rows.length+') kayıt sayısı farklı; kısa olan esas alındı.');
-    } else L('warn','eksik','.dbf yok — öznitelikler olmadan sadece geometri okundu.');
-    if(!b0.shx) L('info','eksik','.shx yok; kayıtlar doğrudan .shp üzerinden okundu (sorun değil).');
+      if(rows.length!==geoms.length) L('warn','mismatch','log.shp.recordMismatch',[geoms.length,rows.length]);
+    } else L('warn','missing','log.shp.noDbf');
+    if(!b0.shx) L('info','missing','log.shp.noShx');
     var feats=[];
     for(var g=0;g<geoms.length;g++){ if(geoms[g]) feats.push({type:'Feature',properties:rows[g]||{},geometry:geoms[g]}); }
-    if(geoms.length-feats.length>0) L('warn','boş','\u200b'+(geoms.length-feats.length)+' kayıt boş geometri içeriyordu, atlandı.');
+    if(geoms.length-feats.length>0) L('warn','empty','log.geom.emptyDropped',[geoms.length-feats.length]);
     fc={type:'FeatureCollection',features:feats};
     if(b0.prj){ prjText=new TextDecoder().decode(b0.prj); srcGuess=wktGuess(prjText); }
-    else L('warn','prj','.prj dosyası yok — kaynak koordinat sistemini elle seçmen gerekiyor.');
+    else L('warn','prj','log.crs.noPrj');
   } else if(single){
     name=single.name;
     if(single.ext==='geojson'||single.ext==='json'){
@@ -474,30 +522,30 @@ async function ingest(fileList){
       if(o.type==='FeatureCollection') fc=o;
       else if(o.type==='Feature') fc={type:'FeatureCollection',features:[o]};
       else if(o.type) fc={type:'FeatureCollection',features:[{type:'Feature',properties:{},geometry:o}]};
-      else throw new Error('GeoJSON yapısı tanınmadı.');
+      else throw new Error(t('err.geojson.shape'));
       if(o.crs&&o.crs.properties&&/EPSG::?(\d+)/i.test(JSON.stringify(o.crs))){
         var m=/EPSG::?(\d+)/i.exec(JSON.stringify(o.crs));
-        if(P.REG['EPSG:'+m[1]]) srcGuess={code:'EPSG:'+m[1],how:'GeoJSON crs üyesi (eski sürüm)'};
-      } else srcGuess={code:'EPSG:4326',how:'RFC 7946 varsayılanı'};
+        if(P.REG['EPSG:'+m[1]]) srcGuess={code:'EPSG:'+m[1],how:'GeoJSON crs member (legacy)'};
+      } else srcGuess={code:'EPSG:4326',how:'RFC 7946 default'};
     }
-    else if(single.ext==='kml'){fc=kmlToFc(single.text);srcGuess={code:'EPSG:4326',how:'KML her zaman WGS 84'};}
-    else if(single.ext==='gpx'){fc=gpxToFc(single.text);srcGuess={code:'EPSG:4326',how:'GPX her zaman WGS 84'};}
-    else {fc=G.csvToFc(single.text);L('info','csv','Koordinat sütunları başlık adlarından bulundu.');}
-  } else throw new Error('Tanınan bir vektör dosyası bulunamadı. Shapefile için en az .shp ve .dbf gerekir.');
+    else if(single.ext==='kml'){fc=kmlToFc(single.text);srcGuess={code:'EPSG:4326',how:'KML is always WGS 84'};}
+    else if(single.ext==='gpx'){fc=gpxToFc(single.text);srcGuess={code:'EPSG:4326',how:'GPX is always WGS 84'};}
+    else {fc=G.csvToFc(single.text);L('info','csv','log.csv.columnsFound');}
+  } else throw new Error(t('err.noVectorFile'));
 
-  if(!fc.features.length) throw new Error('Dosya okundu ama içinde hiç geometri yok.');
+  if(!fc.features.length) throw new Error(t('err.noGeometry'));
   S.fc=fc; S.name=name;
 
   var counts={point:0,line:0,polygon:0,other:0};
   fc.features.forEach(function(f){var c=G.shapeClass(f.geometry);counts[c||'other']++;});
   var parts=[];
-  if(counts.point)parts.push(counts.point+' nokta');
-  if(counts.line)parts.push(counts.line+' çizgi');
-  if(counts.polygon)parts.push(counts.polygon+' alan');
-  if(counts.other)parts.push(counts.other+' tanınmayan');
-  L('ok','okundu',fc.features.length+' öge okundu — '+parts.join(', ')+'.');
-  if(total>0) L('info','boyut','Girdi '+fmtBytes(total)+'.');
-  if(fc.features.length>60000) L('warn','büyük','60.000 üzeri öge var; tarayıcı yavaşlayabilir. Bu araç küçük–orta veri için tasarlandı.');
+  if(counts.point)parts.push(t('count.point',counts.point));
+  if(counts.line)parts.push(t('count.line',counts.line));
+  if(counts.polygon)parts.push(t('count.polygon',counts.polygon));
+  if(counts.other)parts.push(t('count.other',counts.other));
+  L('ok','read','log.read.summary',[fc.features.length,parts.join(', ')]);
+  if(total>0) L('info','size','log.read.inputSize',[fmtBytes(total)]);
+  if(fc.features.length>60000) L('warn','large','log.read.large');
 
   // attribute keys
   var kk=[],seen={};
@@ -505,9 +553,9 @@ async function ingest(fileList){
   S.keys=kk;
 
   // source CRS
-  if(srcGuess&&srcGuess.code){ S.src=srcGuess.code; $('srchint').textContent='Otomatik: '+srcGuess.how+'.'; }
-  else if(srcGuess){ $('srchint').textContent='.prj okundu ama listedeki bir sisteme eşleşmedi — elle seç.'; L('warn','prj','.prj tanındı ama listedeki sistemlerden birine eşleşmedi. Kaynak sistemi elle seçmen gerekiyor.'); }
-  else { S.src=guessFromExtent(fc); $('srchint').textContent='Koordinat aralığına bakılarak tahmin edildi — doğrula.'; }
+  if(srcGuess&&srcGuess.code){ S.src=srcGuess.code; setHint('srchint','ui.hint.prjRead',[srcGuess.how]); }
+  else if(srcGuess){ setHint('srchint','ui.hint.prjUnmatched'); L('warn','prj','log.crs.prjUnmatched'); }
+  else { S.src=guessFromExtent(fc); setHint('srchint','ui.hint.guessed'); }
   fillCrs($('src'),S.src);
   if(S.dst==='EPSG:4326'&&unitOf(S.src)!=='deg') S.dst=S.src;
   fillCrs($('dst'),S.dst);
@@ -539,7 +587,7 @@ function reproject(){
     })};
   })};
   S.proj=out;
-  if(bad) L('err','projeksiyon',bad+' koordinat hedef sisteme dönüştürülemedi (dilim dışı olabilir).');
+  if(bad) L('err','projection','log.proj.failed',[bad]);
   draw();
   renderTable();
   checkOutput();
@@ -628,7 +676,7 @@ function draw(){
   if(lf&&clist.length){
     clist.slice(0,10).forEach(function(v){
       var s=document.createElement('span');
-      s.innerHTML='<i style="background:'+cmap[v]+'"></i>'+(v===''||v==='undefined'?'(boş)':v);
+      s.innerHTML='<i style="background:'+cmap[v]+'"></i>'+(v===''||v==='undefined'?t('ui.value.blank'):v);
       lg.appendChild(s);
     });
     if(clist.length>10){var m=document.createElement('span');m.style.color='var(--muted)';m.textContent='+'+(clist.length-10+' daha');lg.appendChild(m);}
@@ -671,8 +719,8 @@ function renderTable(){
     h+='</tr>';
   });
   h+='</tbody></table>';
-  if(S.fc.features.length>200) h+='<div class="empty">İlk 200 satır gösteriliyor ('+S.fc.features.length.toLocaleString('tr')+' toplam).</div>';
-  if(S.keys.length>14) h+='<div class="empty">İlk 14 öznitelik gösteriliyor ('+S.keys.length+' toplam).</div>';
+  if(S.fc.features.length>200) h+='<div class="empty">'+esc(t('ui.attr.first200',S.fc.features.length.toLocaleString(I18N.locale())))+'</div>';
+  if(S.keys.length>14) h+='<div class="empty">'+esc(t('ui.attr.first14',S.keys.length))+'</div>';
   host.innerHTML=h;
 }
 function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
@@ -688,32 +736,31 @@ function fillAttrSelects(){
 
 /* ---------------- pre-flight checks ---------------- */
 function checkOutput(){
-  S.log=S.log.filter(function(l){return l.tag!=='ölçek'&&l.tag!=='format';});
+  S.log=S.log.filter(function(l){return l.tag!=='scale'&&l.tag!=='format';});
   var ok=!!S.fc;
   if(S.fc){
     var deg=unitOf(S.dst)==='deg';
     if(S.fmt==='dxf'&&deg){
       var bb=G.fcBbox(S.proj||S.fc)||[0,0,0,0];
       var lon=(bb[0]+bb[2])/2, sug=trTmFor(lon)||('EPSG:'+(32600+utmZoneFor(lon)));
-      L('err','ölçek','Hedef sistem derece cinsinden. DXF birimsizdir: çizim CAD içinde yaklaşık '+
-        (bb[2]-bb[0]).toFixed(4)+' × '+(bb[3]-bb[1]).toFixed(4)+' birim olur, ölçek ve alan hesapları anlamsız hale gelir. Metre tabanlı bir sistem seç.',
-        {label:'Hedefi '+ (P.REG[sug]?sug:'EPSG:3857') +' yap',run:function(){
+      L('err','scale','log.dxf.degreeUnits',[(bb[2]-bb[0]).toFixed(4),(bb[3]-bb[1]).toFixed(4)],
+        {key:'log.dxf.fixTarget',args:[P.REG[sug]?sug:'EPSG:3857'],run:function(){
           S.dst=P.REG[sug]?sug:'EPSG:3857'; $('dst').value=S.dst; onDst(); }});
     }
     if(S.fmt==='dxf'){
-      L('info','format','DXF R12 (AC1009) yazılır: alanlar kapalı POLYLINE olur, delikler ayrı POLYLINE olarak çıkar — CAD tarafında otomatik olarak "delik" sayılmaz. Öznitelikler katman adı ve TEXT dışında taşınmaz.');
+      L('info','format','log.dxf.formatNote');
     }
     if(S.fmt==='shp'){
       var counts={};S.fc.features.forEach(function(f){var c=G.shapeClass(f.geometry);counts[c||'other']=(counts[c||'other']||0)+1;});
       var n=['point','line','polygon'].filter(function(k){return counts[k];}).length;
-      if(n>1) L('warn','format','Shapefile tek bir geometri türü tutabilir. Veri '+n+' türe ayrılıp ayrı dosyalar halinde tek ZIP içinde verilecek.');
-      L('info','format','Öznitelik adları 10 karaktere ve ASCII\'ye indirilir; .cpg dosyasıyla UTF-8 kodlaması belirtilir.');
+      if(n>1) L('warn','format','log.shp.multipleTypes',[n]);
+      L('info','format','log.shp.fieldNote');
     }
-    if(S.fmt==='csv') L('warn','format','CSV yalnızca her ögenin ağırlık merkezini yazar — çizgi ve alan geometrisi kaybolur.');
-    if(S.fmt==='kml'&&unitOf(S.dst)!=='deg') L('warn','format','KML her zaman WGS 84 derece bekler; çıktı otomatik olarak WGS 84\'e çevrilecek.');
+    if(S.fmt==='csv') L('warn','format','log.csv.centroidOnly');
+    if(S.fmt==='kml'&&unitOf(S.dst)!=='deg') L('warn','format','log.kml.forcesWgs84');
   }
   $('go').disabled=!ok;
-  $('gohint').textContent=ok?'Çıktı doğrudan cihazına iner.':'Önce bir dosya yükle.';
+  setHint('gohint',ok?'ui.hint.willDownload':'ui.hint.needFile');
   renderLog();
 }
 
@@ -723,7 +770,7 @@ function dl(blob,fname){
   a.href=u;a.download=fname;document.body.appendChild(a);a.click();
   setTimeout(function(){URL.revokeObjectURL(u);a.remove();},1500);
 }
-function warnFn(k,m){L('warn',k,m);}
+function warnFn(tag,key,args){L('warn',tag,key,args);}
 
 function convert(){
   if(!S.fc)return;
@@ -731,7 +778,7 @@ function convert(){
   try{
     if(S.fmt==='geojson'){
       var body=JSON.stringify(unitOf(S.dst)==='deg'?fc:fc,null,0);
-      if(unitOf(S.dst)!=='deg') L('warn','uyum','RFC 7946 GeoJSON yalnızca WGS 84 tanır. Dosya '+S.dst+' koordinatlarıyla yazıldı; başka bir yazılıma verirken sistemi elle belirtmen gerekir.');
+      if(unitOf(S.dst)!=='deg') L('warn','compat','log.geojson.notWgs84',[S.dst]);
       dl(new Blob([body],{type:'application/geo+json'}),base+'.geojson');
     }
     else if(S.fmt==='kml'){
@@ -745,13 +792,13 @@ function convert(){
     else if(S.fmt==='dxf'){
       var r=G.writeDxf(fc,{layerField:$('lf').value||null,labelField:$('tf').value||null,
         textHeight:parseFloat($('th').value)||1,asciiText:true},warnFn);
-      L('ok','yazıldı',r.entities.toLocaleString('tr')+' CAD varlığı, '+r.layers.length+' katman: '+r.layers.join(', ')+'.');
+      L('ok','written','log.dxf.written',[r.entities.toLocaleString(I18N.locale()),r.layers.length,r.layers.join(', ')]);
       dl(new Blob([r.text],{type:'application/dxf'}),base+'.dxf');
     }
     else if(S.fmt==='shp'){
       var groups={point:[],line:[],polygon:[]},skipped=0;
       fc.features.forEach(function(f){var c=G.shapeClass(f.geometry);if(c)groups[c].push(f);else skipped++;});
-      if(skipped) L('warn','atlandı',skipped+' öge desteklenmeyen geometri türünde olduğu için yazılmadı.');
+      if(skipped) L('warn','skipped','log.dxf.skipped',[skipped]);
       var wkt=wktFor(S.dst), entries=[], made=[];
       ['point','line','polygon'].forEach(function(c){
         var fs=groups[c];if(!fs.length)return;
@@ -765,11 +812,11 @@ function convert(){
           {name:nm+'.cpg',data:new TextEncoder().encode('UTF-8')});
         made.push(nm+' ('+fs.length+')');
       });
-      if(!entries.length){L('err','boş','Yazılacak geometri kalmadı.');renderLog();return;}
-      L('ok','yazıldı',made.join(', ')+' — .shp/.shx/.dbf/.prj/.cpg tek ZIP içinde.');
+      if(!entries.length){L('err','empty','log.out.nothing');renderLog();return;}
+      L('ok','written','log.shp.written',[made.join(', ')]);
       dl(new Blob([Z.zipStore(entries)],{type:'application/zip'}),base+'_shp.zip');
     }
-  }catch(err){ L('err','hata',err.message||String(err)); }
+  }catch(err){ L('err','error','log.error',[err.message||String(err)]); }
   renderLog();
 }
 function wktFor(code){
@@ -801,12 +848,12 @@ function handle(fl){
   });
   ingest(fl).then(function(){checkOutput();}).catch(function(err){
     S.fc=null;S.proj=null;clearLog();
-    L('err','okunamadı',err.message||String(err));
+    L('err','error','log.error',[err.message||String(err)]);
     draw();renderTable();checkOutput();
   });
 }
-function onDst(){S.dst=$('dst').value;$('dsthint').textContent=unitOf(S.dst)==='deg'?'Derece cinsinden — CAD çıktısı için uygun değil.':'Metre cinsinden — CAD ve alan hesabı için uygun.';reproject();}
-$('src').addEventListener('change',function(){S.src=this.value;$('srchint').textContent='Elle seçildi.';reproject();});
+function onDst(){S.dst=$('dst').value;setHint('dsthint',unitOf(S.dst)==='deg'?'ui.hint.dstDeg':'ui.hint.dstMetre');reproject();}
+$('src').addEventListener('change',function(){S.src=this.value;setHint('srchint','ui.hint.srcManual');reproject();});
 $('dst').addEventListener('change',onDst);
 $('lf').addEventListener('change',draw);
 document.querySelectorAll('#fmt button').forEach(function(b){
@@ -828,9 +875,13 @@ document.querySelectorAll('.tabs button').forEach(function(b){
   });
 });
 $('go').addEventListener('click',convert);
+$('lang').addEventListener('click',switchLang);
 
+/* Text is bound before anything else runs, so a failure further down the
+   initialisation chain cannot leave the interface blank. */
+$('capzip').setAttribute('data-i18n',(typeof DecompressionStream!=='undefined')?'ui.zip.rw':'ui.zip.wo');
+applyI18n();
 fillCrs($('src'),S.src);fillCrs($('dst'),S.dst);onDst();
-$('capzip').textContent=(typeof DecompressionStream!=='undefined')?'ZIP oku/yaz':'ZIP yaz (sıkıştırılmış okuma yok)';
 if(typeof DecompressionStream!=='undefined')$('capzip').classList.add('on');
 draw();renderLog();
 })();
