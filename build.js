@@ -19,6 +19,7 @@ for (const [token, file] of Object.entries(TOKENS)) {
 }
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, 'index.html'), html);
-console.log(`dist/index.html yazıldı — ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB, harici bağımlılık yok.`);
+fs.writeFileSync(path.join(__dirname, 'index.html'), html);   // GitHub Pages serves from the repository root
+console.log(`index.html written to dist/ and repository root — ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB, no external dependencies.`);
 
 
