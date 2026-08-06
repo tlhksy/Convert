@@ -1,126 +1,212 @@
-# Formatlar ve kayıplar
+# What each conversion loses
 
-Format dönüşümü hiçbir zaman saf bir kopyalama değildir. Her hedef formatın veri modeli
-farklıdır ve bir şeyler ya kısaltılır, ya yeniden yorumlanır, ya da tamamen düşer. Bu belge
-Pafta'nın her formatta ne yaptığını ve neyi kaybettiğini tek tek sayar. Uygulamadaki
-**dönüşüm günlüğü** aynı bilgiyi çalışma anında, senin verine bakarak verir.
+Every format is less expressive than some other format, so conversion loses
+information. This document lists what is lost, per target, and states which
+losses the tool reports and which it does not.
 
----
+The table is not written from memory. It is derived from an audit in which a
+corpus of fixtures, each isolating one loss mechanism, was pushed through the
+shipped conversion path, and the outputs were read back with independent
+libraries (`pyshp`, `ezdxf`) and compared against the sources. The audit lives
+in [`audit/`](../audit/) and can be re-run.
 
-## Girdi formatları
+Loss mechanisms are named by the codes of the taxonomy in
+[`audit/taxonomy.json`](../audit/taxonomy.json): family A attributes and
+schema, B geometry, C reference system, D structure and metadata.
 
-| Format | Uzantı | Koordinat sistemi | Notlar |
-|---|---|---|---|
-| Shapefile | `.shp` + `.dbf` (+ `.shx`, `.prj`, `.cpg`) | `.prj`'den okunur | `.zip` içinde de olabilir |
-| GeoJSON | `.geojson`, `.json` | RFC 7946 gereği WGS 84 varsayılır | eski `crs` üyesi varsa okunur |
-| KML | `.kml` | her zaman WGS 84 | `ExtendedData` ve `SimpleData` öznitelik olarak alınır |
-| GPX | `.gpx` | her zaman WGS 84 | `wpt` nokta, `trk`/`rte` çizgi olur |
-| CSV | `.csv`, `.txt` | elle seçilir | başlıklardan `lat/lon`, `x/y`, `enlem/boylam` aranır |
-
-`.shx` yoksa kayıtlar doğrudan `.shp` üzerinden sırayla okunur — sorun değil.
-`.cpg` yoksa öznitelik kodlaması **Latin-1 varsayılır**; Türkçe karakterler bozuk görünürse
-kaynağı UTF-8 olarak yeniden dışa aktar.
-
----
-
-## Çıktı formatları
-
-### DXF (R12 / AC1009)
-
-R12 seçildi çünkü en geniş uyumlu ASCII DXF sürümü; AutoCAD, BricsCAD, NetCAD, QCAD,
-LibreCAD ve ezdxf sorunsuz açar.
-
-Yazılanlar:
-
-- Nokta → `POINT`
-- Çizgi → açık `POLYLINE` (grup kodu `70 = 0`)
-- Alan → kapalı `POLYLINE` (`70 = 1`)
-- Etiket → `TEXT`, seçilen özniteliğin değeri, ögenin ağırlık merkezinde
-- Katman tablosu, ACI renkleriyle
-
-Kaybedilenler — bunlar formatın sınırı, hata değil:
-
-- **Öznitelikler taşınmaz.** DXF'in öznitelik modeli yoktur. Bir öznitelik katman adına,
-  bir tanesi de `TEXT` içeriğine dönüşebilir; gerisi düşer. Öznitelik gerekiyorsa
-  shapefile veya GeoJSON'u da yanında sakla.
-- **Delikler delik olarak gitmez.** Poligon delikleri ayrı kapalı `POLYLINE` olarak yazılır.
-  CAD tarafında görünürler ama otomatik olarak "boşluk" sayılmazlar; alan hesabında
-  dış halkadan elle çıkarman gerekir. (Gerçek delik desteği `HATCH` gerektirir; `HATCH`
-  R12'de yoktur.)
-- **Katman adları ASCII'ye ve 31 karaktere indirilir.** R12'nin Unicode bildirimi yoktur;
-  kod sayfasına bağlıdır. `çayır` → `CAYIR`. Her değişiklik günlüğe yazılır.
-- **`TEXT` içeriği de öntanımlı olarak ASCII'ye çevrilir**, aynı gerekçeyle.
-- **Z değerleri yazılmaz.** Bütün varlıklar `Z = 0` düzlemindedir.
-
-Kritik uyarı: **DXF birimsizdir.** Dosya "derece" diye bir şey bilmez, sadece sayı bilir.
-Coğrafi koordinatlarla (WGS 84, derece) DXF üretirsen çizim CAD içinde 0.04 × 0.03 birim
-büyüklüğünde olur; ölçek, uzunluk ve alan hesaplarının hepsi anlamsızlaşır. Pafta bu durumda
-dönüştürmeyi hata olarak işaretler ve tek tıkla metre tabanlı bir sisteme geçmeyi önerir.
-
-### Shapefile
-
-Beşli olarak yazılır ve tek ZIP içinde verilir: `.shp`, `.shx`, `.dbf`, `.prj`, `.cpg`.
-
-- **Tek dosya tek geometri türü tutar.** Veri karışıksa nokta / çizgi / alan olarak ayrılır ve
-  aynı ZIP içinde `_nokta`, `_cizgi`, `_alan` ekleriyle üç dosya seti yazılır.
-- **Öznitelik adları 10 karakter ve ASCII.** dBase III sınırı. `cokUzunOznitelikAdi` →
-  `COKUZUNOZN`. Çakışma olursa sonuna sayı eklenir. Hepsi günlüğe yazılır.
-- **Metin alanları en fazla 254 bayt.** Uzun metinler kesilir.
-- **Kodlama UTF-8**, `.cpg` dosyasıyla bildirilir. Bunu okumayan eski yazılımlar
-  Türkçe karakterleri bozuk gösterebilir.
-- Halka yönü şartname uyarınca düzeltilir: dış halka saat yönünde, delikler tersine.
-  (GeoJSON'un kuralı bunun tam tersidir; dönüşüm otomatik yapılır.)
-- Alan tipi değerlerden çıkarılır: hepsi sayıysa `N`, değilse `C`.
-
-### GeoJSON
-
-Kayıpsıza en yakın çıktı. Tek uyarı: RFC 7946 yalnızca WGS 84 tanır. Projeksiyonlu bir
-hedef sistem seçip GeoJSON yazarsan dosya o koordinatlarla üretilir ama standarda
-uymaz — başka bir yazılıma verirken sistemi elle bildirmen gerekir. Günlük bunu söyler.
-
-### KML
-
-Her zaman WGS 84'e çevrilerek yazılır. Öznitelikler `ExtendedData` içinde korunur,
-seçilen bir öznitelik `<name>` olur. Stil bilgisi yazılmaz.
-
-### CSV
-
-**En kayıplı çıktı.** Yalnızca her ögenin ağırlık merkezi yazılır; çizgi ve alan
-geometrisi tamamen kaybolur. Nokta verisi veya hızlı bir öznitelik dökümü dışında kullanma.
+**Reported** means the conversion log names the loss. **Silent** means it does
+not. A silent loss is not always a defect: some follow inevitably from the
+target format, and reporting every one of them on every conversion would
+produce a wall of text users stop reading. Where that is the reasoning, it is
+stated below.
 
 ---
 
-## Koordinat dönüşümü
+## Shapefile output
 
-Transverse Mercator ileri/geri dönüşümleri Snyder'ın altıncı dereceden serileriyle
-hesaplanır (*Map Projections — A Working Manual*, USGS PP 1395).
+The most capable target here, and the most constrained by a 1990s file format.
 
-Doğruluk, PROJ referansına karşı ölçülmüş hâliyle:
+| Code | Loss | Reported |
+|---|---|---|
+| A1 | Field name shortened to 10 characters | yes, per field, with both names |
+| A2 | Two field names collide after shortening | yes |
+| A4 | Text value beyond 254 bytes truncated | yes, per field |
+| B1 | Elevation dropped; shapefile output is written as plan geometry | yes |
+| B2 | Measure values dropped | yes, at read time |
+| B5 | Mixed geometry types split into separate files | yes |
+| B7 | Features without geometry not written | yes |
+| D4 | GeoJSON `id` member not carried | yes |
+| A3 | Type coercion, for instance a 64-bit integer stored as a double | **silent** |
+| A6 | Null and empty string become indistinguishable in DBF | **silent** |
+| B6 | Ring orientation normalised to clockwise exterior | **silent** |
+| D2 | Style from a KML source dropped | **silent** |
+| D3 | Folder hierarchy from a KML source flattened | **silent** |
 
-| Sistem | Sapma |
-|---|---|
-| WGS84 / UTM 35N | 0.00016 m |
-| TUREF / TM30 | 0.00016 m |
-| TUREF / TM33 | 0.00036 m |
-| Web Mercator | 0.0 m |
+Notes.
 
-Dilim ortasından ±3° içinde milimetre altı, dilim kenarında santimetre altı kalır.
-Bu ölçüm `scripts/validate_external.py` içinde otomatik olarak tekrarlanır.
+**B6 is a normalisation, not a loss.** The shapefile specification requires a
+clockwise exterior ring, where GeoJSON requires counter-clockwise. Reversing
+the ring is the correct behaviour and no information is destroyed. It appears
+here because the audit observes it as a difference between source and output,
+and hiding it would be less honest than explaining it.
 
-**ED50 uyarısı.** ED50 ↔ WGS 84 dönüşümü Avrupa ortalaması üç parametreli kaymayla
-(`dx = -87, dy = -98, dz = -121`) yapılır. Türkiye için resmî bir parametre seti değildir;
-beklenen hata birkaç metre mertebesindedir. Kadastral, imar veya aplikasyon işi için
-kullanma — o işler için resmî dönüşüm parametreleriyle çalışan bir yazılım gerekir.
-ED50 desteğinin buraya konma sebebi, Türkiye'de dolaşan CAD verisinin çoğunun ED50
-olması ve bunu sessizce WGS 84 sanmanın çok daha büyük bir hata olmasıdır.
+**A3 and A6 are real gaps.** DBF has no 64-bit integer and no way to
+distinguish null from empty. Neither is currently reported.
+
+Encoding is not in the table because it does not occur: the writer emits a
+`.cpg` declaring UTF-8, and non-ASCII attribute values survive intact. The
+`log.shp.fieldNote` message states this rather than warning about it.
+
+## DXF output
+
+DXF R12 (AC1009) is a drawing exchange format, not a data format. It carries
+geometry, layers and text, and nothing else.
+
+| Code | Loss | Reported |
+|---|---|---|
+| A8 | All attributes; DXF has no attribute table | yes, on every conversion |
+| B2 | Measure values | yes |
+| B7 | Features without geometry | yes |
+| D4 | GeoJSON `id` member | yes |
+| C3 | Angular units in a unitless format | yes, and the conversion is refused |
+| D5 | Placemark names from a KML source | **silent** |
+| D2 | Style | **silent** |
+| D3 | Folder hierarchy | **silent** |
+
+Notes.
+
+**Elevation is carried.** Vertices are written with group code 30 holding the
+real Z value. This was not always true; the audit found it hard-coded to zero.
+
+**Holes are separate polylines.** DXF R12 has no concept of a ring inside
+another ring. An area with holes is written as several closed polylines, and
+CAD will not treat the inner ones as holes automatically. This is stated on
+every DXF conversion, in `log.dxf.formatNote`, together with the attribute
+loss.
+
+**Degrees are refused, not warned about.** DXF has no units. A drawing built
+from geographic coordinates measures a fraction of a unit across, and every
+scale, length and area calculation in CAD becomes meaningless. The tool blocks
+the conversion and offers a switch to the nearest metre-based zone.
+
+**One attribute survives, by choice.** The layer field is written as the DXF
+layer name, and the label field as TEXT entities. Layer names are transliterated
+to ASCII and shortened to 31 characters; that transliteration is reported per
+layer.
+
+## GeoJSON output
+
+The least lossy target, and the only one that preserves feature identifiers.
+
+| Code | Loss | Reported |
+|---|---|---|
+| B2 | Measure values, which RFC 7946 cannot represent | yes, at read time |
+| D2 | Style from a KML source | **silent** |
+| D3 | Folder hierarchy from a KML source | **silent** |
+
+Notes.
+
+**Elevation is carried** as the third coordinate element, which RFC 7946
+permits.
+
+**Coordinate precision is preserved.** Nine decimal places survive unchanged.
+
+**RFC 7946 recognises WGS 84 only.** If the output is written in another
+system, the file itself cannot say so, and `log.geojson.notWgs84` states that
+the system must be communicated separately.
+
+## KML output
+
+| Code | Loss | Reported |
+|---|---|---|
+| B2 | Measure values | yes |
+| B7 | Features without geometry | yes |
+| D4 | GeoJSON `id` member | yes |
+| A3 | All attribute values become strings in ExtendedData | **silent** |
+| B6 | Ring orientation | **silent** |
+
+Notes.
+
+**Elevation is carried** as the third component of each coordinate.
+
+**KML is defined on WGS 84.** Output is converted to WGS 84 automatically, and
+this is stated.
+
+**A3 is the largest silent gap in the tool.** Every numeric and boolean value
+becomes text. A table exported to KML and read back has lost its types.
+
+## CSV output
+
+A tabular format, so geometry beyond a point cannot survive.
+
+| Code | Loss | Reported |
+|---|---|---|
+| B10 | Lines and areas reduced to a representative point | yes |
+| B1 | Elevation | yes |
+| B2 | Measure values | yes |
+| B7 | Features without geometry | yes |
+| D4 | GeoJSON `id` member | yes |
+| A3 | All values become strings | **silent** |
+| A6 | Null and empty string indistinguishable | **silent** |
+| D2 | Style | **silent** |
+| D3 | Folder hierarchy | **silent** |
+
+Notes.
+
+**Coordinate precision is preserved.** Nine decimal places survive.
+
+**The file is written with a UTF-8 byte order mark** so that spreadsheet
+software opens non-ASCII text correctly.
 
 ---
 
-## Bilerek yapılmayanlar
+## Reference system
 
-- **DWG yazma.** Kapalı format. Üretmek için Open Design Alliance lisansı gerekir.
-  Pratikte AutoCAD ve NetCAD dahil bütün CAD yazılımları DXF'i sorunsuz açar.
-- **GPKG.** SQLite gerektirir; tarayıcıda WASM olmadan makul değil.
-- **Topoloji doğrulama.** Kendi kesen poligonlar, kapanmayan halkalar veya çakışan
-  sınırlar düzeltilmez. Bunun için QGIS'in geometri denetleyicisini kullan.
-- **Öznitelik yeniden eşleme.** Alan adı/tipi değiştirme arayüzü yok.
+The source system is read from a `.prj` sidecar when one is present. When it is
+absent the tool says so (`log.crs.noPrj`) and asks for a manual choice, after
+guessing from the coordinate range.
+
+**The guess is weak for projected national data.** A shapefile in a Turkish
+three-degree zone, with eastings near 500,000 and northings near 4,300,000, is
+currently guessed as Web Mercator. The tool reports the missing `.prj` and asks
+the user to confirm, so the wrong guess is visible rather than silent, but it
+is a wrong guess and it should be improved.
+
+**ED50 is approximate.** The transformation is a Europe-mean three-parameter
+shift, not the national grid-based transformation. It is accurate to a few
+metres and must not be used for cadastral, zoning or setting-out work. It
+exists because much CAD data circulating in Türkiye is in ED50, and treating
+that data as WGS 84 without saying so would be a far larger error.
+
+## Projection accuracy
+
+Transverse Mercator agreement with PROJ, measured over 19,459 points in 11
+zones, maximum values in metres:
+
+| | zone interior (within 2°) | zone edge (2° to 3°) |
+|---|---|---|
+| Forward | 3.05e-6 | 4.85e-5 |
+| Inverse | 1.88e-5 | 3.22e-4 |
+| Round trip | 2.12e-5 | 3.60e-4 |
+
+Details and the method are in the main [README](../README.md).
+
+---
+
+## Summary of what is not reported
+
+Four mechanisms are never reported, and they are the honest answer to "what
+would you improve first":
+
+- **A3, type coercion** to KML and CSV. Silent in 17 of the audited
+  conversions, the largest single gap.
+- **D2, style**, and **D3, folder hierarchy**, from KML sources into every
+  other target.
+- **D5, label text**, into DXF.
+- **A6, null against empty**, in DBF and CSV.
+
+Across the audited corpus, 91 losses occurred and 52 were reported, leaving 43
+per cent silent. That figure is a measure of a trade-off rather than a defect
+count: reporting every format-inherent limit on every conversion would bury the
+per-feature diagnostics that are actually actionable. The corpus makes the
+trade-off measurable, which is the point of publishing it.
