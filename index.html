@@ -296,6 +296,7 @@ en: {
   'ui.hint.prjRead':     'Read from .prj: {0}',
   'ui.hint.prjUnmatched':'.prj was read but matched no system in the list — choose manually.',
   'ui.hint.guessed':     'Inferred from the coordinate range — please verify.',
+  'ui.hint.gridUndetermined': 'Coordinates look like a projected grid, but the zone cannot be inferred. Choose the source system.',
   'ui.hint.dstDeg':      'Degrees — not suitable for CAD output.',
   'ui.hint.dstMetre':    'Metres — suitable for CAD and area calculation.',
   'ui.gpkg.soon':        'Not yet available',
@@ -382,8 +383,10 @@ en: {
   'log.geom.idDropped':      '{0} features carry an identifier in the GeoJSON id member. Only GeoJSON output preserves it; elsewhere it is not retained.',
   'log.out.emptySkipped':    '{0} features had no geometry and were not written.',
   'log.crs.noPrj':           'No .prj file — the source coordinate system must be chosen manually.',
+  'log.crs.zoneUndetermined': 'The coordinates are metres on a transverse Mercator grid, but the zone cannot be determined from the values alone: every three-degree zone places its central meridian at the same false easting. The source system must be chosen.',
   'log.crs.prjUnmatched':    '.prj was recognised but matched none of the systems in the list. The source system must be chosen manually.',
   'log.csv.columnsFound':    'Coordinate columns identified from the header names.',
+  'log.crs.csvUndeclared':   'CSV has no place to record a coordinate reference system. The source system has been assumed and must be confirmed; check also that the column order matches, since latitude-first files are common.',
   'log.read.summary':        '{0} features read — {1}.',
   'log.read.inputSize':      'Input {0}.',
   'log.read.large':          'More than 60,000 features; the browser may slow down. This tool is built for small to medium datasets.',
@@ -444,6 +447,7 @@ tr: {
   'ui.hint.prjRead':     '.prj dosyasından okundu: {0}',
   'ui.hint.prjUnmatched':'.prj okundu ama listedeki bir sisteme eşleşmedi — elle seç.',
   'ui.hint.guessed':     'Koordinat aralığına bakılarak tahmin edildi — doğrula.',
+  'ui.hint.gridUndetermined': 'Koordinatlar projekte bir dilime benziyor ama hangi dilim olduğu çıkarılamıyor. Kaynak sistemi seç.',
   'ui.hint.dstDeg':      'Derece cinsinden — CAD çıktısı için uygun değil.',
   'ui.hint.dstMetre':    'Metre cinsinden — CAD ve alan hesabı için uygun.',
   'ui.gpkg.soon':        'Henüz yok',
@@ -522,8 +526,10 @@ tr: {
   'log.geom.idDropped':      '{0} öge GeoJSON id üyesinde kimlik taşıyor. Bunu yalnızca GeoJSON çıktısı koruyor; diğer formatlarda taşınmıyor.',
   'log.out.emptySkipped':    '{0} ögenin geometrisi yoktu, yazılmadı.',
   'log.crs.noPrj':           '.prj dosyası yok — kaynak koordinat sistemini elle seçmen gerekiyor.',
+  'log.crs.zoneUndetermined': 'Koordinatlar enine Mercator diliminde metre cinsinden, ama hangi dilim olduğu değerlerden çıkarılamıyor: bütün 3° dilimleri merkez meridyeni aynı false easting değerine oturtur. Kaynak sistemi elle seçmek gerekiyor.',
   'log.crs.prjUnmatched':    '.prj tanındı ama listedeki sistemlerden birine eşleşmedi. Kaynak sistemi elle seçmen gerekiyor.',
   'log.csv.columnsFound':    'Koordinat sütunları başlık adlarından bulundu.',
+  'log.crs.csvUndeclared':   'CSV dosyasında koordinat sistemini kaydedecek bir yer yoktur. Kaynak sistem varsayıldı, doğrulanması gerekir; sütun sırasını da kontrol et, enlem-önce dosyalar yaygındır.',
   'log.read.summary':        '{0} öge okundu — {1}.',
   'log.read.inputSize':      'Girdi {0}.',
   'log.read.large':          '60.000 üzeri öge var; tarayıcı yavaşlayabilir. Bu araç küçük–orta veri için tasarlandı.',
@@ -1713,7 +1719,11 @@ async function ingest(fileList){
     }
     else if(single.ext==='kml'){fc=kmlToFc(single.text);srcGuess={code:'EPSG:4326',how:'KML is always WGS 84'};}
     else if(single.ext==='gpx'){fc=gpxToFc(single.text);srcGuess={code:'EPSG:4326',how:'GPX is always WGS 84'};}
-    else {fc=G.csvToFc(single.text);L('info','csv','log.csv.columnsFound');}
+    else {fc=G.csvToFc(single.text);L('info','csv','log.csv.columnsFound');
+      /* CSV carries no place to declare a reference system, so the
+         ambiguity is structural rather than an omission by whoever
+         produced the file. */
+      L('warn','csv','log.crs.csvUndeclared');}
   } else throw new Error(t('err.noVectorFile'));
 
   if(!fc.features.length) throw new Error(t('err.noGeometry'));
@@ -1738,17 +1748,32 @@ async function ingest(fileList){
   // source CRS
   if(srcGuess&&srcGuess.code){ S.src=srcGuess.code; setHint('srchint','ui.hint.prjRead',[srcGuess.how]); }
   else if(srcGuess){ setHint('srchint','ui.hint.prjUnmatched'); L('warn','prj','log.crs.prjUnmatched'); }
-  else { S.src=guessFromExtent(fc); setHint('srchint','ui.hint.guessed'); }
+  else {
+    var g=guessFromExtent(fc);
+    if(g){ S.src=g; setHint('srchint','ui.hint.guessed'); }
+    else { setHint('srchint','ui.hint.gridUndetermined');
+           L('warn','prj','log.crs.zoneUndetermined'); }
+  }
   fillCrs($('src'),S.src);
   if(S.dst==='EPSG:4326'&&unitOf(S.src)!=='deg') S.dst=S.src;
   fillCrs($('dst'),S.dst);
   fillAttrSelects();
   reproject();
 }
+/* Guessing from the coordinate range can distinguish geographic from
+   projected, and a false-easting grid from Web Mercator, but it cannot
+   identify which zone a grid belongs to: every three-degree zone places its
+   central meridian at 500000, so TM27 and TM45 data look identical. Returning
+   a specific zone in that case would be a guess dressed as a determination, so
+   the function returns null instead and the caller asks. */
 function guessFromExtent(fc){
   var bb=G.fcBbox(fc); if(!bb) return 'EPSG:4326';
   if(bb[0]>=-180&&bb[2]<=180&&bb[1]>=-90&&bb[3]<=90) return 'EPSG:4326';
-  if(Math.abs(bb[0])<1e7&&Math.abs(bb[1])<2e7&&bb[1]>1e6) return 'EPSG:3857';
+  var e=(bb[0]+bb[2])/2, nth=(bb[1]+bb[3])/2;
+  // A transverse Mercator grid with a 500000 false easting keeps eastings in
+  // the hundreds of thousands; Web Mercator puts them in the millions.
+  if(e>1e5&&e<9e5&&nth>1e6&&nth<1e7) return null;      // grid, zone unknown
+  if(Math.abs(e)<2e7&&Math.abs(nth)<2e7&&nth>1e6) return 'EPSG:3857';
   return 'EPSG:4326';
 }
 function fmtBytes(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(2)+' MB';}

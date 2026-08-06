@@ -530,7 +530,11 @@ async function ingest(fileList){
     }
     else if(single.ext==='kml'){fc=kmlToFc(single.text);srcGuess={code:'EPSG:4326',how:'KML is always WGS 84'};}
     else if(single.ext==='gpx'){fc=gpxToFc(single.text);srcGuess={code:'EPSG:4326',how:'GPX is always WGS 84'};}
-    else {fc=G.csvToFc(single.text);L('info','csv','log.csv.columnsFound');}
+    else {fc=G.csvToFc(single.text);L('info','csv','log.csv.columnsFound');
+      /* CSV carries no place to declare a reference system, so the
+         ambiguity is structural rather than an omission by whoever
+         produced the file. */
+      L('warn','csv','log.crs.csvUndeclared');}
   } else throw new Error(t('err.noVectorFile'));
 
   if(!fc.features.length) throw new Error(t('err.noGeometry'));
@@ -555,17 +559,32 @@ async function ingest(fileList){
   // source CRS
   if(srcGuess&&srcGuess.code){ S.src=srcGuess.code; setHint('srchint','ui.hint.prjRead',[srcGuess.how]); }
   else if(srcGuess){ setHint('srchint','ui.hint.prjUnmatched'); L('warn','prj','log.crs.prjUnmatched'); }
-  else { S.src=guessFromExtent(fc); setHint('srchint','ui.hint.guessed'); }
+  else {
+    var g=guessFromExtent(fc);
+    if(g){ S.src=g; setHint('srchint','ui.hint.guessed'); }
+    else { setHint('srchint','ui.hint.gridUndetermined');
+           L('warn','prj','log.crs.zoneUndetermined'); }
+  }
   fillCrs($('src'),S.src);
   if(S.dst==='EPSG:4326'&&unitOf(S.src)!=='deg') S.dst=S.src;
   fillCrs($('dst'),S.dst);
   fillAttrSelects();
   reproject();
 }
+/* Guessing from the coordinate range can distinguish geographic from
+   projected, and a false-easting grid from Web Mercator, but it cannot
+   identify which zone a grid belongs to: every three-degree zone places its
+   central meridian at 500000, so TM27 and TM45 data look identical. Returning
+   a specific zone in that case would be a guess dressed as a determination, so
+   the function returns null instead and the caller asks. */
 function guessFromExtent(fc){
   var bb=G.fcBbox(fc); if(!bb) return 'EPSG:4326';
   if(bb[0]>=-180&&bb[2]<=180&&bb[1]>=-90&&bb[3]<=90) return 'EPSG:4326';
-  if(Math.abs(bb[0])<1e7&&Math.abs(bb[1])<2e7&&bb[1]>1e6) return 'EPSG:3857';
+  var e=(bb[0]+bb[2])/2, nth=(bb[1]+bb[3])/2;
+  // A transverse Mercator grid with a 500000 false easting keeps eastings in
+  // the hundreds of thousands; Web Mercator puts them in the millions.
+  if(e>1e5&&e<9e5&&nth>1e6&&nth<1e7) return null;      // grid, zone unknown
+  if(Math.abs(e)<2e7&&Math.abs(nth)<2e7&&nth>1e6) return 'EPSG:3857';
   return 'EPSG:4326';
 }
 function fmtBytes(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(2)+' MB';}

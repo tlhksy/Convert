@@ -385,7 +385,10 @@ FORMAT_INHERENT = {
 }
 
 
-def detect(src, out, target):
+ANGULAR_CRS = {"EPSG:4326", "EPSG:4258", "EPSG:4230"}
+
+
+def detect(src, out, target, src_crs=None):
     """Return (observed, inherent) code lists."""
     obs, inh = [], []
     if out is None:
@@ -396,6 +399,10 @@ def detect(src, out, target):
         inh.append("A8")
     if target == "csv" and (src.geom_types() - {"Point", "MultiPoint"}):
         inh.append("B10")
+    # DXF has no units, so angular coordinates make every length and area in
+    # the drawing meaningless. The condition is the source system, not the data.
+    if target == "dxf" and src_crs in ANGULAR_CRS:
+        inh.append("C3")
 
     # ---- attributes
     skeys, okeys = src.prop_keys(), out.prop_keys()
@@ -504,6 +511,8 @@ KEY_TO_CODES = {
     "log.csv.centroidOnly":   ["B10"],
     "log.crs.noPrj":          ["C1"],
     "log.crs.prjUnmatched":   ["C1"],
+    "log.crs.zoneUndetermined": ["C1"],
+    "log.crs.csvUndeclared": ["C1"],
     "log.dxf.degreeUnits":    ["C3"],
     "log.geojson.notWgs84":   ["C1"],
     "log.kml.forcesWgs84":    ["C1"],
@@ -558,7 +567,7 @@ def main():
                          "error": f"output: {e}"})
             continue
 
-        obs, inh = detect(src, out, r["target"])
+        obs, inh = detect(src, out, r["target"], r.get("src"))
         occurred = sorted(set(obs) | set(inh))
         rep, unmapped = reported_codes(r["reported"])
         all_unmapped |= unmapped
@@ -568,7 +577,10 @@ def main():
             "occurred": occurred, "observed": obs, "inherent": inh,
             "reported": sorted(rep),
             "silent": sorted(set(occurred) - rep),
-            "unmatched_report": sorted(set(rep) - set(occurred)),
+            # A format-level note states what the target format cannot carry,
+            # whether or not this particular dataset triggers it. Counting that
+            # as a false alarm would misread it, so it is kept apart.
+            "notice_not_applicable": sorted(set(rep) - set(occurred)),
             "error": None,
         })
 
