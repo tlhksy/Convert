@@ -35,6 +35,7 @@ The most capable target here, and the most constrained by a 1990s file format.
 | B2 | Measure values dropped | yes, at read time |
 | B5 | Mixed geometry types split into separate files | yes |
 | B7 | Features without geometry not written | yes |
+| C1 | Source system undeclared, so it has been assumed | yes |
 | D4 | GeoJSON `id` member not carried | yes |
 | A3 | Type coercion, for instance a 64-bit integer stored as a double | **silent** |
 | A6 | Null and empty string become indistinguishable in DBF | **silent** |
@@ -101,6 +102,7 @@ The least lossy target, and the only one that preserves feature identifiers.
 | Code | Loss | Reported |
 |---|---|---|
 | B2 | Measure values, which RFC 7946 cannot represent | yes, at read time |
+| C1 | Source system undeclared, so it has been assumed | yes |
 | D2 | Style from a KML source | **silent** |
 | D3 | Folder hierarchy from a KML source | **silent** |
 
@@ -121,6 +123,7 @@ the system must be communicated separately.
 |---|---|---|
 | B2 | Measure values | yes |
 | B7 | Features without geometry | yes |
+| C1 | Source system undeclared, so it has been assumed | yes |
 | D4 | GeoJSON `id` member | yes |
 | A3 | All attribute values become strings in ExtendedData | **silent** |
 | B6 | Ring orientation | **silent** |
@@ -145,6 +148,7 @@ A tabular format, so geometry beyond a point cannot survive.
 | B1 | Elevation | yes |
 | B2 | Measure values | yes |
 | B7 | Features without geometry | yes |
+| C1 | Source system undeclared; CSV has nowhere to record one | yes |
 | D4 | GeoJSON `id` member | yes |
 | A3 | All values become strings | **silent** |
 | A6 | Null and empty string indistinguishable | **silent** |
@@ -166,11 +170,17 @@ The source system is read from a `.prj` sidecar when one is present. When it is
 absent the tool says so (`log.crs.noPrj`) and asks for a manual choice, after
 guessing from the coordinate range.
 
-**The guess is weak for projected national data.** A shapefile in a Turkish
-three-degree zone, with eastings near 500,000 and northings near 4,300,000, is
-currently guessed as Web Mercator. The tool reports the missing `.prj` and asks
-the user to confirm, so the wrong guess is visible rather than silent, but it
-is a wrong guess and it should be improved.
+**A zone cannot be guessed, and the tool no longer pretends otherwise.**
+Coordinate ranges distinguish geographic from projected, and a false-easting
+grid from Web Mercator, but they cannot identify which zone a grid belongs to:
+every three-degree zone places its central meridian at 500,000, so TM27 and
+TM45 data look identical. In that case the tool says so and asks, rather than
+returning a guess dressed as a determination.
+
+**CSV carries no reference system at all.** There is no `.prj` equivalent and
+no header convention, so the ambiguity is structural rather than an omission by
+whoever produced the file. Every CSV read is reported as such, with a reminder
+to check column order, since latitude-first files are common.
 
 **ED50 is approximate.** The transformation is a Europe-mean three-parameter
 shift, not the national grid-based transformation. It is accurate to a few
@@ -195,18 +205,27 @@ Details and the method are in the main [README](../README.md).
 
 ## Summary of what is not reported
 
-Four mechanisms are never reported, and they are the honest answer to "what
+Five mechanisms are never reported, and they are the honest answer to "what
 would you improve first":
 
 - **A3, type coercion** to KML and CSV. Silent in 17 of the audited
-  conversions, the largest single gap.
+  conversions, the largest single gap by a wide margin.
 - **D2, style**, and **D3, folder hierarchy**, from KML sources into every
   other target.
 - **D5, label text**, into DXF.
 - **A6, null against empty**, in DBF and CSV.
 
-Across the audited corpus, 91 losses occurred and 52 were reported, leaving 43
-per cent silent. That figure is a measure of a trade-off rather than a defect
-count: reporting every format-inherent limit on every conversion would bury the
-per-feature diagnostics that are actually actionable. The corpus makes the
-trade-off measurable, which is the point of publishing it.
+A sixth, **B6, ring winding**, is counted as silent by the audit but is not
+information loss: shapefile requires a clockwise exterior ring where GeoJSON
+requires counter-clockwise, so reversing it is correct behaviour.
+
+Across the audited corpus, 111 losses occurred in 100 conversions and 77 were
+reported, leaving 31 per cent silent. Thirty of the hundred conversions carried
+at least one silent loss. By target the silent share runs from 11 per cent for
+DXF, where the format carries so little that the losses are stated wholesale,
+to 64 per cent for KML, where every attribute value quietly becomes a string.
+
+That figure measures a trade-off rather than counting defects. Reporting every
+format-inherent limit on every conversion would bury the per-feature
+diagnostics that are actually actionable. The corpus makes the trade-off
+measurable, which is the point of publishing it.
