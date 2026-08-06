@@ -94,6 +94,66 @@ test('a corrupt .shp raises an identifiable error', () => {
   assert.throws(() => G.readShp(new Uint8Array(200)), /err\.shp\.magic/);
 });
 
+/* Builds a minimal PolyLineZ (.shp type 13) holding one two-vertex part with
+   real Z and M arrays. Constructed here rather than loaded from a file so the
+   test states exactly what it asserts against. */
+function polylineZmShp(pts) {
+  const n = pts.length;
+  const content = 44 + 4 + n * 16 + 16 + n * 8 + 16 + n * 8;   // header..M array
+  const buf = new ArrayBuffer(100 + 8 + content);
+  const dv = new DataView(buf);
+  dv.setInt32(0, 9994, false);
+  dv.setInt32(24, (100 + 8 + content) / 2, false);
+  dv.setInt32(32, 13, true);
+  dv.setInt32(100, 1, false);                 // record number
+  dv.setInt32(104, content / 2, false);       // content length in words
+  let p = 108;
+  dv.setInt32(p, 13, true); p += 4;
+  const xs = pts.map(c => c[0]), ys = pts.map(c => c[1]);
+  for (const v of [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)]) { dv.setFloat64(p, v, true); p += 8; }
+  dv.setInt32(p, 1, true); p += 4;            // numParts
+  dv.setInt32(p, n, true); p += 4;            // numPoints
+  dv.setInt32(p, 0, true); p += 4;            // part index
+  for (const c of pts) { dv.setFloat64(p, c[0], true); dv.setFloat64(p + 8, c[1], true); p += 16; }
+  const zs = pts.map(c => c[2]);
+  dv.setFloat64(p, Math.min(...zs), true); dv.setFloat64(p + 8, Math.max(...zs), true); p += 16;
+  for (const z of zs) { dv.setFloat64(p, z, true); p += 8; }
+  const ms = pts.map(c => c[3]);
+  dv.setFloat64(p, Math.min(...ms), true); dv.setFloat64(p + 8, Math.max(...ms), true); p += 16;
+  for (const m of ms) { dv.setFloat64(p, m, true); p += 8; }
+  return new Uint8Array(buf);
+}
+
+test('elevation is read from a PolyLineZ and kept as a third ordinate', () => {
+  const shp = polylineZmShp([[33.0, 39.0, 812.35, 0], [33.01, 39.02, 845.1, 431.7]]);
+  const g = G.readShp(shp)[0];
+  assert.strictEqual(g.type, 'LineString');
+  assert.strictEqual(g.coordinates[0].length, 3, 'vertex must carry a third ordinate');
+  assert.ok(Math.abs(g.coordinates[0][2] - 812.35) < 1e-9);
+  assert.ok(Math.abs(g.coordinates[1][2] - 845.10) < 1e-9);
+});
+
+test('loss of measure values is reported when reading', () => {
+  const w = collect();
+  G.readShp(polylineZmShp([[33.0, 39.0, 812.35, 0], [33.01, 39.02, 845.1, 431.7]]), w);
+  assert.ok(w.has('log.shp.mDropped'), 'M loss must be reported at read time');
+});
+
+test('elevation is detected across a collection', () => {
+  const flat = { features: [{ geometry: { type: 'Point', coordinates: [1, 2] } }] };
+  const tall = { features: [{ geometry: { type: 'Point', coordinates: [1, 2, 3] } }] };
+  assert.strictEqual(G.hasZ(flat), false);
+  assert.strictEqual(G.hasZ(tall), true);
+});
+
+test('KML and DXF carry elevation through', () => {
+  const fc = { features: [{ properties: {}, geometry: { type: 'LineString', coordinates: [[33, 39, 812.35], [33.01, 39.02, 845.1]] } }] };
+  assert.ok(G.writeKml(fc, {}).includes('812.35'), 'KML coordinate must include altitude');
+  const dxf = G.writeDxf(fc, {}, noop).text.split('\r\n');
+  const i = dxf.findIndex((v, k) => v === '812.35' && dxf[k - 1] === '30');
+  assert.ok(i > 0, 'DXF vertex must carry group code 30 with the elevation');
+});
+
 /* -------------------------------- .dbf ---------------------------------- */
 test('field types are inferred from the values', () => {
   const f = G.inferFields(FC.features, noop);

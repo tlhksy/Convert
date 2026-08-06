@@ -56,6 +56,16 @@ function fcBbox(fc) {
   if (!isFinite(x0)) return null;
   return [x0, y0, x1, y1];
 }
+/* True when any coordinate carries a third ordinate. Writers that cannot
+   represent elevation use this to disclose the loss. */
+function hasZ(fc) {
+  let found = false;
+  for (const f of (fc.features || [])) {
+    if (found) break;
+    eachCoord(f.geometry, c => { if (c.length > 2 && c[2] !== undefined) found = true; });
+  }
+  return found;
+}
 function shapeClass(g) {
   if (!g) return null;
   if (g.type === 'Point' || g.type === 'MultiPoint') return 'point';
@@ -295,7 +305,8 @@ function writeShpShx(features, cls) {
 }
 
 /* ============================ SHP read ============================ */
-function readShp(buf) {
+function readShp(buf, warn) {
+  const seen = { z: false, m: false };
   const ab = buf.buffer || buf;
   const off = buf.byteOffset || 0;
   const dv = new DataView(ab, off, buf.byteLength);
@@ -308,20 +319,32 @@ function readShp(buf) {
     const cp = p + 8;
     const clen = contentWords * 2;
     if (clen <= 0 || cp + clen > end) break;
-    geoms.push(parseShape(dv, cp, clen));
+    geoms.push(parseShape(dv, cp, clen, seen));
     p = cp + clen;
   }
+  /* Measures have no representation in GeoJSON, so their loss is stated at the
+     moment the file is read rather than discovered later. */
+  if (warn && seen.m) warn('geometry', 'log.shp.mDropped');
   return geoms;
 }
-function parseShape(dv, p, len) {
+/* Shape types 11/13/15/18 carry a Z array followed by an M array; 21/23/25/28
+   carry an M array alone. Z is read and kept as a third ordinate. */
+function shapeHasZ(t) { return t === 11 || t === 13 || t === 15 || t === 18; }
+function shapeHasM(t) { return shapeHasZ(t) || t === 21 || t === 23 || t === 25 || t === 28; }
+
+function parseShape(dv, p, len, seen) {
   const t = dv.getInt32(p, true);
-  const base = t % 10 === 0 ? t : t; // 1/11/21 pt, 3/13/23 line, 5/15/25 poly, 8/18/28 mpoint
   const kind = t === 1 || t === 11 || t === 21 ? 'pt'
     : t === 3 || t === 13 || t === 23 ? 'line'
       : t === 5 || t === 15 || t === 25 ? 'poly'
         : t === 8 || t === 18 || t === 28 ? 'mpt' : null;
   if (t === 0 || !kind) return null;
-  if (kind === 'pt') return { type: 'Point', coordinates: [dv.getFloat64(p + 4, true), dv.getFloat64(p + 12, true)] };
+  if (seen) { if (shapeHasZ(t)) seen.z = true; if (shapeHasM(t)) seen.m = true; }
+  if (kind === 'pt') {
+    const c = [dv.getFloat64(p + 4, true), dv.getFloat64(p + 12, true)];
+    if (shapeHasZ(t)) c.push(dv.getFloat64(p + 20, true));
+    return { type: 'Point', coordinates: c };
+  }
   if (kind === 'mpt') {
     const n = dv.getInt32(p + 36, true); const cs = [];
     for (let i = 0; i < n; i++) cs.push([dv.getFloat64(p + 40 + i * 16, true), dv.getFloat64(p + 48 + i * 16, true)]);
@@ -331,11 +354,17 @@ function parseShape(dv, p, len) {
   const partIdx = [];
   for (let i = 0; i < nParts; i++) partIdx.push(dv.getInt32(p + 44 + i * 4, true));
   const ptBase = p + 44 + nParts * 4;
+  // the Z array follows the XY array and its own min/max pair
+  const zBase = shapeHasZ(t) ? ptBase + nPts * 16 + 16 : -1;
   const parts = [];
   for (let i = 0; i < nParts; i++) {
     const s = partIdx[i], e = (i === nParts - 1) ? nPts : partIdx[i + 1];
     const ring = [];
-    for (let j = s; j < e; j++) ring.push([dv.getFloat64(ptBase + j * 16, true), dv.getFloat64(ptBase + j * 16 + 8, true)]);
+    for (let j = s; j < e; j++) {
+      const c = [dv.getFloat64(ptBase + j * 16, true), dv.getFloat64(ptBase + j * 16 + 8, true)];
+      if (zBase >= 0) c.push(dv.getFloat64(zBase + j * 8, true));
+      ring.push(c);
+    }
     if (ring.length) parts.push(ring);
   }
   if (!parts.length) return null;
@@ -435,7 +464,7 @@ function writeDxf(fc, opt, warn) {
         if (isPoly) { pts = closeRing(part); pts = pts.slice(0, pts.length - 1); }
         p(0, 'POLYLINE'); p(8, lay); p(66, 1); p(70, isPoly ? 1 : 0);
         p(10, '0'); p(20, '0'); p(30, '0');
-        for (const c of pts) { p(0, 'VERTEX'); p(8, lay); p(10, num(c[0])); p(20, num(c[1])); p(30, '0'); }
+        for (const c of pts) { p(0, 'VERTEX'); p(8, lay); p(10, num(c[0])); p(20, num(c[1])); p(30, num(c[2] || 0)); }
         p(0, 'SEQEND'); p(8, lay);
         nEnt++;
       }
@@ -477,7 +506,7 @@ function writeKml(fc, opt) {
   const nameField = opt.labelField;
   const L = ['<?xml version="1.0" encoding="UTF-8"?>',
     '<kml xmlns="http://www.opengis.net/kml/2.2"><Document>'];
-  const cstr = c => c[0] + ',' + c[1] + ',0';
+  const cstr = c => c[0] + ',' + c[1] + ',' + (c[2] || 0);
   const ringStr = r => '<coordinates>' + closeRing(r).map(cstr).join(' ') + '</coordinates>';
   for (const f of fc.features) {
     const g = f.geometry; if (!g) continue;
@@ -599,7 +628,7 @@ function tmWkt(cm) {
 
 /* ============================ exports ============================ */
 root.GeoConv = {
-  signedArea, closeRing, orient, bboxOf, fcBbox, eachCoord, shapeClass, partsOf, pointsOf, labelAnchor,
+  signedArea, closeRing, orient, bboxOf, fcBbox, eachCoord, shapeClass, partsOf, pointsOf, labelAnchor, hasZ,
   utf8, fromUtf8, latin1,
   inferFields, writeDbf, readDbf, writeShpShx, readShp,
   writeDxf, writeKml, toAscii, parseCoordText, csvToFc, fcToCsv, parseCsv,

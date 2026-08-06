@@ -498,7 +498,7 @@ async function ingest(fileList){
   if(keys.length){
     if(keys.length>1) L('warn','multiple','log.shp.multiple',[keys[0],keys.slice(1).join(', ')]);
     var b0=bag[keys[0]]; name=keys[0];
-    var geoms=G.readShp(b0.shp);
+    var geoms=G.readShp(b0.shp,warnFn);
     var rows=[],fieldNames=[];
     if(b0.dbf){
       var enc=b0.cpg?new TextDecoder().decode(b0.cpg).trim().toLowerCase():'';
@@ -583,7 +583,7 @@ function reproject(){
       if(!isFinite(w[0])||!isFinite(w[1])){bad++;return [0,0];}
       var p=b.fromWgs84(w[0],w[1]);
       if(!isFinite(p[0])||!isFinite(p[1])){bad++;return [0,0];}
-      return [p[0],p[1]];
+      return c.length>2?[p[0],p[1],c[2]]:[p[0],p[1]];
     })};
   })};
   S.proj=out;
@@ -775,6 +775,13 @@ function warnFn(tag,key,args){L('warn',tag,key,args);}
 function convert(){
   if(!S.fc)return;
   var fc=S.proj||S.fc, base=S.name.replace(/[^\w.-]+/g,'_')||'cikti';
+  /* Losses the chosen target cannot represent are stated before writing, so
+     they appear even when the writer itself has nothing to say about them. */
+  if(G.hasZ(fc)&&(S.fmt==='shp'||S.fmt==='csv')) L('warn','geometry','log.geom.zDropped',[S.fmt.toUpperCase()]);
+  if(S.fmt!=='geojson'){
+    var withId=S.fc.features.filter(function(f){return f.id!==undefined&&f.id!==null;}).length;
+    if(withId) L('warn','field','log.geom.idDropped',[withId]);
+  }
   try{
     if(S.fmt==='geojson'){
       var body=JSON.stringify(unitOf(S.dst)==='deg'?fc:fc,null,0);
@@ -796,8 +803,13 @@ function convert(){
       dl(new Blob([r.text],{type:'application/dxf'}),base+'.dxf');
     }
     else if(S.fmt==='shp'){
-      var groups={point:[],line:[],polygon:[]},skipped=0;
-      fc.features.forEach(function(f){var c=G.shapeClass(f.geometry);if(c)groups[c].push(f);else skipped++;});
+      var groups={point:[],line:[],polygon:[]},skipped=0,empty=0;
+      fc.features.forEach(function(f){
+        if(!f.geometry){empty++;return;}
+        var c=G.shapeClass(f.geometry);
+        if(c)groups[c].push(f);else skipped++;
+      });
+      if(empty) L('warn','empty','log.out.emptySkipped',[empty]);
       if(skipped) L('warn','skipped','log.dxf.skipped',[skipped]);
       var wkt=wktFor(S.dst), entries=[], made=[];
       ['point','line','polygon'].forEach(function(c){

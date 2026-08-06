@@ -367,6 +367,7 @@ en: {
   'tag.field':      'field',
   'tag.layer':      'layer',
   'tag.text':       'text',
+  'tag.geometry':   'geometry',
 
   /* ---- log messages ---- */
   'log.zip.opened':          '{0} opened — {1} files.',
@@ -376,6 +377,10 @@ en: {
   'log.shp.noDbf':           'No .dbf — geometry was read without attributes.',
   'log.shp.noShx':           'No .shx; records were read directly from .shp (not a problem).',
   'log.geom.emptyDropped':   '{0} records held empty geometry and were skipped.',
+  'log.shp.mDropped':        'The source carries measure (M) values. GeoJSON has no representation for them, so they are not retained.',
+  'log.geom.zDropped':       'The source carries elevation (Z) values. {0} stores plan coordinates only, so elevation is not retained.',
+  'log.geom.idDropped':      '{0} features carry an identifier in the GeoJSON id member. Only GeoJSON output preserves it; elsewhere it is not retained.',
+  'log.out.emptySkipped':    '{0} features had no geometry and were not written.',
   'log.crs.noPrj':           'No .prj file — the source coordinate system must be chosen manually.',
   'log.crs.prjUnmatched':    '.prj was recognised but matched none of the systems in the list. The source system must be chosen manually.',
   'log.csv.columnsFound':    'Coordinate columns identified from the header names.',
@@ -503,6 +508,7 @@ tr: {
   'tag.field':      'alan',
   'tag.layer':      'katman',
   'tag.text':       'metin',
+  'tag.geometry':   'geometri',
 
   'log.zip.opened':          '{0} açıldı — {1} dosya.',
   'log.shp.multiple':        'Birden fazla shapefile bulundu; ilki kullanıldı: {0}. Diğerleri: {1}',
@@ -511,6 +517,10 @@ tr: {
   'log.shp.noDbf':           '.dbf yok — öznitelikler olmadan sadece geometri okundu.',
   'log.shp.noShx':           '.shx yok; kayıtlar doğrudan .shp üzerinden okundu (sorun değil).',
   'log.geom.emptyDropped':   '{0} kayıt boş geometri içeriyordu, atlandı.',
+  'log.shp.mDropped':        'Kaynak ölçü (M) değerleri taşıyor. GeoJSON bunları temsil edemediği için korunmuyor.',
+  'log.geom.zDropped':       'Kaynak yükseklik (Z) değerleri taşıyor. {0} yalnızca düzlem koordinatı sakladığı için yükseklik korunmuyor.',
+  'log.geom.idDropped':      '{0} öge GeoJSON id üyesinde kimlik taşıyor. Bunu yalnızca GeoJSON çıktısı koruyor; diğer formatlarda taşınmıyor.',
+  'log.out.emptySkipped':    '{0} ögenin geometrisi yoktu, yazılmadı.',
   'log.crs.noPrj':           '.prj dosyası yok — kaynak koordinat sistemini elle seçmen gerekiyor.',
   'log.crs.prjUnmatched':    '.prj tanındı ama listedeki sistemlerden birine eşleşmedi. Kaynak sistemi elle seçmen gerekiyor.',
   'log.csv.columnsFound':    'Koordinat sütunları başlık adlarından bulundu.',
@@ -650,6 +660,16 @@ function fcBbox(fc) {
   });
   if (!isFinite(x0)) return null;
   return [x0, y0, x1, y1];
+}
+/* True when any coordinate carries a third ordinate. Writers that cannot
+   represent elevation use this to disclose the loss. */
+function hasZ(fc) {
+  let found = false;
+  for (const f of (fc.features || [])) {
+    if (found) break;
+    eachCoord(f.geometry, c => { if (c.length > 2 && c[2] !== undefined) found = true; });
+  }
+  return found;
 }
 function shapeClass(g) {
   if (!g) return null;
@@ -890,7 +910,8 @@ function writeShpShx(features, cls) {
 }
 
 /* ============================ SHP read ============================ */
-function readShp(buf) {
+function readShp(buf, warn) {
+  const seen = { z: false, m: false };
   const ab = buf.buffer || buf;
   const off = buf.byteOffset || 0;
   const dv = new DataView(ab, off, buf.byteLength);
@@ -903,20 +924,32 @@ function readShp(buf) {
     const cp = p + 8;
     const clen = contentWords * 2;
     if (clen <= 0 || cp + clen > end) break;
-    geoms.push(parseShape(dv, cp, clen));
+    geoms.push(parseShape(dv, cp, clen, seen));
     p = cp + clen;
   }
+  /* Measures have no representation in GeoJSON, so their loss is stated at the
+     moment the file is read rather than discovered later. */
+  if (warn && seen.m) warn('geometry', 'log.shp.mDropped');
   return geoms;
 }
-function parseShape(dv, p, len) {
+/* Shape types 11/13/15/18 carry a Z array followed by an M array; 21/23/25/28
+   carry an M array alone. Z is read and kept as a third ordinate. */
+function shapeHasZ(t) { return t === 11 || t === 13 || t === 15 || t === 18; }
+function shapeHasM(t) { return shapeHasZ(t) || t === 21 || t === 23 || t === 25 || t === 28; }
+
+function parseShape(dv, p, len, seen) {
   const t = dv.getInt32(p, true);
-  const base = t % 10 === 0 ? t : t; // 1/11/21 pt, 3/13/23 line, 5/15/25 poly, 8/18/28 mpoint
   const kind = t === 1 || t === 11 || t === 21 ? 'pt'
     : t === 3 || t === 13 || t === 23 ? 'line'
       : t === 5 || t === 15 || t === 25 ? 'poly'
         : t === 8 || t === 18 || t === 28 ? 'mpt' : null;
   if (t === 0 || !kind) return null;
-  if (kind === 'pt') return { type: 'Point', coordinates: [dv.getFloat64(p + 4, true), dv.getFloat64(p + 12, true)] };
+  if (seen) { if (shapeHasZ(t)) seen.z = true; if (shapeHasM(t)) seen.m = true; }
+  if (kind === 'pt') {
+    const c = [dv.getFloat64(p + 4, true), dv.getFloat64(p + 12, true)];
+    if (shapeHasZ(t)) c.push(dv.getFloat64(p + 20, true));
+    return { type: 'Point', coordinates: c };
+  }
   if (kind === 'mpt') {
     const n = dv.getInt32(p + 36, true); const cs = [];
     for (let i = 0; i < n; i++) cs.push([dv.getFloat64(p + 40 + i * 16, true), dv.getFloat64(p + 48 + i * 16, true)]);
@@ -926,11 +959,17 @@ function parseShape(dv, p, len) {
   const partIdx = [];
   for (let i = 0; i < nParts; i++) partIdx.push(dv.getInt32(p + 44 + i * 4, true));
   const ptBase = p + 44 + nParts * 4;
+  // the Z array follows the XY array and its own min/max pair
+  const zBase = shapeHasZ(t) ? ptBase + nPts * 16 + 16 : -1;
   const parts = [];
   for (let i = 0; i < nParts; i++) {
     const s = partIdx[i], e = (i === nParts - 1) ? nPts : partIdx[i + 1];
     const ring = [];
-    for (let j = s; j < e; j++) ring.push([dv.getFloat64(ptBase + j * 16, true), dv.getFloat64(ptBase + j * 16 + 8, true)]);
+    for (let j = s; j < e; j++) {
+      const c = [dv.getFloat64(ptBase + j * 16, true), dv.getFloat64(ptBase + j * 16 + 8, true)];
+      if (zBase >= 0) c.push(dv.getFloat64(zBase + j * 8, true));
+      ring.push(c);
+    }
     if (ring.length) parts.push(ring);
   }
   if (!parts.length) return null;
@@ -1030,7 +1069,7 @@ function writeDxf(fc, opt, warn) {
         if (isPoly) { pts = closeRing(part); pts = pts.slice(0, pts.length - 1); }
         p(0, 'POLYLINE'); p(8, lay); p(66, 1); p(70, isPoly ? 1 : 0);
         p(10, '0'); p(20, '0'); p(30, '0');
-        for (const c of pts) { p(0, 'VERTEX'); p(8, lay); p(10, num(c[0])); p(20, num(c[1])); p(30, '0'); }
+        for (const c of pts) { p(0, 'VERTEX'); p(8, lay); p(10, num(c[0])); p(20, num(c[1])); p(30, num(c[2] || 0)); }
         p(0, 'SEQEND'); p(8, lay);
         nEnt++;
       }
@@ -1072,7 +1111,7 @@ function writeKml(fc, opt) {
   const nameField = opt.labelField;
   const L = ['<?xml version="1.0" encoding="UTF-8"?>',
     '<kml xmlns="http://www.opengis.net/kml/2.2"><Document>'];
-  const cstr = c => c[0] + ',' + c[1] + ',0';
+  const cstr = c => c[0] + ',' + c[1] + ',' + (c[2] || 0);
   const ringStr = r => '<coordinates>' + closeRing(r).map(cstr).join(' ') + '</coordinates>';
   for (const f of fc.features) {
     const g = f.geometry; if (!g) continue;
@@ -1194,7 +1233,7 @@ function tmWkt(cm) {
 
 /* ============================ exports ============================ */
 root.GeoConv = {
-  signedArea, closeRing, orient, bboxOf, fcBbox, eachCoord, shapeClass, partsOf, pointsOf, labelAnchor,
+  signedArea, closeRing, orient, bboxOf, fcBbox, eachCoord, shapeClass, partsOf, pointsOf, labelAnchor, hasZ,
   utf8, fromUtf8, latin1,
   inferFields, writeDbf, readDbf, writeShpShx, readShp,
   writeDxf, writeKml, toAscii, parseCoordText, csvToFc, fcToCsv, parseCsv,
@@ -1642,7 +1681,7 @@ async function ingest(fileList){
   if(keys.length){
     if(keys.length>1) L('warn','multiple','log.shp.multiple',[keys[0],keys.slice(1).join(', ')]);
     var b0=bag[keys[0]]; name=keys[0];
-    var geoms=G.readShp(b0.shp);
+    var geoms=G.readShp(b0.shp,warnFn);
     var rows=[],fieldNames=[];
     if(b0.dbf){
       var enc=b0.cpg?new TextDecoder().decode(b0.cpg).trim().toLowerCase():'';
@@ -1727,7 +1766,7 @@ function reproject(){
       if(!isFinite(w[0])||!isFinite(w[1])){bad++;return [0,0];}
       var p=b.fromWgs84(w[0],w[1]);
       if(!isFinite(p[0])||!isFinite(p[1])){bad++;return [0,0];}
-      return [p[0],p[1]];
+      return c.length>2?[p[0],p[1],c[2]]:[p[0],p[1]];
     })};
   })};
   S.proj=out;
@@ -1919,6 +1958,13 @@ function warnFn(tag,key,args){L('warn',tag,key,args);}
 function convert(){
   if(!S.fc)return;
   var fc=S.proj||S.fc, base=S.name.replace(/[^\w.-]+/g,'_')||'cikti';
+  /* Losses the chosen target cannot represent are stated before writing, so
+     they appear even when the writer itself has nothing to say about them. */
+  if(G.hasZ(fc)&&(S.fmt==='shp'||S.fmt==='csv')) L('warn','geometry','log.geom.zDropped',[S.fmt.toUpperCase()]);
+  if(S.fmt!=='geojson'){
+    var withId=S.fc.features.filter(function(f){return f.id!==undefined&&f.id!==null;}).length;
+    if(withId) L('warn','field','log.geom.idDropped',[withId]);
+  }
   try{
     if(S.fmt==='geojson'){
       var body=JSON.stringify(unitOf(S.dst)==='deg'?fc:fc,null,0);
@@ -1940,8 +1986,13 @@ function convert(){
       dl(new Blob([r.text],{type:'application/dxf'}),base+'.dxf');
     }
     else if(S.fmt==='shp'){
-      var groups={point:[],line:[],polygon:[]},skipped=0;
-      fc.features.forEach(function(f){var c=G.shapeClass(f.geometry);if(c)groups[c].push(f);else skipped++;});
+      var groups={point:[],line:[],polygon:[]},skipped=0,empty=0;
+      fc.features.forEach(function(f){
+        if(!f.geometry){empty++;return;}
+        var c=G.shapeClass(f.geometry);
+        if(c)groups[c].push(f);else skipped++;
+      });
+      if(empty) L('warn','empty','log.out.emptySkipped',[empty]);
       if(skipped) L('warn','skipped','log.dxf.skipped',[skipped]);
       var wkt=wktFor(S.dst), entries=[], made=[];
       ['point','line','polygon'].forEach(function(c){

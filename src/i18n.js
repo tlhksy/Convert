@@ -103,6 +103,7 @@ en: {
   'tag.field':      'field',
   'tag.layer':      'layer',
   'tag.text':       'text',
+  'tag.geometry':   'geometry',
 
   /* ---- log messages ---- */
   'log.zip.opened':          '{0} opened — {1} files.',
@@ -112,6 +113,10 @@ en: {
   'log.shp.noDbf':           'No .dbf — geometry was read without attributes.',
   'log.shp.noShx':           'No .shx; records were read directly from .shp (not a problem).',
   'log.geom.emptyDropped':   '{0} records held empty geometry and were skipped.',
+  'log.shp.mDropped':        'The source carries measure (M) values. GeoJSON has no representation for them, so they are not retained.',
+  'log.geom.zDropped':       'The source carries elevation (Z) values. {0} stores plan coordinates only, so elevation is not retained.',
+  'log.geom.idDropped':      '{0} features carry an identifier in the GeoJSON id member. Only GeoJSON output preserves it; elsewhere it is not retained.',
+  'log.out.emptySkipped':    '{0} features had no geometry and were not written.',
   'log.crs.noPrj':           'No .prj file — the source coordinate system must be chosen manually.',
   'log.crs.prjUnmatched':    '.prj was recognised but matched none of the systems in the list. The source system must be chosen manually.',
   'log.csv.columnsFound':    'Coordinate columns identified from the header names.',
@@ -239,6 +244,7 @@ tr: {
   'tag.field':      'alan',
   'tag.layer':      'katman',
   'tag.text':       'metin',
+  'tag.geometry':   'geometri',
 
   'log.zip.opened':          '{0} açıldı — {1} dosya.',
   'log.shp.multiple':        'Birden fazla shapefile bulundu; ilki kullanıldı: {0}. Diğerleri: {1}',
@@ -247,6 +253,10 @@ tr: {
   'log.shp.noDbf':           '.dbf yok — öznitelikler olmadan sadece geometri okundu.',
   'log.shp.noShx':           '.shx yok; kayıtlar doğrudan .shp üzerinden okundu (sorun değil).',
   'log.geom.emptyDropped':   '{0} kayıt boş geometri içeriyordu, atlandı.',
+  'log.shp.mDropped':        'Kaynak ölçü (M) değerleri taşıyor. GeoJSON bunları temsil edemediği için korunmuyor.',
+  'log.geom.zDropped':       'Kaynak yükseklik (Z) değerleri taşıyor. {0} yalnızca düzlem koordinatı sakladığı için yükseklik korunmuyor.',
+  'log.geom.idDropped':      '{0} öge GeoJSON id üyesinde kimlik taşıyor. Bunu yalnızca GeoJSON çıktısı koruyor; diğer formatlarda taşınmıyor.',
+  'log.out.emptySkipped':    '{0} ögenin geometrisi yoktu, yazılmadı.',
   'log.crs.noPrj':           '.prj dosyası yok — kaynak koordinat sistemini elle seçmen gerekiyor.',
   'log.crs.prjUnmatched':    '.prj tanındı ama listedeki sistemlerden birine eşleşmedi. Kaynak sistemi elle seçmen gerekiyor.',
   'log.csv.columnsFound':    'Koordinat sütunları başlık adlarından bulundu.',
