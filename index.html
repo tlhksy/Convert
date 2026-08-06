@@ -1962,6 +1962,10 @@ function convert(){
      they appear even when the writer itself has nothing to say about them. */
   if(G.hasZ(fc)&&(S.fmt==='shp'||S.fmt==='csv')) L('warn','geometry','log.geom.zDropped',[S.fmt.toUpperCase()]);
   if(S.fmt!=='geojson'){
+    var noGeom=S.fc.features.filter(function(f){return !f.geometry;}).length;
+    if(noGeom) L('warn','empty','log.out.emptySkipped',[noGeom]);
+  }
+  if(S.fmt!=='geojson'){
     var withId=S.fc.features.filter(function(f){return f.id!==undefined&&f.id!==null;}).length;
     if(withId) L('warn','field','log.geom.idDropped',[withId]);
   }
@@ -1986,13 +1990,12 @@ function convert(){
       dl(new Blob([r.text],{type:'application/dxf'}),base+'.dxf');
     }
     else if(S.fmt==='shp'){
-      var groups={point:[],line:[],polygon:[]},skipped=0,empty=0;
+      var groups={point:[],line:[],polygon:[]},skipped=0;
       fc.features.forEach(function(f){
-        if(!f.geometry){empty++;return;}
+        if(!f.geometry) return;            // already stated before writing
         var c=G.shapeClass(f.geometry);
         if(c)groups[c].push(f);else skipped++;
       });
-      if(empty) L('warn','empty','log.out.emptySkipped',[empty]);
       if(skipped) L('warn','skipped','log.dxf.skipped',[skipped]);
       var wkt=wktFor(S.dst), entries=[], made=[];
       ['point','line','polygon'].forEach(function(c){
