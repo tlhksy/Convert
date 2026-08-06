@@ -1,6 +1,12 @@
 /* zip.js — minimal ZIP writer (stored) + reader (stored/deflate). No dependencies. */
 (function (root) {
 'use strict';
+
+/* Translation helper. The catalogue loads before this file, but the lookup is
+   deferred so that zip.js stays usable on its own: without a catalogue it
+   returns the identifier rather than throwing. */
+function T(){ var f=(typeof window!=='undefined'&&window.t); return f?f.apply(null,arguments):arguments[0]; }
+
 var TBL = (function () { var t = new Uint32Array(256); for (var n = 0; n < 256; n++) { var c = n; for (var k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
 function crc32(b) { var c = 0xFFFFFFFF; for (var i = 0; i < b.length; i++) c = TBL[(c ^ b[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
 function utf8(s) { return new TextEncoder().encode(s); }
@@ -44,7 +50,7 @@ async function unzip(buf) {
   var u8 = new Uint8Array(buf), dv = new DataView(u8.buffer, u8.byteOffset, u8.byteLength);
   var eocd = -1;
   for (var i = u8.length - 22; i >= 0 && i > u8.length - 65558; i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
-  if (eocd < 0) throw new Error('ZIP dizini bulunamadı — dosya bozuk veya ZIP değil.');
+  if (eocd < 0) throw new Error(T('err.zip.noDirectory'));
   var n = dv.getUint16(eocd + 10, true), cdOff = dv.getUint32(eocd + 16, true);
   var out = [], p = cdOff;
   for (var k = 0; k < n; k++) {
@@ -61,10 +67,10 @@ async function unzip(buf) {
     var data;
     if (method === 0) data = raw.slice();
     else if (method === 8) {
-      if (typeof DecompressionStream === 'undefined') throw new Error('Sıkıştırılmış ZIP açılamıyor: tarayıcı DecompressionStream desteklemiyor.');
+      if (typeof DecompressionStream === 'undefined') throw new Error(T('err.zip.noDecompression'));
       var rs = new Blob([raw]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
       data = new Uint8Array(await new Response(rs).arrayBuffer());
-    } else throw new Error('Desteklenmeyen ZIP sıkıştırma yöntemi: ' + method);
+    } else throw new Error(T('err.zip.method', method));
     out.push({ name: name, data: data, size: usize });
   }
   return out;

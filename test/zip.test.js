@@ -27,7 +27,7 @@ test('CRC32 produces the known value', () => {
 });
 
 test('a corrupt archive raises an identifiable error', async () => {
-  await assert.rejects(() => Zip.unzip(new Uint8Array(64)), /ZIP dizini bulunamadı/);
+  await assert.rejects(() => Zip.unzip(new Uint8Array(64)), /err\.zip\.noDirectory/);
 });
 
 test('central directory and local header offsets are consistent', async () => {

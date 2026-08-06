@@ -161,6 +161,9 @@ en: {
   'err.shp.magic':       'Not a valid .shp file (file code 9994 was expected).',
   'err.csv.tooFewRows':  'A CSV must contain at least a header row and one data row.',
   'err.csv.noCoords':    'No coordinate column found in the CSV (lat/lon, x/y or their local equivalents were expected).',
+  'err.zip.noDirectory': 'No ZIP directory found. The file is damaged, or it is not a ZIP archive.',
+  'err.zip.noDecompression': 'This archive is compressed and the browser does not support DecompressionStream. Extract it first and select the files individually.',
+  'err.zip.method':      'Unsupported ZIP compression method: {0}',
   'err.prj.unmatched':   'PROJCS was recognised but matched nothing in the list'
 },
 
@@ -301,6 +304,9 @@ tr: {
   'err.shp.magic':       'Geçerli bir .shp dosyası değil (dosya kodu 9994 bekleniyordu).',
   'err.csv.tooFewRows':  'CSV en az bir başlık ve bir veri satırı içermeli.',
   'err.csv.noCoords':    'CSV içinde koordinat sütunu bulunamadı (lat/lon, x/y, enlem/boylam bekleniyor).',
+  'err.zip.noDirectory': 'ZIP dizini bulunamadı. Dosya bozuk ya da ZIP değil.',
+  'err.zip.noDecompression': 'Bu arşiv sıkıştırılmış ve tarayıcı DecompressionStream desteklemiyor. Arşivi önce aç, dosyaları tek tek seç.',
+  'err.zip.method':      'Desteklenmeyen ZIP sıkıştırma yöntemi: {0}',
   'err.prj.unmatched':   'PROJCS tanındı ama listede eşleşmedi'
 }
 };
