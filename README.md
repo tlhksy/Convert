@@ -1,5 +1,7 @@
 # Pafta
 
+[![DOI](https://zenodo.org/badge/1311182553.svg)](https://doi.org/10.5281/zenodo.21842591)
+
 **A vector data converter between GIS and CAD that tells you what it lost.**
 Reads Shapefile, GeoJSON, KML, GPX and CSV; writes DXF, Shapefile, GeoJSON, KML
 and CSV; transforms coordinate reference systems; and reports, line by line,
@@ -177,8 +179,18 @@ These are deliberate, not gaps:
 
 ## Citing
 
-[Placeholder: Zenodo DOI, to be minted from a tagged release. A SoftwareX
-article describing the tool and its validation is in preparation.]
+Aksoy, T. Pafta: a vector data converter between GIS and CAD.
+https://doi.org/10.5281/zenodo.21842591
+
+The DOI above resolves to the most recent release; each release also carries
+its own version DOI, which is the one to cite when reproducing a specific
+result. An article describing the tool and its validation is in preparation for
+*SoftwareX*.
+
+## Contact
+
+Talha Aksoy, Department of Landscape Architecture, Kırklareli University
+<talha.aksoy@klu.edu.tr> · ORCID [0000-0001-8577-3990](https://orcid.org/0000-0001-8577-3990)
 
 ## License
 
