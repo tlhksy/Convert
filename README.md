@@ -1,4 +1,4 @@
-# Pafta
+﻿# Pafta
 
 [![DOI](https://zenodo.org/badge/1311182553.svg)](https://doi.org/10.5281/zenodo.21842591)
 
@@ -12,7 +12,7 @@ works offline from a single HTML file. Data never leaves the device.
 
 Use it: <https://tlhksy.github.io/Convert/dist/>
 
-[Türkçe açıklama aşağıda](#türkçe)
+[TÃ¼rkÃ§e aÃ§Ä±klama aÅŸaÄŸÄ±da](#tÃ¼rkÃ§e)
 
 ## Why
 
@@ -66,7 +66,7 @@ Full per-format loss inventory: **[docs/FORMATS.md](docs/FORMATS.md)**
 Download `dist/index.html` and open it. That is all: no installation, no
 network.
 
-To publish from a fork: **Settings → Pages → Source: GitHub Actions**. Every
+To publish from a fork: **Settings â†’ Pages â†’ Source: GitHub Actions**. Every
 push to `main` publishes `dist/`.
 
 ## Development
@@ -147,16 +147,24 @@ survived. They are now 0.01 mm and 0.5 mm, with an explicit zone-edge case.
 
 ### Loss disclosure
 
-A taxonomy of 27 loss mechanisms in four families (attribute and schema,
+A taxonomy of 28 loss mechanisms in four families (attribute and schema,
 geometry, coordinate reference system, structure and metadata), and a corpus of
-fixtures each isolating one mechanism, are used to measure what the conversion
-log actually reports against what actually happened. The audit found three
-undisclosed losses: elevation and measure values discarded while reading
-shapefiles, feature identifiers dropped for every target except GeoJSON, and
-empty geometry reported under the wrong cause. Elevation is now read and
-carried; the other two are now reported.
+21 fixtures, each isolating one source condition, are used to measure what the
+conversion log actually reports against what actually happened. Occurrence is
+established by reading the converted file with an independent library, not by
+trusting the converter; disclosure is coded separately from a frozen rule
+table. The same corpus is run through GDAL (ogr2ogr) and mapshaper for
+comparison.
 
-[Full results and the corpus: work in progress]
+Across 100 conversions, 113 losses occurred and 78 were reported. The audit
+found three undisclosed losses in this tool and they are fixed: elevation and
+measure values discarded while reading shapefiles, feature identifiers dropped
+for every target except GeoJSON, and empty geometry reported under the wrong
+cause. It also found eight errors in the measurement itself, which are
+documented rather than quietly corrected.
+
+Full results per format: **[docs/FORMATS.md](docs/FORMATS.md)**. The corpus,
+the taxonomy and the scripts are in **[audit/](audit/)** and can be re-run.
 
 ## Limits
 
@@ -167,7 +175,7 @@ These are deliberate, not gaps:
 - **No GeoPackage.** Requires SQLite.
 - **ED50 transformation is approximate.** A Europe-mean three-parameter shift,
   accurate to a few metres. Not for cadastral, zoning or setting-out work. It
-  exists because most CAD data circulating in Türkiye is ED50, and silently
+  exists because most CAD data circulating in TÃ¼rkiye is ED50, and silently
   treating it as WGS 84 is a much larger error.
 - **No topology repair.** For self-intersecting polygons, use the QGIS geometry
   checker.
@@ -189,8 +197,8 @@ result. An article describing the tool and its validation is in preparation for
 
 ## Contact
 
-Talha Aksoy, Department of Landscape Architecture, Kırklareli University
-<talha.aksoy@klu.edu.tr> · ORCID [0000-0001-8577-3990](https://orcid.org/0000-0001-8577-3990)
+Talha Aksoy, Department of Landscape Architecture, KÄ±rklareli University
+<talha.aksoy@klu.edu.tr> Â· ORCID [0000-0001-8577-3990](https://orcid.org/0000-0001-8577-3990)
 
 ## License
 
@@ -198,38 +206,38 @@ MIT, see [LICENSE](LICENSE).
 
 ---
 
-## Türkçe
+## TÃ¼rkÃ§e
 
-**Pafta**, GIS ile CAD arasında vektör veri dönüştürücüsüdür. Shapefile,
+**Pafta**, GIS ile CAD arasÄ±nda vektÃ¶r veri dÃ¶nÃ¼ÅŸtÃ¼rÃ¼cÃ¼sÃ¼dÃ¼r. Shapefile,
 GeoJSON, KML, GPX ve CSV okur; DXF, Shapefile, GeoJSON, KML ve CSV yazar;
-koordinat sistemini dönüştürür ve her dönüşümde neyi değiştirdiğini satır satır
-söyler.
+koordinat sistemini dÃ¶nÃ¼ÅŸtÃ¼rÃ¼r ve her dÃ¶nÃ¼ÅŸÃ¼mde neyi deÄŸiÅŸtirdiÄŸini satÄ±r satÄ±r
+sÃ¶yler.
 
-Her şey tarayıcıda çalışır. Sunucu yok, yükleme yok, harici bağımlılık yok; tek
-bir HTML dosyası, çevrimdışı da açılır. Veri cihazdan çıkmaz.
+Her ÅŸey tarayÄ±cÄ±da Ã§alÄ±ÅŸÄ±r. Sunucu yok, yÃ¼kleme yok, harici baÄŸÄ±mlÄ±lÄ±k yok; tek
+bir HTML dosyasÄ±, Ã§evrimdÄ±ÅŸÄ± da aÃ§Ä±lÄ±r. Veri cihazdan Ã§Ä±kmaz.
 
-Ayrım noktası dönüştürme değil, **dönüşüm günlüğüdür**. Alan adı 10 karaktere
-indi, katman adı ASCII'ye çevrildi, `.cpg` yoktu Latin-1 varsayıldı, poligon
-deliği ayrı polyline oldu, yükseklik değerleri hedef formatta taşınamıyor:
-hepsi, etkilenen öge adıyla birlikte bildirilir.
+AyrÄ±m noktasÄ± dÃ¶nÃ¼ÅŸtÃ¼rme deÄŸil, **dÃ¶nÃ¼ÅŸÃ¼m gÃ¼nlÃ¼ÄŸÃ¼dÃ¼r**. Alan adÄ± 10 karaktere
+indi, katman adÄ± ASCII'ye Ã§evrildi, `.cpg` yoktu Latin-1 varsayÄ±ldÄ±, poligon
+deliÄŸi ayrÄ± polyline oldu, yÃ¼kseklik deÄŸerleri hedef formatta taÅŸÄ±namÄ±yor:
+hepsi, etkilenen Ã¶ge adÄ±yla birlikte bildirilir.
 
-En sert kontrol şudur: hedef koordinat sistemi derece cinsindeyken DXF istenirse
-dönüştürme hata olarak işaretlenir. DXF birimsizdir; coğrafi koordinatlarla
-üretilen bir çizim CAD içinde bir birimin küçük bir kesri kadar olur ve bütün
-ölçü hesapları anlamsızlaşır. Uygulama bunu söyler ve tek tıkla en yakın metre
-tabanlı dilime geçirir.
+En sert kontrol ÅŸudur: hedef koordinat sistemi derece cinsindeyken DXF istenirse
+dÃ¶nÃ¼ÅŸtÃ¼rme hata olarak iÅŸaretlenir. DXF birimsizdir; coÄŸrafi koordinatlarla
+Ã¼retilen bir Ã§izim CAD iÃ§inde bir birimin kÃ¼Ã§Ã¼k bir kesri kadar olur ve bÃ¼tÃ¼n
+Ã¶lÃ§Ã¼ hesaplarÄ± anlamsÄ±zlaÅŸÄ±r. Uygulama bunu sÃ¶yler ve tek tÄ±kla en yakÄ±n metre
+tabanlÄ± dilime geÃ§irir.
 
-**Koordinat sistemleri:** WGS 84, Web Mercator, TUREF 3° dilimleri (TM27–TM45),
-WGS 84 UTM ve ED50 UTM dilimleri. Kaynak sistem `.prj` dosyasından otomatik
+**Koordinat sistemleri:** WGS 84, Web Mercator, TUREF 3Â° dilimleri (TM27â€“TM45),
+WGS 84 UTM ve ED50 UTM dilimleri. Kaynak sistem `.prj` dosyasÄ±ndan otomatik
 okunur.
 
-**Yükseklik:** Z değerleri Z tipli shapefile'lardan okunur ve GeoJSON, KML ve
-DXF çıktılarına taşınır. Shapefile ve CSV yalnızca düzlem koordinatı sakladığı
-için kayıp bildirilir.
+**YÃ¼kseklik:** Z deÄŸerleri Z tipli shapefile'lardan okunur ve GeoJSON, KML ve
+DXF Ã§Ä±ktÄ±larÄ±na taÅŸÄ±nÄ±r. Shapefile ve CSV yalnÄ±zca dÃ¼zlem koordinatÄ± sakladÄ±ÄŸÄ±
+iÃ§in kayÄ±p bildirilir.
 
-**Arayüz:** İngilizce ve Türkçe, başlıktan değiştirilebilir.
+**ArayÃ¼z:** Ä°ngilizce ve TÃ¼rkÃ§e, baÅŸlÄ±ktan deÄŸiÅŸtirilebilir.
 
-Format bazında tam kayıp dökümü: **[docs/FORMATS.md](docs/FORMATS.md)**
+Format bazÄ±nda tam kayÄ±p dÃ¶kÃ¼mÃ¼: **[docs/FORMATS.md](docs/FORMATS.md)**
 
-Doğrulama, sınırlar ve geliştirme notları için yukarıdaki İngilizce bölüme
-bakınız. Lisans: MIT.
+DoÄŸrulama, sÄ±nÄ±rlar ve geliÅŸtirme notlarÄ± iÃ§in yukarÄ±daki Ä°ngilizce bÃ¶lÃ¼me
+bakÄ±nÄ±z. Lisans: MIT.
