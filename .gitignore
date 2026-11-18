@@ -1,3 +1,6 @@
-﻿node_modules/
+node_modules/
 *.zip
-work/
+__pycache__/
+audit/work*/*
+!audit/work*/reported.json
+!audit/work*/ground_truth.json

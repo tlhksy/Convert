@@ -1,0 +1,1766 @@
+[
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.dbf",
+   "F01_long_field_names.prj",
+   "F01_long_field_names.shp",
+   "F01_long_field_names.shx"
+  ],
+  "messages": [
+   "Warning 6: Normalized/laundered field name: 'administrative_unit_name' to 'administra'",
+   "Warning 6: Normalized/laundered field name: 'administrative_unit_code' to 'administ_1'",
+   "Warning 6: Normalized/laundered field name: 'survey_reference_number' to 'survey_ref'",
+   "Warning 6: Normalized/laundered field name: 'vegetation_cover_class' to 'vegetation'",
+   "Warning 6: Normalized/laundered field name: 'canopy_height_metres' to 'canopy_hei'",
+   "Warning 6: Normalized/laundered field name: 'measurement_operator' to 'measuremen'",
+   "Warning 6: Normalized/laundered field name: 'instrument_serial_id' to 'instrument'",
+   "Warning 6: Normalized/laundered field name: 'acquisition_platform' to 'acquisitio'",
+   "Warning 6: Normalized/laundered field name: 'quality_flag_primary' to 'quality_fl'",
+   "Warning 6: Normalized/laundered field name: 'quality_flag_secondary' to 'quality__1'",
+   "Warning 6: Normalized/laundered field name: 'notes_field_general' to 'notes_fiel'",
+   "Warning 6: Normalized/laundered field name: 'last_revision_author' to 'last_revis'"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'administrative_unit_name' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'administrative_unit_code' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'survey_reference_number' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'vegetation_cover_class' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'canopy_height_metres' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'measurement_operator' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'instrument_serial_id' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'acquisition_platform' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'quality_flag_primary' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'quality_flag_secondary' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'notes_field_general' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'last_revision_author' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.dbf",
+   "F02_attribute_types.prj",
+   "F02_attribute_types.shp",
+   "F02_attribute_types.shx"
+  ],
+  "messages": [
+   "Warning 1: The output driver does not natively support DateTime type for field observed_at. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Normalized/laundered field name: 'observed_at' to 'observed_a'",
+   "Warning 6: Field observed_a create as date field, though DateTime requested."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.dxf"
+  ],
+  "messages": [
+   "Warning 1: The output driver does not seem to natively support Integer64 type for field big_int. Converting it to Real instead. -mapFieldType can be used to control field type conversion.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'big_int' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'ratio' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'is_valid' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'optional' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'observed_at' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'label' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.kml"
+  ],
+  "messages": [
+   "Warning 1: The output driver does not seem to natively support Integer64 type for field big_int. Converting it to Real instead. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field observed_at. Misconversion can happen. -mapFieldType can be used to control field type conversion."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.dbf",
+   "F03_wide_text.prj",
+   "F03_wide_text.shp",
+   "F03_wide_text.shx"
+  ],
+  "messages": [
+   "Warning 6: Normalized/laundered field name: 'description' to 'descriptio'",
+   "Warning 1: Value 'This description exceeds the two hundred and fifty four character limit imposed by the dBASE III field format used inside shapefiles, and is included so that a converter must either truncate the value, reject it, or promote the field to an alternative storage strategy. Total length is stated in the manifest.' of field descriptio has been truncated to 254 characters.  This warning will not be emitted any more for that layer."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'description' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'char_count' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.dbf",
+   "F04_non_ascii.prj",
+   "F04_non_ascii.shp",
+   "F04_non_ascii.shx"
+  ],
+  "messages": [
+   "Warning 1: One or several characters couldn't be converted correctly from UTF-8 to ISO-8859-1.  This warning will not be emitted anymore."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'place_name' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'language' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.dbf",
+   "F05_polygon_with_holes.prj",
+   "F05_polygon_with_holes.shp",
+   "F05_polygon_with_holes.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'parcel_id' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'area_class' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.dbf",
+   "F06_multipart_single_feature.prj",
+   "F06_multipart_single_feature.shp",
+   "F06_multipart_single_feature.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'holding_id' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'part_count' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "exit 1",
+  "outputs": [
+   "F07_mixed_geometry_types.dbf",
+   "F07_mixed_geometry_types.prj",
+   "F07_mixed_geometry_types.shp",
+   "F07_mixed_geometry_types.shx"
+  ],
+  "messages": [
+   "ERROR 1: Attempt to write non-point (LINESTRING) geometry to point shapefile.",
+   "ERROR 1: Unable to write feature 1 from layer F07_mixed_geometry_types.",
+   "ERROR 1: Terminating translation prematurely after failed",
+   "translation of layer F07_mixed_geometry_types (use -skipfailures to skip errors)"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'kind' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.dbf",
+   "F08_polyline_zm.prj",
+   "F08_polyline_zm.shp",
+   "F08_polyline_zm.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'route_id' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'survey_run' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.dbf",
+   "F09_clockwise_exterior_ring.prj",
+   "F09_clockwise_exterior_ring.shp",
+   "F09_clockwise_exterior_ring.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'winding' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.dbf",
+   "F10_null_geometry.prj",
+   "F10_null_geometry.shp",
+   "F10_null_geometry.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "exit 1",
+  "outputs": [
+   "F10_null_geometry.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'row' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'state' not created.",
+   "ERROR 1: No known way to write feature with geometry 'None'.",
+   "ERROR 1: Unable to write feature 1 from layer F10_null_geometry.",
+   "ERROR 1: Terminating translation prematurely after failed",
+   "translation of layer F10_null_geometry (use -skipfailures to skip errors)"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.dbf",
+   "F11_self_intersecting_ring.prj",
+   "F11_self_intersecting_ring.shp",
+   "F11_self_intersecting_ring.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'validity' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.dbf",
+   "F12_coordinate_precision.prj",
+   "F12_coordinate_precision.shp",
+   "F12_coordinate_precision.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'vertex' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.dbf",
+   "F13_no_prj.shp",
+   "F13_no_prj.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'station' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.kml"
+  ],
+  "messages": [
+   "ERROR 1: Latitude 4317890.123000 is invalid. Valid range is [-90,90]. This warning will not be issued any more",
+   "Warning 1: Longitude 500123.456000 has been modified to fit into range [-180,180]. This warning will not be issued any more"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.dbf",
+   "F14_datum_control_points.prj",
+   "F14_datum_control_points.shp",
+   "F14_datum_control_points.shx"
+  ],
+  "messages": [
+   "Warning 6: Normalized/laundered field name: 'reference_easting' to 'reference_'",
+   "Warning 6: Normalized/laundered field name: 'reference_northing' to 'referenc_1'",
+   "Warning 6: Normalized/laundered field name: 'reference_source' to 'referenc_2'"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'control_id' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'reference_easting' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'reference_northing' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'reference_source' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.dbf",
+   "F15_geographic_units.prj",
+   "F15_geographic_units.shp",
+   "F15_geographic_units.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'note' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.dbf",
+   "F16_layer_names.prj",
+   "F16_layer_names.shp",
+   "F16_layer_names.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'layer_name' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'seq' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "exit 1",
+  "outputs": [
+   "F17 styled.dbf",
+   "F17 styled.prj",
+   "F17 styled.shp",
+   "F17 styled.shx"
+  ],
+  "messages": [
+   "Warning 6: Normalized/laundered field name: 'description' to 'descriptio'",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field timestamp create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field begin create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field end create as date field, though DateTime requested.",
+   "Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'",
+   "ERROR 1: Attempt to write non-polygon (POINT) geometry to POLYGON type shapefile.",
+   "ERROR 1: Unable to write feature 2 from layer F17 styled.",
+   "ERROR 1: Terminating translation prematurely after failed",
+   "translation of layer F17 styled (use -skipfailures to skip errors)"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F17_styled.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'Name' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'description' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'timestamp' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'begin' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'end' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'altitudeMode' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'tessellate' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'extrude' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'visibility' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'drawOrder' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'icon' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F17_styled.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F17_styled.kml"
+  ],
+  "messages": [
+   "Warning 1: Layer name 'F17 styled' adjusted to 'F17_styled' for XML validity.",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F17_styled.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "Level 1 - Region.dbf",
+   "Level 1 - Region.prj",
+   "Level 1 - Region.shp",
+   "Level 1 - Region.shx",
+   "Level 2 - District.dbf",
+   "Level 2 - District.prj",
+   "Level 2 - District.shp",
+   "Level 2 - District.shx",
+   "Level 3 - Block.dbf",
+   "Level 3 - Block.prj",
+   "Level 3 - Block.shp",
+   "Level 3 - Block.shx"
+  ],
+  "messages": [
+   "Warning 6: Normalized/laundered field name: 'description' to 'descriptio'",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field timestamp create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field begin create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field end create as date field, though DateTime requested.",
+   "Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'",
+   "Warning 6: Normalized/laundered field name: 'description' to 'descriptio'",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field timestamp create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field begin create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field end create as date field, though DateTime requested.",
+   "Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'",
+   "Warning 6: Normalized/laundered field name: 'description' to 'descriptio'",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field timestamp create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field begin create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field end create as date field, though DateTime requested.",
+   "Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "exit 1",
+  "outputs": [
+   "F18_nested_folders.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'Name' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'description' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'timestamp' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'begin' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'end' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'altitudeMode' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'tessellate' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'extrude' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'visibility' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'drawOrder' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'icon' not created.",
+   "ERROR 1: Unable to have more than one OGR entities layer in a DXF file, with one options blocks layer.",
+   "ERROR 1: Terminating translation prematurely after failed",
+   "translation of layer Level 2 - District (use -skipfailures to skip errors)"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "exit 1",
+  "outputs": [
+   "F18_nested_folders.geojson"
+  ],
+  "messages": [
+   "ERROR 1: Layer 'Level 2 - District' does not already exist in the output dataset, and cannot be created by the output driver.",
+   "ERROR 1: Terminating translation prematurely after failed",
+   "translation of layer Level 2 - District (use -skipfailures to skip errors)"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F18_nested_folders.kml"
+  ],
+  "messages": [
+   "Warning 1: Layer name 'Level 1 - Region' adjusted to 'Level_1___Region' for XML validity.",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: Layer name 'Level 2 - District' adjusted to 'Level_2___District' for XML validity.",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: Layer name 'Level 3 - Block' adjusted to 'Level_3___Block' for XML validity.",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F18_nested_folders.csv",
+   "Level 2 - District.csv",
+   "Level 3 - Block.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.dbf",
+   "F19_feature_identifiers.prj",
+   "F19_feature_identifiers.shp",
+   "F19_feature_identifiers.shx"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'id' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'name' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F20 labels.dbf",
+   "F20 labels.prj",
+   "F20 labels.shp",
+   "F20 labels.shx"
+  ],
+  "messages": [
+   "Warning 6: Normalized/laundered field name: 'description' to 'descriptio'",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field timestamp create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field begin create as date field, though DateTime requested.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 6: Field end create as date field, though DateTime requested.",
+   "Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'",
+   "Warning 1: One or several characters couldn't be converted correctly from UTF-8 to ISO-8859-1.  This warning will not be emitted anymore."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F20_labels.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'Name' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'description' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'timestamp' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'begin' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'end' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'altitudeMode' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'tessellate' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'extrude' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'visibility' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'drawOrder' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'icon' not created."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F20_labels.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F20_labels.kml"
+  ],
+  "messages": [
+   "Warning 1: Layer name 'F20 labels' adjusted to 'F20_labels' for XML validity.",
+   "Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.",
+   "Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion."
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F20_labels.csv"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.dbf"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "exit 1",
+  "outputs": [
+   "F24_axis_order.dxf"
+  ],
+  "messages": [
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'station' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'latitude' not created.",
+   "ERROR 1: DXF layer does not support arbitrary field creation, field 'longitude' not created.",
+   "ERROR 1: No known way to write feature with geometry 'None'.",
+   "ERROR 1: Unable to write feature 1 from layer F24_axis_order.",
+   "ERROR 1: Terminating translation prematurely after failed",
+   "translation of layer F24_axis_order (use -skipfailures to skip errors)"
+  ],
+  "reported": []
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.geojson"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.kml"
+  ],
+  "messages": [],
+  "reported": []
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.csv"
+  ],
+  "messages": [],
+  "reported": []
+ }
+]

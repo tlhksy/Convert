@@ -74,6 +74,24 @@ class Model:
     def n_null_geom(self):
         return sum(1 for f in self.features if not f["geom"])
 
+    def n_interior_rings(self):
+        """Interior rings (holes) across every polygon in the collection."""
+        n = 0
+        for f in self.features:
+            for poly in rings_of(f["geom"]):
+                n += max(0, len(poly) - 1)
+        return n
+
+    def n_multipart(self):
+        """Features whose geometry carries more than one disjoint part."""
+        n = 0
+        for f in self.features:
+            g = f["geom"]
+            if g and str(g.get("type", "")).startswith("Multi") \
+                    and len(g.get("coordinates") or []) > 1:
+                n += 1
+        return n
+
 
 def coords_of(geom):
     """Every coordinate tuple in a GeoJSON-shaped geometry."""
@@ -115,17 +133,61 @@ def signed_area(ring):
     return s / 2.0
 
 
-def decimals(v):
-    s = repr(float(v))
-    return len(s.split(".")[1]) if "." in s and "e" not in s else 0
+# B9 is a question about position, not about notation. Counting the decimal
+# places of the written text answers neither: the count depends on the
+# formatting (scientific notation, trailing zeros) rather than on where the
+# vertex ended up, and taking the maximum over a layer lets one high-precision
+# coordinate mask truncation everywhere else. The mechanism is therefore
+# measured as the largest distance any vertex moved, against a stated
+# tolerance.
+B9_TOLERANCE_M = 0.001
 
 
-def max_decimals(model):
-    d = 0
+def vertices(model):
+    """Every distinct vertex of the collection, in document order.
+
+    A closed ring repeats its first point as its last in GeoJSON and KML; a
+    closed DXF POLYLINE does not. The repeat carries no position of its own, so
+    it is dropped here and the same geometry yields the same vertex count in
+    every format."""
+    out = []
     for f in model.features:
-        for c in coords_of(f["geom"]):
-            d = max(d, decimals(c[0]), decimals(c[1]))
-    return d
+        g = f["geom"]
+        polys = rings_of(g)
+        if not polys:
+            out.extend(coords_of(g))
+            continue
+        for poly in polys:
+            for ring in poly:
+                r = list(ring)
+                if len(r) > 1 and list(r[0][:2]) == list(r[-1][:2]):
+                    r = r[:-1]
+                out.extend(r)
+    return out
+
+
+def max_shift_metres(src, out, angular):
+    """Largest distance any vertex moved, or None where the question cannot be
+    put. Vertices are matched to their nearest counterpart rather than by
+    position in the file: a writer may reverse a ring or reorder parts without
+    moving anything, and index matching would read that as displacement.
+    A differing vertex count means the output is not a vertex-for-vertex copy,
+    so no correspondence exists and the conversion is left unscored."""
+    a, b = vertices(src), vertices(out)
+    if not a or len(a) != len(b):
+        return None
+
+    def metres(p, q):
+        dx, dy = q[0] - p[0], q[1] - p[1]
+        if angular:
+            dy *= 110540.0
+            dx *= 111320.0 * math.cos(math.radians(p[1]))
+        return math.hypot(dx, dy)
+
+    worst = 0.0
+    for q in b:
+        worst = max(worst, min(metres(p, q) for p in a))
+    return worst
 
 
 # --------------------------------------------------------------------------
@@ -308,8 +370,20 @@ def load_dxf(path):
     layers, verts, ent = set(), [], 0
     i = 0
     cur_layer = None
+    # Only the ENTITIES section holds drawing geometry. The HEADER carries
+    # $EXTMIN and $EXTMAX, which are written with the same group codes; reading
+    # those as vertices made the output longer than the source by a fixed
+    # amount and so made every DXF conversion unscorable for displacement.
+    in_entities = False
+    cur_ent = None
     while i + 1 < len(lines):
         code, val = lines[i].strip(), lines[i + 1]
+        if code == "2" and val.strip() == "ENTITIES":
+            in_entities = True
+        elif code == "0" and val.strip() == "ENDSEC":
+            in_entities = False
+        if code == "0":
+            cur_ent = val.strip()
         if code == "0" and val in ("POLYLINE", "POINT", "TEXT", "LINE"):
             ent += 1
         if code == "8":
@@ -320,7 +394,12 @@ def load_dxf(path):
                 x = float(val)
                 y = float(lines[i + 3]) if lines[i + 2].strip() == "20" else None
                 z = float(lines[i + 5]) if i + 5 < len(lines) and lines[i + 4].strip() == "30" else None
-                if y is not None:
+                # A POLYLINE entity carries a dummy 10/20/30 of its own before
+                # its VERTEX list, and a TEXT entity an insertion point; neither
+                # is drawing geometry, and the dummy sits at the origin, which a
+                # nearest-vertex search would pair with a real point half a world
+                # away. Only VERTEX and POINT carry coordinates to compare.
+                if y is not None and in_entities and cur_ent in ("VERTEX", "POINT"):
                     verts.append([x, y] + ([z] if z not in (None, 0.0) else []))
             except (ValueError, IndexError):
                 pass
@@ -394,11 +473,37 @@ def detect(src, out, target, src_crs=None):
     if out is None:
         return obs, inh
 
+    # Does any geometry at all survive into the output? A CSV written with no
+    # coordinate column, or a DXF holding no entity, carries none, and the
+    # mechanisms below that assume something was written must not be recorded
+    # for it.
+    if target == "dxf":
+        out_has_geom = getattr(out, "dxf_entities", 0) > 0
+    else:
+        out_has_geom = any(f["geom"] for f in out.features)
+    src_has_geom = any(f["geom"] for f in src.features)
+
     # ---- format-inherent, conditioned on the source actually carrying it
     if target == "dxf" and src.prop_keys():
         inh.append("A8")
-    if target == "csv" and (src.geom_types() - {"Point", "MultiPoint"}):
+    if target == "csv" and (src.geom_types() - {"Point", "MultiPoint"}) \
+            and out_has_geom:
         inh.append("B10")
+    # B11, complete geometry loss: the counterpart of A8. Recorded only where
+    # the target can carry geometry and the writer emitted none, so it is a
+    # writer's choice rather than a limit of the format.
+    if src_has_geom and not out_has_geom:
+        obs.append("B11")
+    # DXF R12 has no construct that groups entities into one feature, so every
+    # part of a multipart feature becomes an independent entity. Conditioned on
+    # the source actually carrying a multipart feature, as A8 is on attributes.
+    if target == "dxf" and src.n_multipart():
+        inh.append("B4")
+    # DXF R12 writes each ring as its own closed POLYLINE with nothing to say
+    # which ring encloses which, so a hole arrives as an independent outline.
+    # Conditioned on the source actually carrying an interior ring.
+    if target == "dxf" and src.n_interior_rings():
+        inh.append("B3")
     # DXF has no units, so angular coordinates make every length and area in
     # the drawing meaningless. The condition is the source system, not the data.
     if target == "dxf" and src_crs in ANGULAR_CRS:
@@ -412,16 +517,22 @@ def detect(src, out, target, src_crs=None):
             heads = [k[:10].upper() for k in skeys]
             if len(set(heads)) < len(heads):
                 obs.append("A2")
-        # type coercion: a non-string source value arriving as a string
+        # type coercion: a non-string source value arriving as a string.
+        # Writers differ in the case they give DBF field names: this tool
+        # upper-cases them, GDAL and mapshaper keep the source case. Matching
+        # case-sensitively made every value-level mechanism invisible for the
+        # latter two, so the source field is matched without regard to case.
         for f_s, f_o in zip(src.features, out.features):
+            oprops = f_o["props"] or {}
+            folded = {str(key).lower(): key for key in oprops}
             for k in skeys:
                 if k not in (f_s["props"] or {}):
                     continue
                 sv = f_s["props"][k]
-                ok = k[:10].upper() if target == "shp" else k
-                if ok not in (f_o["props"] or {}):
+                stem = (k[:10] if target == "shp" else k).lower()
+                if stem not in folded:
                     continue
-                ov = f_o["props"][ok]
+                ov = oprops[folded[stem]]
                 if isinstance(sv, bool) and not isinstance(ov, bool):
                     obs.append("A3")
                 elif isinstance(sv, int) and not isinstance(sv, bool) \
@@ -448,14 +559,36 @@ def detect(src, out, target, src_crs=None):
              for t in src_types}) > 1:
         obs.append("B5")
 
+    # B3 outside DXF: shapefile, KML and GeoJSON can all express a hole, so
+    # losing one there is the writer's doing rather than the format's. CSV is
+    # excluded because B10 already accounts for the whole geometry going.
+    si = src.n_interior_rings()
+    if target not in ("dxf", "csv") and si and out.n_interior_rings() < si:
+        obs.append("B3")
+
+    # B4 outside DXF: a split shows up as more output features than source
+    # features. Counting features, not parts, keeps the test independent of how
+    # each reader chooses to represent a multipart geometry.
+    if target != "dxf" and src.n_multipart() \
+            and len(out.features) > len(src.features):
+        obs.append("B4")
+
     if src.n_null_geom() and target != "geojson":
         kept = sum(1 for f in out.features if f["geom"])
         if kept < len(src.features):
             obs.append("B7")
 
-    if target in ("geojson", "kml", "csv"):
-        ds, do = max_decimals(src), max_decimals(out)
-        if ds > do:
+    # Shapefile stores coordinates as binary doubles and cannot truncate them;
+    # CSV is excluded because it writes a centroid in place of the geometry,
+    # which B10 already records, leaving no vertex to compare.
+    # KML is defined on WGS 84, so a projected source is reprojected on the way
+    # out and the two sets of coordinates are not in the same frame; that is a
+    # reference-system matter, not precision, and is excluded here.
+    comparable = target in ("geojson", "dxf") or (
+        target == "kml" and src_crs in ANGULAR_CRS)
+    if comparable:
+        shift = max_shift_metres(src, out, src_crs in ANGULAR_CRS)
+        if shift is not None and shift > B9_TOLERANCE_M:
             obs.append("B9")
 
     # winding: compare exterior orientation of the first polygon
@@ -511,8 +644,10 @@ KEY_TO_CODES = {
     "log.csv.centroidOnly":   ["B10"],
     "log.crs.noPrj":          ["C1"],
     "log.crs.prjUnmatched":   ["C1"],
+    # Added after the identifiers were introduced in the interface: both
+    # state that the source declares no reference system, which is C1.
+    "log.crs.csvUndeclared":  ["C1"],
     "log.crs.zoneUndetermined": ["C1"],
-    "log.crs.csvUndeclared": ["C1"],
     "log.dxf.degreeUnits":    ["C3"],
     "log.geojson.notWgs84":   ["C1"],
     "log.kml.forcesWgs84":    ["C1"],

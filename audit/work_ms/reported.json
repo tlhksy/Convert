@@ -1,0 +1,1644 @@
+[
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [
+   "[o] Field names collided after Shapefile's 10-character DBF limit; a numeric suffix was appended to keep the colliding names unique. Use -rename-fields to avoid automatic renaming.",
+   "administrative_unit_name -> administra",
+   "administrative_unit_code -> administ_1",
+   "quality_flag_primary -> quality_fl",
+   "quality_flag_secondary -> quality__1",
+   "[o] Field names were truncated to fit Shapefile's 10-character DBF limit:",
+   "survey_reference_number -> survey_ref",
+   "vegetation_cover_class -> vegetation",
+   "canopy_height_metres -> canopy_hei",
+   "measurement_operator -> measuremen",
+   "instrument_serial_id -> instrument",
+   "acquisition_platform -> acquisitio",
+   "notes_field_general -> notes_fiel",
+   "last_revision_author -> last_revis"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [
+   "[o] Field names were truncated to fit Shapefile's 10-character DBF limit:",
+   "observed_at -> observed_a"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [
+   "[o] Field names were truncated to fit Shapefile's 10-character DBF limit:",
+   "description -> descriptio",
+   "[o] [description] Truncated 1 string to fit the 254-byte limit"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out1.cpg",
+   "out1.dbf",
+   "out1.prj",
+   "out1.shp",
+   "out1.shx",
+   "out2.cpg",
+   "out2.dbf",
+   "out2.prj",
+   "out2.shp",
+   "out2.shx",
+   "out3.cpg",
+   "out3.dbf",
+   "out3.prj",
+   "out3.shp",
+   "out3.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out1.json",
+   "out2.json",
+   "out3.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out1.csv",
+   "out2.csv",
+   "out3.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [
+   "[o] Unable to generate .prj file for out.shp"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [
+   "[o] RFC 7946 warning: non-WGS84 GeoJSON output."
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [
+   "[o] Unable to generate .prj file for out.shp"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [
+   "[o] RFC 7946 warning: non-WGS84 GeoJSON output."
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [
+   "[o] Field names collided after Shapefile's 10-character DBF limit; a numeric suffix was appended to keep the colliding names unique. Use -rename-fields to avoid automatic renaming.",
+   "reference_easting -> reference_",
+   "reference_northing -> referenc_1",
+   "reference_source -> referenc_2"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out1.cpg",
+   "out1.dbf",
+   "out1.prj",
+   "out1.shp",
+   "out1.shx",
+   "out2.cpg",
+   "out2.dbf",
+   "out2.prj",
+   "out2.shp",
+   "out2.shx"
+  ],
+  "messages": [
+   "[o] Field names were truncated to fit Shapefile's 10-character DBF limit:",
+   "fill-opacity -> fill_opaci",
+   "stroke-opacity -> stroke_opa",
+   "stroke-width -> stroke_wid",
+   "[o] Field names were truncated to fit Shapefile's 10-character DBF limit:",
+   "icon-opacity -> icon_opaci",
+   "[o] Field names cleaned for Shapefile DBF compatibility:",
+   "icon-color -> icon_color",
+   "icon-scale -> icon_scale"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out1.json",
+   "out2.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out1.csv",
+   "out2.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.prj",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "shp",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.cpg",
+   "out.dbf",
+   "out.shp",
+   "out.shx"
+  ],
+  "messages": [
+   "[o] Unable to generate .prj file for out.shp"
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "geojson",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.json"
+  ],
+  "messages": [
+   "[o] RFC 7946 warning: non-WGS84 GeoJSON output."
+  ],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "csv",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": null,
+  "outputs": [
+   "out.csv"
+  ],
+  "messages": [],
+  "reported": [],
+  "unsupported": false
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "dxf",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "kml",
+  "src": null,
+  "features": 0,
+  "readError": null,
+  "writeError": "target not supported by this converter",
+  "outputs": [],
+  "messages": [],
+  "reported": [],
+  "unsupported": true
+ }
+]

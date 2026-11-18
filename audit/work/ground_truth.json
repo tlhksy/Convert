@@ -1,0 +1,1896 @@
+[
+ {
+  "fixture": "F01",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F01",
+  "target": "shp",
+  "occurred": [
+   "A1",
+   "A2"
+  ],
+  "observed": [
+   "A1",
+   "A2"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A2",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F01",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F01",
+  "target": "kml",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F01",
+  "target": "csv",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F02",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F02",
+  "target": "shp",
+  "occurred": [
+   "A1",
+   "A3",
+   "A6"
+  ],
+  "observed": [
+   "A1",
+   "A3",
+   "A6"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A2",
+   "A7"
+  ],
+  "silent": [
+   "A3",
+   "A6"
+  ],
+  "notice_not_applicable": [
+   "A2",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F02",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F02",
+  "target": "kml",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F02",
+  "target": "csv",
+  "occurred": [
+   "A3",
+   "A6"
+  ],
+  "observed": [
+   "A3",
+   "A6"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "A3",
+   "A6"
+  ],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F03",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F03",
+  "target": "shp",
+  "occurred": [
+   "A1",
+   "A4"
+  ],
+  "observed": [
+   "A1",
+   "A4"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A2",
+   "A4",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A2",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F03",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F03",
+  "target": "kml",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F03",
+  "target": "csv",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F04",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F04",
+  "target": "shp",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F04",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F04",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F04",
+  "target": "csv",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F05",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F05",
+  "target": "shp",
+  "occurred": [
+   "B6"
+  ],
+  "observed": [
+   "B6"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [
+   "B6"
+  ],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F05",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F05",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F05",
+  "target": "csv",
+  "occurred": [
+   "B10"
+  ],
+  "observed": [],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B10"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F06",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "B4",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "B4",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [
+   "B4"
+  ],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F06",
+  "target": "shp",
+  "occurred": [
+   "B6"
+  ],
+  "observed": [
+   "B6"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [
+   "B6"
+  ],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F06",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F06",
+  "target": "kml",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F06",
+  "target": "csv",
+  "occurred": [
+   "A3",
+   "B10"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F07",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F07",
+  "target": "shp",
+  "occurred": [
+   "B5"
+  ],
+  "observed": [
+   "B5"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7",
+   "B5"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F07",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F07",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F07",
+  "target": "csv",
+  "occurred": [
+   "B10"
+  ],
+  "observed": [],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B10"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F08",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "B2",
+   "C3"
+  ],
+  "observed": [
+   "B2"
+  ],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B2",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F08",
+  "target": "shp",
+  "occurred": [
+   "B1",
+   "B2"
+  ],
+  "observed": [
+   "B1",
+   "B2"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7",
+   "B1",
+   "B2"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F08",
+  "target": "geojson",
+  "occurred": [
+   "B2"
+  ],
+  "observed": [
+   "B2"
+  ],
+  "inherent": [],
+  "reported": [
+   "B2"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F08",
+  "target": "kml",
+  "occurred": [
+   "A3",
+   "B2"
+  ],
+  "observed": [
+   "A3",
+   "B2"
+  ],
+  "inherent": [],
+  "reported": [
+   "B2"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F08",
+  "target": "csv",
+  "occurred": [
+   "A3",
+   "B1",
+   "B10",
+   "B2"
+  ],
+  "observed": [
+   "A3",
+   "B1",
+   "B2"
+  ],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B1",
+   "B10",
+   "B2"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F09",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F09",
+  "target": "shp",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F09",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F09",
+  "target": "kml",
+  "occurred": [
+   "B6"
+  ],
+  "observed": [
+   "B6"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "B6"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F09",
+  "target": "csv",
+  "occurred": [
+   "B10"
+  ],
+  "observed": [],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B10"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F10",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "B7",
+   "C3"
+  ],
+  "observed": [
+   "B7"
+  ],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "B7",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F10",
+  "target": "shp",
+  "occurred": [
+   "B7"
+  ],
+  "observed": [
+   "B7"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7",
+   "B7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F10",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F10",
+  "target": "kml",
+  "occurred": [
+   "A3",
+   "B7"
+  ],
+  "observed": [
+   "A3",
+   "B7"
+  ],
+  "inherent": [],
+  "reported": [
+   "B7"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F10",
+  "target": "csv",
+  "occurred": [
+   "A3",
+   "B7"
+  ],
+  "observed": [
+   "A3",
+   "B7"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10",
+   "B7"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F11",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F11",
+  "target": "shp",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F11",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F11",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F11",
+  "target": "csv",
+  "occurred": [
+   "B10"
+  ],
+  "observed": [],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B10"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F12",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F12",
+  "target": "shp",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F12",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F12",
+  "target": "kml",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F12",
+  "target": "csv",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F13",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C1",
+   "C3"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A7",
+   "A8",
+   "B3",
+   "C1",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A7",
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F13",
+  "target": "shp",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7",
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F13",
+  "target": "geojson",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "A7",
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F13",
+  "target": "kml",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "A7",
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F13",
+  "target": "csv",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "A7",
+   "B10",
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A7",
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F15",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F15",
+  "target": "shp",
+  "occurred": [
+   "B6"
+  ],
+  "observed": [
+   "B6"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [
+   "B6"
+  ],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F15",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F15",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F15",
+  "target": "csv",
+  "occurred": [
+   "B10"
+  ],
+  "observed": [],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B10"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F16",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3"
+  ],
+  "observed": [],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F16",
+  "target": "shp",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F16",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F16",
+  "target": "kml",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F16",
+  "target": "csv",
+  "occurred": [
+   "A3"
+  ],
+  "observed": [
+   "A3"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "A3"
+  ],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F17",
+  "target": "dxf",
+  "occurred": [
+   "C3",
+   "D2",
+   "D5"
+  ],
+  "observed": [
+   "D2",
+   "D5"
+  ],
+  "inherent": [
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [
+   "D2",
+   "D5"
+  ],
+  "notice_not_applicable": [
+   "A8",
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F17",
+  "target": "shp",
+  "occurred": [
+   "B5",
+   "D2"
+  ],
+  "observed": [
+   "B5",
+   "D2"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7",
+   "B5"
+  ],
+  "silent": [
+   "D2"
+  ],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F17",
+  "target": "geojson",
+  "occurred": [
+   "D2"
+  ],
+  "observed": [
+   "D2"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "D2"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F17",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F17",
+  "target": "csv",
+  "occurred": [
+   "B10",
+   "D2"
+  ],
+  "observed": [
+   "D2"
+  ],
+  "inherent": [
+   "B10"
+  ],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "D2"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F18",
+  "target": "dxf",
+  "occurred": [
+   "C3",
+   "D3",
+   "D5"
+  ],
+  "observed": [
+   "D3",
+   "D5"
+  ],
+  "inherent": [
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [
+   "D3",
+   "D5"
+  ],
+  "notice_not_applicable": [
+   "A8",
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F18",
+  "target": "shp",
+  "occurred": [
+   "D3"
+  ],
+  "observed": [
+   "D3"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [
+   "D3"
+  ],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F18",
+  "target": "geojson",
+  "occurred": [
+   "D3"
+  ],
+  "observed": [
+   "D3"
+  ],
+  "inherent": [],
+  "reported": [],
+  "silent": [
+   "D3"
+  ],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F18",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F18",
+  "target": "csv",
+  "occurred": [
+   "D3"
+  ],
+  "observed": [
+   "D3"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [
+   "D3"
+  ],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F19",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C3",
+   "D4"
+  ],
+  "observed": [
+   "D4"
+  ],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3",
+   "D4"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F19",
+  "target": "shp",
+  "occurred": [
+   "D4"
+  ],
+  "observed": [
+   "D4"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7",
+   "D4"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F19",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F19",
+  "target": "kml",
+  "occurred": [
+   "D4"
+  ],
+  "observed": [
+   "D4"
+  ],
+  "inherent": [],
+  "reported": [
+   "D4"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F19",
+  "target": "csv",
+  "occurred": [
+   "D4"
+  ],
+  "observed": [
+   "D4"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10",
+   "D4"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F20",
+  "target": "dxf",
+  "occurred": [
+   "C3",
+   "D5"
+  ],
+  "observed": [
+   "D5"
+  ],
+  "inherent": [
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C3"
+  ],
+  "silent": [
+   "D5"
+  ],
+  "notice_not_applicable": [
+   "A8",
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F20",
+  "target": "shp",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F20",
+  "target": "geojson",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F20",
+  "target": "kml",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F20",
+  "target": "csv",
+  "occurred": [],
+  "observed": [],
+  "inherent": [],
+  "reported": [
+   "B10"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F24",
+  "target": "dxf",
+  "occurred": [
+   "A8",
+   "C1",
+   "C3"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [
+   "A8",
+   "C3"
+  ],
+  "reported": [
+   "A8",
+   "B3",
+   "C1",
+   "C3"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B3"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F24",
+  "target": "shp",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "A1",
+   "A7",
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "A1",
+   "A7"
+  ],
+  "error": null
+ },
+ {
+  "fixture": "F24",
+  "target": "geojson",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F24",
+  "target": "kml",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [],
+  "error": null
+ },
+ {
+  "fixture": "F24",
+  "target": "csv",
+  "occurred": [
+   "C1"
+  ],
+  "observed": [
+   "C1"
+  ],
+  "inherent": [],
+  "reported": [
+   "B10",
+   "C1"
+  ],
+  "silent": [],
+  "notice_not_applicable": [
+   "B10"
+  ],
+  "error": null
+ }
+]

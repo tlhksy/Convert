@@ -1,0 +1,4738 @@
+[
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "3.2 KB"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0040",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "5",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.dxf"
+  ]
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "3.2 KB"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "administrative_unit_name",
+     "ADMINISTRA"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "administrative_unit_code",
+     "ADMINISTR1"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "survey_reference_number",
+     "SURVEY_REF"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "vegetation_cover_class",
+     "VEGETATION"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "canopy_height_metres",
+     "CANOPY_HEI"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "measurement_operator",
+     "MEASUREMEN"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "instrument_serial_id",
+     "INSTRUMENT"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "acquisition_platform",
+     "ACQUISITIO"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "quality_flag_primary",
+     "QUALITY_FL"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "quality_flag_secondary",
+     "QUALITY_F1"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "notes_field_general",
+     "NOTES_FIEL"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "last_revision_author",
+     "LAST_REVIS"
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F01_long_field_names (5)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.shp",
+   "F01_long_field_names.shx",
+   "F01_long_field_names.dbf",
+   "F01_long_field_names.prj",
+   "F01_long_field_names.cpg"
+  ]
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "3.2 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.geojson"
+  ]
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "3.2 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.kml"
+  ]
+ },
+ {
+  "fixture": "F01",
+  "file": "F01_long_field_names.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "3.2 KB"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F01_long_field_names.csv"
+  ]
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1018 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0020",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.dxf"
+  ]
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1018 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "observed_at",
+     "OBSERVED_A"
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F02_attribute_types (3)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.shp",
+   "F02_attribute_types.shx",
+   "F02_attribute_types.dbf",
+   "F02_attribute_types.prj",
+   "F02_attribute_types.cpg"
+  ]
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1018 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.geojson"
+  ]
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1018 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.kml"
+  ]
+ },
+ {
+  "fixture": "F02",
+  "file": "F02_attribute_types.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1018 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F02_attribute_types.csv"
+  ]
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "573 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0000",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "1",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.dxf"
+  ]
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "573 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "description",
+     "DESCRIPTIO"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.valueTruncated",
+    "args": [
+     "description"
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F03_wide_text (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.shp",
+   "F03_wide_text.shx",
+   "F03_wide_text.dbf",
+   "F03_wide_text.prj",
+   "F03_wide_text.cpg"
+  ]
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "573 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.geojson"
+  ]
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "573 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.kml"
+  ]
+ },
+ {
+  "fixture": "F03",
+  "file": "F03_wide_text.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "573 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F03_wide_text.csv"
+  ]
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.2 KB"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0040",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "5",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.dxf"
+  ]
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.2 KB"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F04_non_ascii (5)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.shp",
+   "F04_non_ascii.shx",
+   "F04_non_ascii.dbf",
+   "F04_non_ascii.prj",
+   "F04_non_ascii.cpg"
+  ]
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.2 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.geojson"
+  ]
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.2 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.kml"
+  ]
+ },
+ {
+  "fixture": "F04",
+  "file": "F04_non_ascii.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "5 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.2 KB"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F04_non_ascii.csv"
+  ]
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.0 KB"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0200",
+     "0.0200"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.dxf"
+  ]
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.0 KB"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F05_polygon_with_holes (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.shp",
+   "F05_polygon_with_holes.shx",
+   "F05_polygon_with_holes.dbf",
+   "F05_polygon_with_holes.prj",
+   "F05_polygon_with_holes.cpg"
+  ]
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.0 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.geojson"
+  ]
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.0 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.kml"
+  ]
+ },
+ {
+  "fixture": "F05",
+  "file": "F05_polygon_with_holes.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.0 KB"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F05_polygon_with_holes.csv"
+  ]
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.1 KB"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0240",
+     "0.0040"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.dxf"
+  ]
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.1 KB"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F06_multipart_single_feature (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.shp",
+   "F06_multipart_single_feature.shx",
+   "F06_multipart_single_feature.dbf",
+   "F06_multipart_single_feature.prj",
+   "F06_multipart_single_feature.cpg"
+  ]
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.1 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.geojson"
+  ]
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.1 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.kml"
+  ]
+ },
+ {
+  "fixture": "F06",
+  "file": "F06_multipart_single_feature.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "1.1 KB"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F06_multipart_single_feature.csv"
+  ]
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "1 points, 1 lines, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "950 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0240",
+     "0.0040"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.dxf"
+  ]
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "1 points, 1 lines, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "950 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.shp.multipleTypes",
+    "args": [
+     3
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F07_mixed_geometry_types_point (1), F07_mixed_geometry_types_line (1), F07_mixed_geometry_types_polygon (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types_point.shp",
+   "F07_mixed_geometry_types_point.shx",
+   "F07_mixed_geometry_types_point.dbf",
+   "F07_mixed_geometry_types_point.prj",
+   "F07_mixed_geometry_types_point.cpg",
+   "F07_mixed_geometry_types_line.shp",
+   "F07_mixed_geometry_types_line.shx",
+   "F07_mixed_geometry_types_line.dbf",
+   "F07_mixed_geometry_types_line.prj",
+   "F07_mixed_geometry_types_line.cpg",
+   "F07_mixed_geometry_types_polygon.shp",
+   "F07_mixed_geometry_types_polygon.shx",
+   "F07_mixed_geometry_types_polygon.dbf",
+   "F07_mixed_geometry_types_polygon.prj",
+   "F07_mixed_geometry_types_polygon.cpg"
+  ]
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "1 points, 1 lines, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "950 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.geojson"
+  ]
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "1 points, 1 lines, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "950 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.kml"
+  ]
+ },
+ {
+  "fixture": "F07",
+  "file": "F07_mixed_geometry_types.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "1 points, 1 lines, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "950 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F07_mixed_geometry_types.csv"
+  ]
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "geometry",
+    "key": "log.shp.mDropped",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "2 lines"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "869 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0250",
+     "0.0050"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "2",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.dxf"
+  ]
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "geometry",
+    "key": "log.shp.mDropped",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "2 lines"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "869 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "geometry",
+    "key": "log.geom.zDropped",
+    "args": [
+     "SHP"
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F08_polyline_zm (2)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.shp",
+   "F08_polyline_zm.shx",
+   "F08_polyline_zm.dbf",
+   "F08_polyline_zm.prj",
+   "F08_polyline_zm.cpg"
+  ]
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "geometry",
+    "key": "log.shp.mDropped",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "2 lines"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "869 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.geojson"
+  ]
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "geometry",
+    "key": "log.shp.mDropped",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "2 lines"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "869 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.kml"
+  ]
+ },
+ {
+  "fixture": "F08",
+  "file": "F08_polyline_zm",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "geometry",
+    "key": "log.shp.mDropped",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "2 lines"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "869 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "geometry",
+    "key": "log.geom.zDropped",
+    "args": [
+     "CSV"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F08_polyline_zm.csv"
+  ]
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0060",
+     "0.0060"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "1",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.dxf"
+  ]
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F09_clockwise_exterior_ring (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.shp",
+   "F09_clockwise_exterior_ring.shx",
+   "F09_clockwise_exterior_ring.dbf",
+   "F09_clockwise_exterior_ring.prj",
+   "F09_clockwise_exterior_ring.cpg"
+  ]
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.geojson"
+  ]
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.kml"
+  ]
+ },
+ {
+  "fixture": "F09",
+  "file": "F09_clockwise_exterior_ring.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F09_clockwise_exterior_ring.csv"
+  ]
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "3 points, 2 unrecognised"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "900 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0040",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "empty",
+    "key": "log.out.emptySkipped",
+    "args": [
+     2
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.dxf"
+  ]
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "3 points, 2 unrecognised"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "900 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "empty",
+    "key": "log.out.emptySkipped",
+    "args": [
+     2
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F10_null_geometry (3)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.shp",
+   "F10_null_geometry.shx",
+   "F10_null_geometry.dbf",
+   "F10_null_geometry.prj",
+   "F10_null_geometry.cpg"
+  ]
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "3 points, 2 unrecognised"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "900 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.geojson"
+  ]
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "3 points, 2 unrecognised"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "900 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "empty",
+    "key": "log.out.emptySkipped",
+    "args": [
+     2
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.kml"
+  ]
+ },
+ {
+  "fixture": "F10",
+  "file": "F10_null_geometry.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 5,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     5,
+     "3 points, 2 unrecognised"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "900 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "empty",
+    "key": "log.out.emptySkipped",
+    "args": [
+     2
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F10_null_geometry.csv"
+  ]
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0080",
+     "0.0080"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "1",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.dxf"
+  ]
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F11_self_intersecting_ring (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.shp",
+   "F11_self_intersecting_ring.shx",
+   "F11_self_intersecting_ring.dbf",
+   "F11_self_intersecting_ring.prj",
+   "F11_self_intersecting_ring.cpg"
+  ]
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.geojson"
+  ]
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.kml"
+  ]
+ },
+ {
+  "fixture": "F11",
+  "file": "F11_self_intersecting_ring.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "485 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F11_self_intersecting_ring.csv"
+  ]
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "630 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.2222",
+     "0.2222"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.dxf"
+  ]
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "630 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F12_coordinate_precision (3)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.shp",
+   "F12_coordinate_precision.shx",
+   "F12_coordinate_precision.dbf",
+   "F12_coordinate_precision.prj",
+   "F12_coordinate_precision.cpg"
+  ]
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "630 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.geojson"
+  ]
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "630 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.kml"
+  ]
+ },
+ {
+  "fixture": "F12",
+  "file": "F12_coordinate_precision.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "630 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F12_coordinate_precision.csv"
+  ]
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "encoding",
+    "key": "log.shp.noCpg",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.noPrj",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "406 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.zoneUndetermined",
+    "args": []
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "2111.1110",
+     "2222.2220"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.dxf"
+  ]
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "encoding",
+    "key": "log.shp.noCpg",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.noPrj",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "406 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.zoneUndetermined",
+    "args": []
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F13_no_prj (3)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.shp",
+   "F13_no_prj.shx",
+   "F13_no_prj.dbf",
+   "F13_no_prj.prj",
+   "F13_no_prj.cpg"
+  ]
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "encoding",
+    "key": "log.shp.noCpg",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.noPrj",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "406 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.zoneUndetermined",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.geojson"
+  ]
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "encoding",
+    "key": "log.shp.noCpg",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.noPrj",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "406 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.zoneUndetermined",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.kml"
+  ]
+ },
+ {
+  "fixture": "F13",
+  "file": "F13_no_prj",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "warn",
+    "tag": "encoding",
+    "key": "log.shp.noCpg",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.noPrj",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "406 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "prj",
+    "key": "log.crs.zoneUndetermined",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F13_no_prj.csv"
+  ]
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 50,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     50,
+     "50 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "13.8 KB"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "12.6000",
+     "5.2000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "50",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.dxf"
+  ]
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 50,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     50,
+     "50 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "13.8 KB"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "reference_easting",
+     "REFERENCE_"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "reference_northing",
+     "REFERENCE1"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.dbf.fieldRenamed",
+    "args": [
+     "reference_source",
+     "REFERENCE2"
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F14_datum_control_points (50)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.shp",
+   "F14_datum_control_points.shx",
+   "F14_datum_control_points.dbf",
+   "F14_datum_control_points.prj",
+   "F14_datum_control_points.cpg"
+  ]
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 50,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     50,
+     "50 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "13.8 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.geojson"
+  ]
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 50,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     50,
+     "50 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "13.8 KB"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.kml"
+  ]
+ },
+ {
+  "fixture": "F14",
+  "file": "F14_datum_control_points.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 50,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     50,
+     "50 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "13.8 KB"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F14_datum_control_points.csv"
+  ]
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "487 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0100",
+     "0.0100"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "1",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.dxf"
+  ]
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "487 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F15_geographic_units (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.shp",
+   "F15_geographic_units.shx",
+   "F15_geographic_units.dbf",
+   "F15_geographic_units.prj",
+   "F15_geographic_units.cpg"
+  ]
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "487 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.geojson"
+  ]
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "487 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.kml"
+  ]
+ },
+ {
+  "fixture": "F15",
+  "file": "F15_geographic_units.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 1,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     1,
+     "1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "487 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F15_geographic_units.csv"
+  ]
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "969 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0060",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "4",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.dxf"
+  ]
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "969 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F16_layer_names (4)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.shp",
+   "F16_layer_names.shx",
+   "F16_layer_names.dbf",
+   "F16_layer_names.prj",
+   "F16_layer_names.cpg"
+  ]
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "969 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.geojson"
+  ]
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "969 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.kml"
+  ]
+ },
+ {
+  "fixture": "F16",
+  "file": "F16_layer_names.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "969 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F16_layer_names.csv"
+  ]
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "1 points, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "936 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0200",
+     "0.0100"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "2",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F17_styled.dxf"
+  ]
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "1 points, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "936 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.shp.multipleTypes",
+    "args": [
+     2
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F17_styled_point (1), F17_styled_polygon (1)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F17_styled_point.shp",
+   "F17_styled_point.shx",
+   "F17_styled_point.dbf",
+   "F17_styled_point.prj",
+   "F17_styled_point.cpg",
+   "F17_styled_polygon.shp",
+   "F17_styled_polygon.shx",
+   "F17_styled_polygon.dbf",
+   "F17_styled_polygon.prj",
+   "F17_styled_polygon.cpg"
+  ]
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "1 points, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "936 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F17_styled.geojson"
+  ]
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "1 points, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "936 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F17_styled.kml"
+  ]
+ },
+ {
+  "fixture": "F17",
+  "file": "F17_styled.kml",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 2,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     2,
+     "1 points, 1 polygons"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "936 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F17_styled.csv"
+  ]
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "673 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0100",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F18_nested_folders.dxf"
+  ]
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "673 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F18_nested_folders (3)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F18_nested_folders.shp",
+   "F18_nested_folders.shx",
+   "F18_nested_folders.dbf",
+   "F18_nested_folders.prj",
+   "F18_nested_folders.cpg"
+  ]
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "673 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F18_nested_folders.geojson"
+  ]
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "673 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F18_nested_folders.kml"
+  ]
+ },
+ {
+  "fixture": "F18",
+  "file": "F18_nested_folders.kml",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "673 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F18_nested_folders.csv"
+  ]
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "880 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0060",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.geom.idDropped",
+    "args": [
+     4
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "4",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.dxf"
+  ]
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "880 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.geom.idDropped",
+    "args": [
+     4
+    ]
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F19_feature_identifiers (4)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.shp",
+   "F19_feature_identifiers.shx",
+   "F19_feature_identifiers.dbf",
+   "F19_feature_identifiers.prj",
+   "F19_feature_identifiers.cpg"
+  ]
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "880 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.geojson"
+  ]
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "880 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.geom.idDropped",
+    "args": [
+     4
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.kml"
+  ]
+ },
+ {
+  "fixture": "F19",
+  "file": "F19_feature_identifiers.geojson",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 4,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     4,
+     "4 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "880 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "field",
+    "key": "log.geom.idDropped",
+    "args": [
+     4
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F19_feature_identifiers.csv"
+  ]
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "503 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0120",
+     "0.0000"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F20_labels.dxf"
+  ]
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "503 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F20_labels (3)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F20_labels.shp",
+   "F20_labels.shx",
+   "F20_labels.dbf",
+   "F20_labels.prj",
+   "F20_labels.cpg"
+  ]
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "503 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F20_labels.geojson"
+  ]
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "503 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F20_labels.kml"
+  ]
+ },
+ {
+  "fixture": "F20",
+  "file": "F20_labels.kml",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "503 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F20_labels.csv"
+  ]
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "dxf",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "info",
+    "tag": "csv",
+    "key": "log.csv.columnsFound",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "csv",
+    "key": "log.crs.csvUndeclared",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "109 B"
+    ]
+   },
+   {
+    "level": "err",
+    "tag": "scale",
+    "key": "log.dxf.degreeUnits",
+    "args": [
+     "0.0200",
+     "0.0200"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.dxf.formatNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.dxf.written",
+    "args": [
+     "3",
+     1,
+     "0"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.dxf"
+  ]
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "shp",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "info",
+    "tag": "csv",
+    "key": "log.csv.columnsFound",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "csv",
+    "key": "log.crs.csvUndeclared",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "109 B"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "format",
+    "key": "log.shp.fieldNote",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "written",
+    "key": "log.shp.written",
+    "args": [
+     "F24_axis_order (3)"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.shp",
+   "F24_axis_order.shx",
+   "F24_axis_order.dbf",
+   "F24_axis_order.prj",
+   "F24_axis_order.cpg"
+  ]
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "geojson",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "info",
+    "tag": "csv",
+    "key": "log.csv.columnsFound",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "csv",
+    "key": "log.crs.csvUndeclared",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "109 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.geojson"
+  ]
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "kml",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "info",
+    "tag": "csv",
+    "key": "log.csv.columnsFound",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "csv",
+    "key": "log.crs.csvUndeclared",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "109 B"
+    ]
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.kml"
+  ]
+ },
+ {
+  "fixture": "F24",
+  "file": "F24_axis_order.csv",
+  "target": "csv",
+  "src": "EPSG:4326",
+  "features": 3,
+  "readError": null,
+  "reported": [
+   {
+    "level": "info",
+    "tag": "csv",
+    "key": "log.csv.columnsFound",
+    "args": []
+   },
+   {
+    "level": "warn",
+    "tag": "csv",
+    "key": "log.crs.csvUndeclared",
+    "args": []
+   },
+   {
+    "level": "ok",
+    "tag": "read",
+    "key": "log.read.summary",
+    "args": [
+     3,
+     "3 points"
+    ]
+   },
+   {
+    "level": "info",
+    "tag": "size",
+    "key": "log.read.inputSize",
+    "args": [
+     "109 B"
+    ]
+   },
+   {
+    "level": "warn",
+    "tag": "format",
+    "key": "log.csv.centroidOnly",
+    "args": []
+   }
+  ],
+  "writeError": null,
+  "outputs": [
+   "F24_axis_order.csv"
+  ]
+ }
+]
