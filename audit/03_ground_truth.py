@@ -143,6 +143,48 @@ def signed_area(ring):
 B9_TOLERANCE_M = 0.001
 
 
+DATETIME = re.compile(r"^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}")
+
+
+def has_time_of_day(v):
+    """True when the value states a time of day, not only a calendar date."""
+    return isinstance(v, str) and bool(DATETIME.match(v.strip()))
+
+
+def _crosses(a, b, c, d):
+    """Do segments ab and cd cross at a point interior to both?"""
+    def side(p, q, r):
+        return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0])
+    d1, d2 = side(c, d, a), side(c, d, b)
+    d3, d4 = side(a, b, c), side(a, b, d)
+    return ((d1 > 0) != (d2 > 0)) and ((d3 > 0) != (d4 > 0))
+
+
+def self_intersects(ring):
+    """A ring crosses itself. Shared endpoints of neighbouring segments and the
+    closing point are not crossings, so only non-adjacent pairs are tested."""
+    r = list(ring)
+    if len(r) > 1 and list(r[0][:2]) == list(r[-1][:2]):
+        r = r[:-1]
+    n = len(r)
+    if n < 4:
+        return False
+    for i in range(n):
+        for j in range(i + 2, n):
+            if i == 0 and j == n - 1:
+                continue
+            if _crosses(r[i], r[(i + 1) % n], r[j], r[(j + 1) % n]):
+                return True
+    return False
+
+
+def any_invalid_ring(model):
+    return any(self_intersects(ring)
+               for f in model.features
+               for poly in rings_of(f["geom"])
+               for ring in poly)
+
+
 def vertices(model):
     """Every distinct vertex of the collection, in document order.
 
@@ -545,9 +587,33 @@ def detect(src, out, target, src_crs=None):
                 if isinstance(sv, str) and any(ord(c) > 127 for c in sv):
                     if isinstance(ov, str) and not any(ord(c) > 127 for c in ov):
                         obs.append("A7")
+                # A5: the source states a time of day and the output does not.
+                if has_time_of_day(sv) and not has_time_of_day(ov):
+                    obs.append("A5")
             break  # one feature is enough to establish the schema behaviour
 
     # ---- geometry
+    # B8: an invalid ring is repaired by the writer with nothing said. A ring
+    # written through unchanged is not recorded: nothing is then absent,
+    # altered or unrecoverable, and counting it would score faithfulness as
+    # loss. DXF and CSV are excluded because neither preserves rings at all,
+    # so repair cannot be distinguished from the format's own behaviour.
+    if target in ("shp", "geojson", "kml") and any_invalid_ring(src) \
+            and out_has_geom and not any_invalid_ring(out):
+        obs.append("B8")
+    # C4: the output places the points where the source would be if its two
+    # axes were read the other way round. Decidable because the source's own
+    # axis semantics are fixed by its header or its reference system, not
+    # guessed from the coordinates.
+    if out_has_geom and target != "csv":
+        a, b = vertices(src), vertices(out)
+        if a and len(a) == len(b):
+            flipped = [[p[1], p[0]] for p in a]
+            straight = max(min(math.dist(p[:2], q[:2]) for p in a) for q in b)
+            swapped = max(min(math.dist(p[:2], q[:2]) for p in flipped) for q in b)
+            if swapped < straight and swapped < 1e-9:
+                obs.append("C4")
+
     if src.max_dim() > 2 and out.max_dim() == 2:
         obs.append("B1")
     if src.had_m:

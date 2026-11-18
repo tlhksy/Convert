@@ -1,5 +1,5 @@
 {
- "version": "1.1",
+ "version": "1.2",
  "description": "Taxonomy of information-loss mechanisms in vector geospatial format conversion. Each code names a single, independently observable mechanism by which information present in the source is absent, altered, or unrecoverable in the target.",
  "families": {
   "A": "Attribute and schema loss",
@@ -85,8 +85,10 @@
   },
   "B8": {
    "family": "B",
-   "name": "Invalid geometry passed or silently repaired",
-   "definition": "A self-intersecting or otherwise invalid ring is either written unchanged into a format that assumes validity, or geometrically altered by repair."
+   "name": "Invalid geometry silently repaired",
+   "definition": "A geometrically invalid ring is altered by the writer so that the output is valid, with nothing said about the change. A ring written through unchanged is not this mechanism: nothing in the source is then absent, altered or unrecoverable, and recording it would score faithfulness as loss.",
+   "amended": "2026-11-18",
+   "amendment_reason": "The original definition also covered an invalid ring written through unchanged. That outcome alters nothing and so falls outside the taxonomy's own criterion."
   },
   "B9": {
    "family": "B",
@@ -158,6 +160,13 @@
    "change": "Added B11, complete geometry loss.",
    "reason": "Two converters write CSV without a coordinate column and, in some conversions, DXF without any entity. No code named that outcome; it was recorded as B10 or not at all.",
    "effect": "Increases the occurrence count of the two converters that incur it. All three tools were re-run and re-scored after the amendment."
+  },
+  {
+   "date": "2026-11-18",
+   "version": "1.2",
+   "change": "Narrowed B8 to silent repair; pass-through of an invalid ring is no longer an occurrence.",
+   "reason": "A ring written through unchanged leaves nothing absent, altered or unrecoverable, so counting it scored faithful behaviour as loss.",
+   "effect": "Removes occurrences from every converter that passes an invalid ring through, including the authors' own."
   }
  ]
 }
