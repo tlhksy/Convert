@@ -1,7 +1,7 @@
-{
+﻿{
   "name": "pafta",
-  "version": "1.0.0",
-  "description": "Tarayıcıda çalışan vektör veri dönüştürücü: Shapefile / GeoJSON / KML / GPX / CSV ↔ DXF. Sunucu yok, bağımlılık yok.",
+  "version": "1.2.0",
+  "description": "TarayÄ±cÄ±da Ã§alÄ±ÅŸan vektÃ¶r veri dÃ¶nÃ¼ÅŸtÃ¼rÃ¼cÃ¼: Shapefile / GeoJSON / KML / GPX / CSV â†” DXF. Sunucu yok, baÄŸÄ±mlÄ±lÄ±k yok.",
   "license": "MIT",
   "private": false,
   "scripts": {
